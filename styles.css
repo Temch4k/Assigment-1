@@ -1,0 +1,70 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.navbar {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    float: right;
+    color: ffa69e;
+}
+  
+/*colors : ffa69e*/
+/*colors : faf3dd*/
+/*colors : b8f2e6*/
+
+.main {
+margin-top: 30px;
+margin-top:auto;
+}
+body {
+    background-color: #faf3dd;
+    padding-top: 70px;
+    display: flex;
+    flex-flow: column;
+}
+
+a {
+color:#B8FBE6;
+}
+fieldset{
+    align-items: center;
+    background-color:#b8f2e6 ;
+}
+
+.brdr{
+    border: 10px solid;
+    border-radius: 35px;
+}
+
+.sidebar    {
+    width: 200px;
+    height: 400px;
+    float: left;
+}
+
+.submit-image {
+    width: 10px;
+}
+
+body > .container {
+    padding-bottom: 100px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 280px;
+    background-color: #ffa69e;
+}
+.website-logo {
+    
+    width: 150; 
+    height: 80; 
+    alt: "yoVerselogo";
+}
