@@ -62,3 +62,9 @@ footer {
     height: 280px;
     background-color: #ffa69e;
 }
+.website-logo {
+    
+    width: 150; 
+    height: 80; 
+    alt: "yoVerselogo";
+}
