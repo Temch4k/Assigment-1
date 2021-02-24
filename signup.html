@@ -15,30 +15,26 @@
     <body>
         <div>
             <header>
-                <nav class="navbar navbar-expand navbar-light bg-light navbar-fixed-top">
-                    <ul class ="nav navbar-nav">
-                    
-                    <a class="navbar-brand" href="yoVerseWebsite.png">
-                        <img src="yoVerseWebsite.png" width="150" height="80" alt="">
-                    </a>
-                
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Sign up/login</a>
-                            </li>
-                        </ul>
-                            <form class="form-inline my-2  navbar-right">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </ul>
+                <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="yoVerseWebsite.png">
+                            <img src="yoVerseWebsite.png" class="website-logo">
+                        </a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <form class="form-inline my-2  navbar-right">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                      </ul>
+                      <ul>
+                        <button type="button" class=" btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
+                      </ul>
+                    </div>
                 </nav>
+
+                
             </header>
         </div>
 
@@ -100,7 +96,7 @@
                                 </label>
                                 </div>
                                 <div class="col-sm-10 col-md-3">
-                                <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-4" placeholder="Susie">
+                                <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-6" placeholder="Susie">
                                 </div>
                                 
                                 <div class="col-sm-2">
@@ -109,7 +105,7 @@
                                 </label>
                                 </div>
                                 <div class="col-sm-10 col-md-3">
-                                <input type="text" id="textLastName" name="textLastName" required class="form-control col-5" placeholder="Sal">
+                                <input type="text" id="textLastName" name="textLastName" required class="form-control col-6" placeholder="Sal">
                                 </div>
                             </div>
 
