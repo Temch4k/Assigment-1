@@ -20,6 +20,10 @@ html {
 margin-top: 30px;
 margin-top:auto;
 }
+.signInPage{
+    ma
+}
+
 body {
     background-color: #faf3dd;
     display: flex;
@@ -84,4 +88,15 @@ footer {
     bottom: 0;
     width: 100%;
     height: 2.5rem;            /* Footer height */
+}
+
+@media screen and (max-width: 900px) {
+    .resizeImg{
+         width: 500px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .resizeImg{
+         width: 300px;
+    }
 }

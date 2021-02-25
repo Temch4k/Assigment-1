@@ -1,202 +1,224 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/styles.css">
-    
-    </head>
-    <body>
-        <div>
-            <header>
-                <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
-                    <div class="container-fluid">
-                      <div class="navbar-header">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <div>
+        <header>
+            <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
                         <a class="navbar-brand" href="homePage.html">
                             <img src="images/yoVerseWebsite.png" class="website-logo">
                         </a>
-                      </div>
-                      <ul class="nav navbar-nav">
+                    </div>
+                    <ul class="nav navbar-nav">
                         <form class="form-inline my-2  navbar-right">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
-                      </ul>
-                      <ul>
-                        <button type="button" onclick="location.href='signin.html';" class="btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
-                      </ul>
-                    </div>
-                </nav>                
-            </header>
+                    </ul>
+                    <ul>
+                        <button type="button" onclick="location.href='signin.html';"
+                            class="btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div style="padding: 70px;" class="float-container">
+        <div class="float-lg-left">
+            <img src="images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" class="brdr resizeImg">
         </div>
-
-        <div style="padding: 70px;" class="float-container">
-            <div class="float-lg-left">
-                <img src="images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" class="brdr">
-            </div>
-            <div class="float-lg-right">
-                <form onsubmit="return validateForm()" id="mainForm">
-                    <fieldset class="brdr">
-                        <center>
-                            <label><b><i><h1> Sign Up Now!</h1></i></b></label>
-                            <div class="row form-group">
-                                <div class="col-sm-3">
-                                    <label for="txtEmail">
-                                        <span>Email:</span>   
-                                    </label>
-                                </div>
-                                <div class="col-sm-10 col-md-3">
-                                    <input type="email" name="textEmail" id="txtEmail" class="col-9 form-control">
-                                </div>
-
-                                <div class="col-sm-2">
-                                    <label for="txtTele" pattern="[0-9]{10}|[0-9]{3}+-+[0-9]{4}+-+[0-9]{3}">
-                                        <span>Phone Number:</span>   
-                                    </label>
-                                </div>
-                                <div class="col-sm-10 col-md-3">
-                                    <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333" class="col-9 form-control">
-                                </div>
+        <div class="float-lg-right">
+            <form onsubmit="return validateForm()" id="mainForm">
+                <fieldset class="brdr">
+                    <center>
+                        <label><b><i>
+                                    <h1> Sign Up Now!</h1>
+                                </i></b></label>
+                        <div class="row form-group">
+                            <div class="col-sm-10 col-lg-3" >
+                                <label for="txtEmail">
+                                    <span>Email:</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="email" name="textEmail" id="txtEmail" class="col-9 form-control" placeholder="Your Email">
                             </div>
 
-                            <div class="row form-group">
-                                <div class="col-sm-3">
-                                    <label for="txtPassword">
-                                        <span>Password:</span>   
-                                    </label>
-                                </div>
+                            <div class="col-sm-10 col-lg-2">
+                                <label for="txtTele" pattern="[0-9]{10}|[0-9]{3}+-+[0-9]{4}+-+[0-9]{3}">
+                                    <span>Phone Number:</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-4 ">
+                                <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
+                                    class="col-9 form-control">
+                            </div>
+                        </div>
 
-                                <div class="col-sm-10 col-md-3">
-                                    <input type="password" name="textPW" id="txtPW" placeholder="***************" class="col-6 form-control">
-                                </div>
-
-                                <div class="col-sm-2 form-group">
-                                    <label for="txtPW2">
-                                        <span>Confirm Password:</span>   
-                                    </label>
-                                </div>
-
-                                <div class="col-sm-10 col-md-3">
-                                    <input type="password" name="textPW2" id="PW2" placeholder="***************" class="col-6 form-control">
-                                </div>
+                        <div class="row form-group">
+                            <div class="col-sm-10 col-lg-3">
+                                <label for="txtPassword">
+                                    <span>Password:</span>
+                                </label>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-3">
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="password" name="textPW" id="txtPW" placeholder="***************"
+                                    class="col-6 form-control">
+                            </div>
+
+                            <div class="col-sm-10 col-lg-2 form-group">
+                                <label for="txtPW2">
+                                    <span>Confirm Password:</span>
+                                </label>
+                            </div>
+
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="password" name="textPW2" id="PW2" placeholder="***************"
+                                    class="col-6 form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-10 col-lg-3">
                                 <label for="textFirstName" class="col-md-6 col-form-label">
                                     First Name:
                                 </label>
-                                </div>
-                                <div class="col-sm-10 col-md-3">
-                                <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-6" placeholder="Susie">
-                                </div>
-                                
-                                <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="text" id="textFirstName" name="textFirstName" required
+                                    class="form-control col-6" placeholder="Susie">
+                            </div>
+
+                            <div class="col-sm-10 col-lg-2">
                                 <label for="textLastName" class="col-md-8 col-form-label">
                                     <span>Last Name:</span>
                                 </label>
-                                </div>
-                                <div class="col-sm-10 col-md-3">
-                                <input type="text" id="textLastName" name="textLastName" required class="form-control col-6" placeholder="Sal">
-                                </div>
                             </div>
-
-                            <div class="row form-group">
-                                <div class="col-sm-5">
-                                    <label for="txtDOB" class="col-md-12 col-form-label">
-                                        <span>Date of Birth</span>
-                                    </label>
-                                </div>
-                                <div class="col-sm-7">
-                                    <input type="date" id="textDOB" name="txtDOB" required class="form-control col-6" placeholder="Date of Birth">
-                                </div>
-                                <div id="divDoBError" class="invisible errorMessage">
-
-                                </div>
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="text" id="textLastName" name="textLastName" required
+                                    class="form-control col-6" placeholder="Sal">
                             </div>
+                        </div>
 
-                            <fieldset class="form-group genderField">
-                                <div class="row col-sm-4">
+                        <div class="row form-group">
+                            <div class="col-sm-10 col-lg-5">
+                                <label for="txtDOB" class="col-md-12 col-form-label">
+                                    <span>Date of Birth</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-7">
+                                <input type="date" id="textDOB" name="txtDOB" required class="form-control col-6"
+                                    placeholder="Date of Birth">
+                            </div>
+                            <div id="divDoBError" class="invisible errorMessage">
+
+                            </div>
+                        </div>
+
+                        <fieldset class="form-group genderField">
+                            <div class="row col-sm-4">
                                 <legend class="col-form-label">Gender</legend>
-                                </div>
-                                <div class="col-sm-12">
+                            </div>
+                            <div class="col-sm-12">
                                 <div class="form-group col-sm-8 row">
                                     <div class="form-check col-4">
-                                    <input type="radio" id="rbMale" name="gender" value="male" class="form-check-input">
-                                    <label for="rbMale" class="form-check-label">Male</label>
+                                        <input type="radio" id="rbMale" name="gender" value="male"
+                                            class="form-check-input">
+                                        <label for="rbMale" class="form-check-label">Male</label>
                                     </div>
                                     <div class="form-check col-4">
-                                    <input type="radio" id="rbFemale" name="gender" value="female" class="form-check-input">
-                                    <label for="rbMale" class="form-check-label">Female</label>
+                                        <input type="radio" id="rbFemale" name="gender" value="female"
+                                            class="form-check-input">
+                                        <label for="rbMale" class="form-check-label">Female</label>
                                     </div>
                                     <div class="form-check col-4">
-                                    <input type="radio" id="rbOther" name="gender" value="other" class="form-check-input">
-                                    <label for="rbOther" class="form-check-label">Other</label>
+                                        <input type="radio" id="rbOther" name="gender" value="other"
+                                            class="form-check-input">
+                                        <label for="rbOther" class="form-check-label">Other</label>
                                     </div>
                                 </div>
-                                </div>
-                            </fieldset>
-                            <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
-                        </center>
-                        <br>
-                    </fieldset>
-                </div>
-            </form>
-            <div class="footer navbar-fixed-bottom">
+                            </div>
+                        </fieldset>
+                        <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
+                    </center>
+                    <br>
+                </fieldset>
+        </div>
+        </form>
+        <div class="footer navbar-fixed-bottom">
 
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid bg-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Help</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="">
+                                    Contact us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Report a Problem
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Jobs
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-muted">
+                            <div class="pull-right">
+                                <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
-        <footer>
-            <div class="container-fluid bg-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h3>Help</h3>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="">
-                                        Contact us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Report a Problem
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Jobs
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <div class="container-fluid bg-copyright">
+            <div class="container">
+                <p class="copyright">
+                    &copy; 2021 yoVerse Inc.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
 
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="text-muted">
-                                <div class="pull-right">
-                                    <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid bg-copyright">
-                <div class="container">
-                    <p class="copyright">
-                        &copy; 2021 yoVerse Inc.
-                    </p>
-                </div>
-            </div>
-        </footer>    
-    </body>
 </html>

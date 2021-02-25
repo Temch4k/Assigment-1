@@ -38,10 +38,11 @@
     </nav>                
     </header>
 
+    <br>
     <section>
-        <form style="padding: 70px;" id="signInForm">
+        <form style="padding: 70px;" id="signInForm" >
             <!-- This is our email and password fields -->
-            <fieldset class="border">
+            <fieldset class="border brdr">
                 <br>
                 <div class="row">
                     <div class="col-lg-3"></div>
@@ -50,13 +51,13 @@
 
                         <!-- Email -->
                         <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <div class="col-sm-2 col-lg-6">
+                            <div class="col-sm-4 col-md-6 col-lg-6">
                                 <label for="txtEmail" class="col-form-label col-lg-4">
                                     <span>Email: </span>
                                 </label>
                             </div>
 
-                            <div class="col-sm-10 col-lg-6 ">
+                            <div class="col-sm-8 col-md-6  col-lg-6 ">
                                 <input type="text" id="txtEmail" name="txtEmail" required class="form-control"
                                     placeholder="Email">
                             </div>
@@ -64,12 +65,12 @@
 
                         <!-- Password -->
                         <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <div class="col-sm-2 col-lg-6 ">
+                            <div class="col-sm-4 col-md-6 col-lg-6 ">
                                 <label for="txtPassword" class="col-form-label col-lg-4">
                                     <span>Password: </span>
                                 </label>
                             </div>
-                            <div class="col-sm-10 col-lg-6">
+                            <div class="col-sm-8 col-md-6 col-lg-6">
                                 <input type="text" id="txtPassword" name="txtPassword" required class="form-control"
                                     placeholder="Password">
                             </div>
@@ -84,18 +85,20 @@
                         </div>
 
                         <!-- Buttons -->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <button type="submit" class="col-sm-4 btn btn-danger">Login</button>
-                            <button type="reset" class="col-sm-4 btn btn-light">Cancel</button>
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <button type="submit" class="col-sm-6 col-md-4 col-lg-3 
+                                                        offset-md-1 offset-sm-1 offset-xs-1
+                                                         btn btn-danger">Login</button>
+                            <button type="reset" class="col-sm-6  col-md-4 col-lg-3 btn btn-light">Cancel</button>
                         </div>
 
                         <!-- Forgot Your Password-->
-                        <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
+                        <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor">
                             <a href="forgotPassword.html">Forgot your password?</a>
                         </div>
                         
                         <!-- Sing up Link-->
-                        <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
+                        <div class="col-sm-5  col-lg-12  d-flex justify-content-center hyperColor">
                             <a href="signup.html">Sign up!</a>
                         </div>
                     </div>
