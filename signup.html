@@ -1,40 +1,51 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/styles.css">
-    
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <div id="page-container">
         <div>
             <header>
                 <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light">
                     <div class="container-fluid">
-                      <div class="navbar-header">
-                        <a class="navbar-brand" href="img/yoVerseWebsite.png">
-                            <img src="img/yoVerseWebsite.png" class="website-logo">
-                        </a>
-                      </div>
-                      <ul class="nav navbar-nav">
-                        <form class="form-inline my-2  navbar-right">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                      </ul>
-                      <ul>
-                        <button type="button" class=" btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
-                      </ul>
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="img/yoVerseWebsite.png">
+                                <img src="img/yoVerseWebsite.png" class="website-logo">
+                            </a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <form class="form-inline my-2  navbar-right">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </ul>
+                        <ul>
+                            <button type="button" class=" btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
+                        </ul>
                     </div>
                 </nav>
 
-                
+
             </header>
         </div>
 
@@ -46,11 +57,13 @@
                 <form onsubmit="return validateForm()" id="mainForm">
                     <fieldset class="brdr">
                         <center>
-                            <label><b><i><h1> Sign Up Now!</h1></i></b></label>
+                            <label><b><i>
+                                        <h1> Sign Up Now!</h1>
+                                    </i></b></label>
                             <div class="row form-group">
                                 <div class="col-sm-3">
                                     <label for="txtEmail">
-                                        <span>Email:</span>   
+                                        <span>Email:</span>
                                     </label>
                                 </div>
                                 <div class="col-sm-10 col-md-3">
@@ -59,53 +72,58 @@
 
                                 <div class="col-sm-2">
                                     <label for="txtTele" pattern="[0-9]{10}|[0-9]{3}+-+[0-9]{4}+-+[0-9]{3}">
-                                        <span>Phone Number:</span>   
+                                        <span>Phone Number:</span>
                                     </label>
                                 </div>
                                 <div class="col-sm-10 col-md-3">
-                                    <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333" class="col-9 form-control">
+                                    <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
+                                        class="col-9 form-control">
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-sm-3">
                                     <label for="txtPassword">
-                                        <span>Password:</span>   
+                                        <span>Password:</span>
                                     </label>
                                 </div>
 
                                 <div class="col-sm-10 col-md-3">
-                                    <input type="password" name="textPW" id="txtPW" placeholder="***************" class="col-6 form-control">
+                                    <input type="password" name="textPW" id="txtPW" placeholder="***************"
+                                        class="col-6 form-control">
                                 </div>
 
                                 <div class="col-sm-2 form-group">
                                     <label for="txtPW2">
-                                        <span>Confirm Password:</span>   
+                                        <span>Confirm Password:</span>
                                     </label>
                                 </div>
 
                                 <div class="col-sm-10 col-md-3">
-                                    <input type="password" name="textPW2" id="PW2" placeholder="***************" class="col-6 form-control">
+                                    <input type="password" name="textPW2" id="PW2" placeholder="***************"
+                                        class="col-6 form-control">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-3">
-                                <label for="textFirstName" class="col-md-6 col-form-label">
-                                    First Name:
-                                </label>
+                                    <label for="textFirstName" class="col-md-6 col-form-label">
+                                        First Name:
+                                    </label>
                                 </div>
                                 <div class="col-sm-10 col-md-3">
-                                <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-6" placeholder="Susie">
+                                    <input type="text" id="textFirstName" name="textFirstName" required
+                                        class="form-control col-6" placeholder="Susie">
                                 </div>
-                                
+
                                 <div class="col-sm-2">
-                                <label for="textLastName" class="col-md-8 col-form-label">
-                                    <span>Last Name:</span>
-                                </label>
+                                    <label for="textLastName" class="col-md-8 col-form-label">
+                                        <span>Last Name:</span>
+                                    </label>
                                 </div>
                                 <div class="col-sm-10 col-md-3">
-                                <input type="text" id="textLastName" name="textLastName" required class="form-control col-6" placeholder="Sal">
+                                    <input type="text" id="textLastName" name="textLastName" required
+                                        class="form-control col-6" placeholder="Sal">
                                 </div>
                             </div>
 
@@ -116,7 +134,8 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input type="date" id="textDOB" name="txtDOB" required class="form-control col-6" placeholder="Date of Birth">
+                                    <input type="date" id="textDOB" name="txtDOB" required class="form-control col-6"
+                                        placeholder="Date of Birth">
                                 </div>
                                 <div id="divDoBError" class="invisible errorMessage">
 
@@ -125,35 +144,38 @@
 
                             <fieldset class="form-group genderField">
                                 <div class="row col-sm-4">
-                                <legend class="col-form-label">Gender</legend>
+                                    <legend class="col-form-label">Gender</legend>
                                 </div>
                                 <div class="col-sm-12">
-                                <div class="form-group col-sm-8 row">
-                                    <div class="form-check col-4">
-                                    <input type="radio" id="rbMale" name="gender" value="male" class="form-check-input">
-                                    <label for="rbMale" class="form-check-label">Male</label>
+                                    <div class="form-group col-sm-8 row">
+                                        <div class="form-check col-4">
+                                            <input type="radio" id="rbMale" name="gender" value="male"
+                                                class="form-check-input">
+                                            <label for="rbMale" class="form-check-label">Male</label>
+                                        </div>
+                                        <div class="form-check col-4">
+                                            <input type="radio" id="rbFemale" name="gender" value="female"
+                                                class="form-check-input">
+                                            <label for="rbMale" class="form-check-label">Female</label>
+                                        </div>
+                                        <div class="form-check col-4">
+                                            <input type="radio" id="rbOther" name="gender" value="other"
+                                                class="form-check-input">
+                                            <label for="rbOther" class="form-check-label">Other</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check col-4">
-                                    <input type="radio" id="rbFemale" name="gender" value="female" class="form-check-input">
-                                    <label for="rbMale" class="form-check-label">Female</label>
-                                    </div>
-                                    <div class="form-check col-4">
-                                    <input type="radio" id="rbOther" name="gender" value="other" class="form-check-input">
-                                    <label for="rbOther" class="form-check-label">Other</label>
-                                    </div>
-                                </div>
                                 </div>
                             </fieldset>
                             <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                         </center>
                     </fieldset>
-                </div>
+            </div>
             </form>
             <div class="footer navbar-fixed-bottom">
 
             </div>
         </div>
-        <footer>
+        <footer id="footer">
             <div class="container-fluid bg-footer">
                 <div class="container">
                     <div class="row">
@@ -198,6 +220,8 @@
                     </p>
                 </div>
             </div>
-        </footer>    
-    </body>
+        </footer>
+    </div>
+</body>
+
 </html>

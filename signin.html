@@ -17,80 +17,125 @@
 </head>
 
 <body>
-    <section>
-        <img src="img/logo.png" alt="Logo">
-        <form id="signInForm">
-            <!-- This is our email and password fields -->
-            <fieldset class="border">
-                <br>
-                <div class="row">
-                    <div class="col-lg-3"></div>
+    <div id="page-container">
+        <section>
+            <img src="img/logo.png" alt="Logo">
+            <form id="signInForm">
+                <!-- This is our email and password fields -->
+                <fieldset class="border">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-3"></div>
 
-                    <div class="col-lg-6 row">
+                        <div class="col-lg-6 row">
 
-                        <!-- Email -->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <div class="col-sm-2 col-lg-6">
-                                <label for="txtEmail" class="col-form-label col-lg-4">
-                                    <span>Email: </span>
-                                </label>
+                            <!-- Email -->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <div class="col-sm-2 col-lg-6">
+                                    <label for="txtEmail" class="col-form-label col-lg-4">
+                                        <span>Email: </span>
+                                    </label>
+                                </div>
+
+                                <div class="col-sm-10 col-lg-6 ">
+                                    <input type="text" id="txtEmail" name="txtEmail" required class="form-control"
+                                        placeholder="Email">
+                                </div>
                             </div>
 
-                            <div class="col-sm-10 col-lg-6 ">
-                                <input type="text" id="txtEmail" name="txtEmail" required class="form-control"
-                                    placeholder="Email">
+                            <!-- Password -->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <div class="col-sm-2 col-lg-6 ">
+                                    <label for="txtPassword" class="col-form-label col-lg-4">
+                                        <span>Password: </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-10 col-lg-6">
+                                    <input type="text" id="txtPassword" name="txtPassword" required class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+
+
+                            <!-- Remember me check Box-->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <label for="rememberMe" class="">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
+                                    remember me</label>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <button type="submit" class="col-sm-4 btn btn-danger">Login</button>
+                                <button type="reset" class="col-sm-4 btn btn-light">Cancel</button>
+                            </div>
+
+                            <!-- Forgot Your Password-->
+                            <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
+                                <a href="forgotPassword.html">Forgot your password?</a>
+                            </div>
+
+                            <!-- Sing up Link-->
+                            <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
+                                <a href="signup.html">Sign up!</a>
                             </div>
                         </div>
+                        <div class="col-lg-3"></div>
+                    </div>
+                    <br>
 
-                        <!-- Password -->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <div class="col-sm-2 col-lg-6 ">
-                                <label for="txtPassword" class="col-form-label col-lg-4">
-                                    <span>Password: </span>
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-6">
-                                <input type="text" id="txtPassword" name="txtPassword" required class="form-control"
-                                    placeholder="Password">
-                            </div>
-                        </div>
+                </fieldset>
+            </form>
 
+        </section>
 
-                        <!-- Remember me check Box-->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <label for="rememberMe" class="">
-                                <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
-                            remember me</label>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <button type="submit" class="col-sm-4 btn btn-danger">Login</button>
-                            <button type="reset" class="col-sm-4 btn btn-light">Cancel</button>
-                        </div>
-
-                        <!-- Forgot Your Password-->
-                        <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
-                            <a href="forgotPassword.html">Forgot your password?</a>
-                        </div>
-                        
-                        <!-- Sing up Link-->
-                        <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
-                            <a href="signup.html">Sign up!</a>
+        <footer id="footer">
+            <div class="container-fluid bg-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>Help</h3>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="">
+                                        Contact us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Report a Problem
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Jobs
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3"></div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="text-muted">
+                                <div class="pull-right">
+                                    <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <br>
-
-            </fieldset>
-        </form>
-
-    </section>
+            </div>
+            <div class="container-fluid bg-copyright">
+                <div class="container">
+                    <p class="copyright">
+                        &copy; 2021 yoVerse Inc.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
-
-<footer>
-
-</footer>
 
 </html>
