@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
     <meta charset="UTF-8">
     <title>yoVerse</title>
+    <meta charset="utf-8"> <!-- sets character format for page -->
+    <meta name="keywords" content="HTML, CSS, JavaScript"> <!-- keywords for search engines -->
+    <meta name="description" content="yoVerse Website"> <!-- description for search engines -->
+    <meta name="author" content="Micah Stovall, Dax Valdez, Artiom Skarakhod"> <!-- labels the author of the page -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -17,6 +19,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 
     <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
         <div class="container-fluid">
@@ -54,53 +57,118 @@
                                 <label for="txtEmail" class="col-form-label col-lg-4">
                                     <span>Email: </span>
                                 </label>
+=======
+    <div id="page-container">
+        <section>
+            <img src="img/logo.png" alt="Logo">
+            <form id="signInForm">
+                <!-- This is our email and password fields -->
+                <fieldset class="border">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+
+                        <div class="col-lg-6 row">
+
+                            <!-- Email -->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <div class="col-sm-2 col-lg-6">
+                                    <label for="txtEmail" class="col-form-label col-lg-4">
+                                        <span>Email: </span>
+                                    </label>
+                                </div>
+
+                                <div class="col-sm-10 col-lg-6 ">
+                                    <input type="text" id="txtEmail" name="txtEmail" required class="form-control"
+                                        placeholder="Email">
+                                </div>
+>>>>>>> a7910679d76065f8621ddb04f06a96f72458f0e0
                             </div>
 
-                            <div class="col-sm-10 col-lg-6 ">
-                                <input type="text" id="txtEmail" name="txtEmail" required class="form-control"
-                                    placeholder="Email">
+                            <!-- Password -->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <div class="col-sm-2 col-lg-6 ">
+                                    <label for="txtPassword" class="col-form-label col-lg-4">
+                                        <span>Password: </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-10 col-lg-6">
+                                    <input type="text" id="txtPassword" name="txtPassword" required class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+
+
+                            <!-- Remember me check Box-->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <label for="rememberMe" class="">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
+                                    remember me</label>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="form-group col-lg-12 d-flex justify-content-center">
+                                <button type="submit" class="col-sm-4 btn btn-danger">Login</button>
+                                <button type="reset" class="col-sm-4 btn btn-light">Cancel</button>
+                            </div>
+
+                            <!-- Forgot Your Password-->
+                            <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
+                                <a href="forgotPassword.html">Forgot your password?</a>
+                            </div>
+
+                            <!-- Sing up Link-->
+                            <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
+                                <a href="signup.html">Sign up!</a>
                             </div>
                         </div>
+                        <div class="col-lg-3"></div>
+                    </div>
+                    <br>
 
-                        <!-- Password -->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <div class="col-sm-2 col-lg-6 ">
-                                <label for="txtPassword" class="col-form-label col-lg-4">
-                                    <span>Password: </span>
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-6">
-                                <input type="text" id="txtPassword" name="txtPassword" required class="form-control"
-                                    placeholder="Password">
-                            </div>
-                        </div>
+                </fieldset>
+            </form>
 
+        </section>
 
-                        <!-- Remember me check Box-->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <label for="rememberMe" class="">
-                                <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
-                            remember me</label>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="form-group col-lg-12 d-flex justify-content-center">
-                            <button type="submit" class="col-sm-4 btn btn-danger">Login</button>
-                            <button type="reset" class="col-sm-4 btn btn-light">Cancel</button>
-                        </div>
-
-                        <!-- Forgot Your Password-->
-                        <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
-                            <a href="forgotPassword.html">Forgot your password?</a>
-                        </div>
-                        
-                        <!-- Sing up Link-->
-                        <div class="col-sm-2 col-lg-12 d-flex justify-content-center hyperColor">
-                            <a href="signup.html">Sign up!</a>
+        <footer id="footer">
+            <div class="container-fluid bg-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>Help</h3>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="">
+                                        Contact us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Report a Problem
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Jobs
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3"></div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="text-muted">
+                                <div class="pull-right">
+                                    <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
                 </div>
+<<<<<<< HEAD
                 <br>
 
             </fieldset>
@@ -155,3 +223,18 @@
     </footer> 
 </body>
 </html>
+=======
+            </div>
+            <div class="container-fluid bg-copyright">
+                <div class="container">
+                    <p class="copyright">
+                        &copy; 2021 yoVerse Inc.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+>>>>>>> a7910679d76065f8621ddb04f06a96f72458f0e0
