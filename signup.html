@@ -9,17 +9,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
     
     </head>
     <body>
         <div>
             <header>
-                <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light">
+                <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
                     <div class="container-fluid">
                       <div class="navbar-header">
-                        <a class="navbar-brand" href="yoVerseWebsite.png">
-                            <img src="yoVerseWebsite.png" class="website-logo">
+                        <a class="navbar-brand" href="homePage.html">
+                            <img src="images/yoVerseWebsite.png" class="website-logo">
                         </a>
                       </div>
                       <ul class="nav navbar-nav">
@@ -29,18 +29,16 @@
                         </form>
                       </ul>
                       <ul>
-                        <button type="button" class=" btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
+                        <button type="button" onclick="location.href='signin.html';" class="btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
                       </ul>
                     </div>
-                </nav>
-
-                
+                </nav>                
             </header>
         </div>
 
         <div style="padding: 70px;" class="float-container">
             <div class="float-lg-left">
-                <img src="beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" class="brdr">
+                <img src="images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" class="brdr">
             </div>
             <div class="float-lg-right">
                 <form onsubmit="return validateForm()" id="mainForm">
@@ -146,6 +144,7 @@
                             </fieldset>
                             <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                         </center>
+                        <br>
                     </fieldset>
                 </div>
             </form>
