@@ -6,7 +6,7 @@
     <title>yoVerse</title>
     <meta name="keywords" content="HTML, CSS, JavaScript"> <!-- keywords for search engines -->
     <meta name="description" content="yoVerse Website"> <!-- description for search engines -->
-    <meta name="author" content="Micah Stovall, Dax Valdez, Artiom Skarakhod"> <!-- labels the author of the page -->
+    <meta name="author" content="Micah Stovall, Dax Valdez, Artsiom Skarakhod"> <!-- labels the author of the page -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -31,7 +31,7 @@
         <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="homePage.html">
+                    <a class="navbar-brand" href="profilePage.html">
                         <img src="images/yoVerseWebsite.png" class="website-logo">
                     </a>
                 </div>
@@ -41,24 +41,190 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </ul>
-                <ul class="nav navbad-nav">
-                    <a href="profile.html">Profile</a>
-                </ul>
+                <div class="nav navbad-nav">
+
+                    <a href="profilePage.html"><img class="d-flex mr-3 postThumbnail" src="img/profilePicBlank.png"></a>
+                </div>
             </div>
         </nav>
     </header>
-    <div class="sidenav">
-        <a href="">Feed</a> <br>
+
+    <div class="sidenav col-3">
+        <a href="homePage.html">Feed</a> <br>
         <a href="">Notifications</a> <br>
         <a href="">Messages</a> <br>
         <a href="">Hashtags</a> <br>
         <a href="">Trending</a> <br>
         <a href="">Recommended</a> <br>
-      </div>
+    </div> <br>
+
+    <div class="adSpace col-3">
+        <a href="dogecoin.com"><img src="img/ad.jpg"></a>
+    </div> <br>
+
+    <div class="row postContainer">
+        <div class="col-12">
+            <form>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="postDescription">Post here...</label>
+                        <textarea class="form-control" id="postDescription" rows="5"></textarea>
+                    </div>
+
+                    <div class="col-12" id="PostButtonContainer">
+                        <button type="submit" class="btn btn-success">
+                            Share!
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <img class="d-flex mr-3 postThumbnail" src="img/profilePic1.jpg">
+                        <div class="media-body">
+                            <h5 class="mt-0">Micah Stovall</h5>
+                            <i>4th  2000</i>
+                            <div class="postMainBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <img class="d-flex mr-3 postThumbnail" src="img/profilePic2.jpeg">
+                        <div class="media-body">
+                            <h5 class="mt-0">Artsiom Skarakhod</h5>
+                            <i>31st January 2000</i>
+                            <div class="postMainBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <img class="d-flex mr-3 postThumbnail" src="img/profilePic3.jpeg">
+                        <div class="media-body">
+                            <h5 class="mt-0">Dax Valdez</h5>
+                            <i>20th January 2000</i>
+                            <div class="postMainBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <img class="d-flex mr-3 postThumbnail" src="img/profilePic1.jpg">
+                        <div class="media-body">
+                            <h5 class="mt-0">Micah Stovall</h5>
+                            <i>16th January 2000</i>
+                            <div class="postMainBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <img class="d-flex mr-3 postThumbnail" src="img/profilePic2.jpeg">
+                        <div class="media-body">
+                            <h5 class="mt-0">Artsiom Skarakhod</h5>
+                            <i>9th January 2000</i>
+                            <div class="postMainBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <img class="d-flex mr-3 postThumbnail" src="img/profilePic1.jpg">
+                        <div class="media-body">
+                            <h5 class="mt-0">Micah Stovall</h5>
+                            <i>1st January 2000</i>
+                            <div class="postMainBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-6" style="margin:auto">
+        <a href="">Load older Posts</a>
+    </div>
+    
     <br>
-    <section>
-        
-    </section>
+    <br>
 
     <footer>
         <div class="container-fluid bg-footer">

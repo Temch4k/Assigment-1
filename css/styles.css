@@ -4,12 +4,14 @@ html {
 }
 
 .navbar {
+    position: fixed;
     overflow: hidden;
-    position: absolute; /* Set the navbar to fixed position */
+    /*position: absolute; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     float: right;
     color: #ffa69e;
+    z-index: 1; /* stay ontop */
 }
   
 /*colors : ffa69e*/
@@ -19,9 +21,6 @@ html {
 .main {
 margin-top: 30px;
 margin-top:auto;
-}
-.signInPage{
-    ma
 }
 
 body {
@@ -108,29 +107,79 @@ footer {
     left: 0;
     background-color:#ffa69e; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
-  }
+}
   
   /* The navigation menu links */
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
+.sidenav a {
     font-size: 20px;
     color: black;
     display: #b8f2e6;
-  }
+}
   
   /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
+.sidenav a:hover {
     color: #f1f1f1;
-  }
+}
   
   /* Style page content */
-  .main {
+.main {
     margin-left: 160px; /* Same as the width of the sidebar */
     padding: 0px 10px;
-  }
+}
   
   /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
-  }
+}
+
+#PostButtonContainer {
+      margin: auto;
+      margin-top: 25px;
+}
+
+.postContainer {
+      color: black;
+      margin: auto;
+      padding: 25px 25px;
+}
+
+.postThumbnail {
+      width: 100px;
+}
+
+.postMainBody {
+      margin: auto;
+      margin-top: 15px;
+}
+
+.mediaBody {
+      text-decoration: black;
+}
+
+.postBox {
+    top: 142px;
+    margin: auto;
+}
+
+.adSpace {
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 142px; /* Stay at the top */
+    right: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+.adSpace a {
+    font-size: 20px;
+    color: black;
+    display: #b8f2e6;
+}
+
+.adSpace a:hover {
+    color: #f1f1f1;
+}
+
+Form.blocktext {
+    margin: 0 auto;
+}
