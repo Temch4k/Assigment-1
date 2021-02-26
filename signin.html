@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
     <meta charset="UTF-8">
     <title>yoVerse</title>
@@ -21,31 +19,34 @@
 
 <body>
 
-    <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand"  href="homePage.html">
-                <img src="images/yoVerseWebsite.png" class="website-logo">
-            </a>
-          </div>
-          <ul class="nav navbar-nav">
-            <form class="form-inline my-2  navbar-right">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          </ul>
-          <ul>
-            <button type="button" onclick="location.href='signup.html';" class=" btn btn-outline-warning btn-lg" id="loginBtn">Sign Up</button>
-          </ul>
-        </div>
-    </nav>                
+    <header>
+        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="homePage.html">
+                        <img src="images/yoVerseWebsite.png" alt="logo" class="website-logo">
+                    </a>
+                </div>
+                <div class="nav navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div>
+                    <button type="button" onclick="location.href='signup.html';" class=" btn btn-outline-warning btn-lg"
+                        id="loginBtn">Sign Up</button>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <br>
     <section>
-        <form style="padding: 70px;" id="signInForm" >
+        <form id="mainDiv" id="signInForm">
             <!-- This is our email and password fields -->
             <fieldset class="border brdr">
+                <h2 class ="d-flex justify-content-center">Sign in</h2>
                 <br>
                 <div class="row">
                     <div class="col-lg-3"></div>
@@ -84,7 +85,7 @@
                         <div class="form-group col-lg-12 d-flex justify-content-center">
                             <label for="rememberMe" class="">
                                 <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
-                            remember me</label>
+                                remember me</label>
                         </div>
 
                         <!-- Buttons -->
@@ -99,7 +100,7 @@
                         <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor">
                             <a href="forgotPassword.html">Forgot your password?</a>
                         </div>
-                        
+
                         <!-- Sing up Link-->
                         <div class="col-sm-5  col-lg-12  d-flex justify-content-center hyperColor">
                             <a href="signup.html">Sign up!</a>
@@ -158,6 +159,7 @@
                 </p>
             </div>
         </div>
-    </footer> 
+    </footer>
 </body>
+
 </html>

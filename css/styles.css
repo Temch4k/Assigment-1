@@ -34,6 +34,10 @@ body {
 a {
 color:#893168;
 }
+
+h2{
+    color: #893168;
+}
 fieldset{
     align-items: center;
     background-color:#b8f2e6 ;
@@ -131,6 +135,7 @@ footer {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+<<<<<<< HEAD
 }
 
 #PostButtonContainer {
@@ -183,3 +188,19 @@ footer {
 Form.blocktext {
     margin: 0 auto;
 }
+=======
+  }
+
+  #mainDiv{
+    padding: 70px;
+  }
+
+  .center {
+      margin: auto;
+      text-align: center;
+  }
+  
+  h1 {
+      text-align:center;
+  }
+>>>>>>> 33e70e6ed76c1f7c809d81817bdad5e3788ae4ff
