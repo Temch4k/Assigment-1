@@ -140,6 +140,11 @@ footer {
     padding: 70px;
   }
 
-  .maindiv {
-      
+  .center {
+      margin: auto;
+      text-align: center;
+  }
+  
+  h1 {
+      text-align:center;
   }
