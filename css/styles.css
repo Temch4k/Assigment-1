@@ -135,3 +135,16 @@ footer {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+  #mainDiv{
+    padding: 70px;
+  }
+
+  .center {
+      margin: auto;
+      text-align: center;
+  }
+  
+  h1 {
+      text-align:center;
+  }
