@@ -7,3 +7,7 @@ For this project, our group decided to go with the standard social media website
 
   Our design is trying to section the page into relative sections. It seemed most appropriate to set each section in rectangular sections with curved edges in some sections. We choose this styling in order to look similar to other professional sites such at Twitter and Facebook while looking different enough with the defined staggered box layout to stand out from the crowd while still maintaining a familiar feel for our users.
 
+  To view out site please [click here](https://temch4k.github.io/Assigment-1/)
+  -- Click log in to view homepage --
+  -- Click Sign Up to View Sign Up page --
+  -- Click The Profile button in right hand corner of homepage to view profile --
