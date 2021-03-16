@@ -4,7 +4,7 @@ html {
 }
 
 .navbar {
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     /*position: absolute; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
@@ -86,12 +86,6 @@ footer {
     padding-bottom: 2.5rem;    /* Footer height */
 }
   
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;            /* Footer height */
-}
 
 @media screen and (max-width: 900px) {
     .resizeImg{
