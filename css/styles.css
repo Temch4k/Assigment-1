@@ -104,9 +104,10 @@ body > .container {
     left: 0;
     background-color:#86e5ee; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
-    height: 150ch;
+    height: 3000px;
     width: 35ch;
     margin-bottom:200;
+
 }
   
   /* The navigation menu links */
