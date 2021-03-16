@@ -46,7 +46,7 @@
         <form id="mainDiv" id="signInForm">
             <!-- This is our email and password fields -->
             <fieldset class="border brdr">
-                <h2 class ="d-flex justify-content-center">Sign in</h2>
+                <h2 class="d-flex justify-content-center">Sign in</h2>
                 <br>
                 <div class="row">
                     <div class="col-lg-3"></div>
@@ -89,12 +89,18 @@
                         </div>
 
                         <!-- Buttons -->
-                        <div class="col-lg-12 d-flex justify-content-center">
-                            <button type="submit" class="col-sm-6 col-md-4 col-lg-3 
+                        <a href="homePage.html" class="col-lg-12 d-flex justify-content-center">
+                            <input href="homePage.html" type="submit" class="col-sm-6 col-md-4 col-lg-3 
                                                         offset-md-1 offset-sm-1 offset-xs-1
-                                                         btn btn-danger">Login</button>
+                                                         btn btn-danger" onclick=" relocate_home()">
                             <button type="reset" class="col-sm-6  col-md-4 col-lg-3 btn btn-light">Cancel</button>
-                        </div>
+
+                            <script>
+                                function relocate_home() {
+                                    location.href = "homePage.html";
+                                } 
+                            </script>
+                        </a>
 
                         <!-- Forgot Your Password-->
                         <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor">
@@ -111,14 +117,11 @@
                 <br>
 
             </fieldset>
-            <br>
-
         </form>
-        
     </section>
 
-    <footer>
-        <div class="container-fluid">
+    <footer class="footer">
+        <div class="container-fluid bg-footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
@@ -143,12 +146,14 @@
                     </div>
                 </div>
 
-                <br>
+                <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="pull-right">
-                            <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
-                        </div>
+                        <span class="text-muted">
+                            <div class="pull-right">
+                                <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                            </div>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -161,7 +166,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>

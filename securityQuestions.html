@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>yoVerse</title>
+    <meta name="keywords" content="HTML, CSS, JavaScript"> <!-- keywords for search engines -->
+    <meta name="description" content="yoVerse Website"> <!-- description for search engines -->
+    <meta name="author" content="Micah Stovall, Dax Valdez, Artiom Skarakhod"> <!-- labels the author of the page -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-inverse navbar-expand-xl navbar-expand badge-light">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="homePage.html">
+                        <img src="images/yoVerseWebsite.png" alt="logo" class="website-logo">
+                    </a>
+                </div>
+                <div class="navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div>
+                    <button type="button" onclick="location.href='signup.html';" class=" btn btn-outline-warning btn-lg"
+                        id="loginBtn">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <br>
+    <section class="mainForms">
+        <form id="questionForm">
+            <!-- This is our email and password fields -->
+            <fieldset class="border brdr">
+                <div class ="row">
+                <label for="cars">Question 1:</label>
+                    <select name="cars" id="cars">
+                        <option value="volvo">In what town or city was your first full time job?</option>
+                        <option value="saab">In what town or city did you meet your spouse or partner?</option>
+                        <option value="opel">What is the middle name of your oldest child?</option>
+                        <option value="audi">What are the last five digits of your driver's license number?</option>
+                    </select>
+                </div>
+                    <br><br>
+                    <input type="submit" value="Submit">
+            </fieldset>
+            <br>
+
+        </form>
+        
+    </section>
+
+    <footer class= "footer">
+        <div class="container-fluid ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Help</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="">
+                                    Contact us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Report a Problem
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Jobs
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-copyright">
+            <div class="container">
+                <p class="copyright">
+                    &copy; 2021 yoVerse Inc.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
