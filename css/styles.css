@@ -98,16 +98,13 @@ body > .container {
 }
 /* The sidebar menu */
 .sidenav {
-    position: absolute; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 0; /* Stay on top */
-    top: 0px; /* Stay at the top */
-    left: 0;
-    background-color:#86e5ee; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    height: 3000px;
-    width: 35ch;
-    margin-bottom:200;
-
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    background-color:#86e5ee; 
 }
   
   /* The navigation menu links */
@@ -197,3 +194,8 @@ Form.blocktext {
   h1 {
       text-align:center;
   }
+
+  .moveDown{
+    position: right;
+    top: 73px;
+}
