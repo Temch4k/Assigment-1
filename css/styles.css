@@ -4,7 +4,7 @@ html {
 }
 
 .navbar {
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     /*position: absolute; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
@@ -12,15 +12,19 @@ html {
     float: right;
     color: #ffa69e;
     z-index: 1; /* stay ontop */
+
 }
   
 /*colors : ffa69e*/
 /*colors : faf3dd*/
 /*colors : b8f2e6*/
+.mainDiv{
+    width: 800px;
+    align-self: center;
+}
 
 .main {
 margin-top: 30px;
-margin-top:auto;
 }
 
 body {
@@ -63,17 +67,17 @@ body > .container {
 }
 
 
-footer {
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 280px;
+    height: 260px;
     background-color: #ffa69e;
 }
 .website-logo {
-    width: 150; 
-    height: 80; 
+    width: 100; 
+    height: 60; 
     alt: "yoVerselogo";
 }
 
@@ -86,12 +90,7 @@ footer {
     padding-bottom: 2.5rem;    /* Footer height */
 }
   
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;            /* Footer height */
-}
+
 
 @media screen and (max-width: 900px) {
     .resizeImg{
@@ -105,12 +104,14 @@ footer {
 }
 /* The sidebar menu */
 .sidenav {
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 142px; /* Stay at the top */
+    position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 0; /* Stay on top */
+    top: 0px; /* Stay at the top */
     left: 0;
-    background-color:#ffa69e; /* Black */
+    background-color:#86e5ee; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
+    height: 3000ch;
+    width: 35ch;
 }
   
   /* The navigation menu links */
@@ -119,7 +120,19 @@ footer {
     color: black;
     display: #b8f2e6;
 }
-  
+.postText{
+    width: auto;
+    height: auto;
+    align-content: center;
+    position: relative;
+    left: 100px;
+}
+
+.moveDown{
+    position: relative;
+    top: 73px;
+}
+
   /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
@@ -155,7 +168,7 @@ footer {
 
 .postMainBody {
       margin: auto;
-      margin-top: 15px;
+      margin-top: 20px;
 }
 
 .mediaBody {
