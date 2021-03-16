@@ -11,3 +11,11 @@ For this project, our group decided to go with the standard social media website
   -- Click log in to view homepage --
   -- Click Sign Up to View Sign Up page --
   -- Click The Profile button in right hand corner of homepage to view profile --
+
+
+
+-------------------------------------------------------------------------------------
+Part 2
+  Let's continue working on our final social media project for the Web Application Development class. For this assignment, our team had to make our project more dynamic and add some security to our account creation, such as our password has to include certain characters, and it has to match the password when it gets retyped for the second time. We also had to add security questions to our user's account creation process to make the process more secure and interactive. 
+  To split our work evenly, Dax and Micah worked on the assignment's password part, and Artsiom went with the website's security questions. He looked up frequently used security questions and used the suggested questions from https://docs.whmcs.com/Security_Questions . He also went back into one of our first classworks and used the Covid Survey website that we made to use as a good starting point for our security questions function. The biggest challenge of this task was to take the function we already had and make it reusable by different parameters. To solve this problem, all he had to do was pass the id of the <select> element as the function's parameter. Since all three of the security questions had IDs of q1, q2, and a3, we needed to get DivQ1, DivQ2, and DivQ3 to appear when the corresponding ID's <select> element was called. By passing the IDs of the elements into the function, he took their last character, which was their numbers, and simply attached them to the back of the DivQ string, which, when we added a number to the end, would correspond to the ID of the <select>.
+	After finishing the security questions, Artsiom went ahead and added a Favicon to our social media (it's the small icon that shows up on the tab of the browser, next to the tab's name), so our users would quickly identify which tab our website is open in.
