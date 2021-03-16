@@ -20,11 +20,11 @@
 <body>
 
     <header>
-        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+        <nav class="navbar badge-light">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="homePage.html">
-                        <img src="images/yoVerseWebsite.png" alt="logo" class="website-logo">
+                    <a class="website-logo" href="homePage.html">
+                        <img src="images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
                     </a>
                 </div>
                 <div class="nav navbar-nav">
@@ -34,24 +34,27 @@
                     </form>
                 </div>
                 <div>
-                    <button type="button" onclick="location.href='signup.html';" class=" btn btn-outline-warning btn-lg"
-                        id="loginBtn">Sign Up</button>
+                    <button type="button" onclick="location.href='signin.html';"
+                        class="btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
                 </div>
             </div>
         </nav>
     </header>
-
     <br>
-    <section>
-        <form id="mainDiv" id="signInForm">
-            <!-- This is our email and password fields -->
-            <fieldset class="border brdr">
-                <h2 class ="d-flex justify-content-center">Sign in</h2>
+    <br>
+    <br>
+
+    <div id="mainDiv" class="float-container mainDiv">
+        <div id="mainDiv" class="float-container mainDiv">
+            <div class="float center">
+                <form onsubmit="return validateForm()" id="mainForm">
+                    <fieldset class="brdr center">
+                        <h2 class ="d-flex justify-content-center">Sign in</h2>
                 <br>
                 <div class="row">
-                    <div class="col-lg-3"></div>
+                    <div class="col-3"></div>
 
-                    <div class="col-lg-6 row">
+                    <div class="col-6 row">
 
                         <!-- Email -->
                         <div class="form-group col-lg-12 d-flex justify-content-center">
@@ -109,17 +112,19 @@
                     <div class="col-lg-3"></div>
                 </div>
                 <br>
-
-            </fieldset>
-        </form>
-    </section>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <footer>
-        <div class="container-fluid bg-footer">
+        <div class="container-fluid footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <h3>Help</h3>
+                        <hr>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="">
@@ -140,23 +145,19 @@
                     </div>
                 </div>
 
-                <hr>
+                <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <span class="text-muted">
-                            <div class="pull-right">
-                                <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
-                            </div>
-                        </span>
+                        <div class="pull-right">
+                            <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                        </div>
+                        <div>
+                            <p class="copyright">
+                                &copy; 2021 yoVerse Inc.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container-fluid bg-copyright">
-            <div class="container">
-                <p class="copyright">
-                    &copy; 2021 yoVerse Inc.
-                </p>
             </div>
         </div>
     </footer>
