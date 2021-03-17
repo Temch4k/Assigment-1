@@ -23,6 +23,7 @@
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
 </head>
 <br>
 <br>
@@ -105,12 +106,14 @@
                                     <span>Confirm Password*:</span>
                                 </label>
                             </div>
+                            
 
                             <div class="col-sm-10 col-lg-3">
                                 <input type="password" name="txtPW2" id="txtPW2" placeholder="***************"
                                     class="col-6 form-control">
                             </div>
                         </div>
+                        <div id="passwordError" class="invisible form-control center col-4 alert-danger"></div>
 
                         <br>
 
@@ -192,7 +195,7 @@
                         </div>
 
                         <br>
-
+                        <div id="divInvalidCharError" class="invisible alert-danger center col-8"></div><br>
                         <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                     <br>
                     <br>
