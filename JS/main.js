@@ -43,7 +43,7 @@ function validateForm() {
     return formIsValid;
 }
 function checkPassword(inputText) {
-    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    var passw = /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     if (inputText.value.match(passw)) {
         return true;
     } else {
