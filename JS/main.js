@@ -29,10 +29,10 @@ function validateForm() {
         }
     }
     if (checkPassword(password) != true) {
-        divInvalidChar.innerHTML = "Your password must include one number, one uppercase and one lowercase letter";
+        passwordError.innerHTML = "Your password must include one number, one uppercase and one lowercase letter";
         formIsValid = false
     }
-    
+
     return formIsValid;
 }
 function checkPassword(inputText) {
