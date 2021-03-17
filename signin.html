@@ -14,6 +14,8 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="images/fevicon2.png">
+
 
 </head>
 
@@ -41,6 +43,7 @@
         </nav>
     </header>
     <br>
+<<<<<<< main
     <br>
     <br>
 
@@ -50,6 +53,13 @@
                 <form onsubmit="return validateForm()" id="mainForm">
                     <fieldset class="brdr center">
                         <h2 class ="d-flex justify-content-center">Sign in</h2>
+=======
+    <section>
+        <form id="mainDiv" id="signInForm">
+            <!-- This is our email and password fields -->
+            <fieldset class="border brdr">
+                <h2 class="d-flex justify-content-center">Sign in</h2>
+>>>>>>> main
                 <br>
                 <div class="row">
                     <div class="col-3"></div>
@@ -92,12 +102,18 @@
                         </div>
 
                         <!-- Buttons -->
-                        <div class="col-lg-12 d-flex justify-content-center">
-                            <button type="submit" class="col-sm-6 col-md-4 col-lg-3 
+                        <a href="homePage.html" class="col-lg-12 d-flex justify-content-center">
+                            <input href="homePage.html" type="submit" class="col-sm-6 col-md-4 col-lg-3 
                                                         offset-md-1 offset-sm-1 offset-xs-1
-                                                         btn btn-danger">Login</button>
+                                                         btn btn-danger" onclick=" relocate_home()">
                             <button type="reset" class="col-sm-6  col-md-4 col-lg-3 btn btn-light">Cancel</button>
-                        </div>
+
+                            <script>
+                                function relocate_home() {
+                                    location.href = "homePage.html";
+                                } 
+                            </script>
+                        </a>
 
                         <!-- Forgot Your Password-->
                         <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor">
@@ -112,6 +128,7 @@
                     <div class="col-lg-3"></div>
                 </div>
                 <br>
+<<<<<<< main
                     </fieldset>
                 </form>
             </div>
@@ -120,6 +137,14 @@
 
     <footer>
         <div class="container-fluid footer">
+=======
+            </fieldset>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="container-fluid bg-footer">
+>>>>>>> main
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
