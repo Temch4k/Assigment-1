@@ -24,7 +24,7 @@ function validateForm(){
                 formIsValid = false;
                 var divInvalidChar = document.querySelector("#divInvalidCharError");
                 divInvalidChar.classList.remove("invisible");
-                divInvalidChar.innerHTML = "You have entered an invalid char(#, !, ~) in the form. Please remove the char and try again."
+                divInvalidChar.innerHTML = "You have entered an invalid char(#, !, ~, {, }, (, ), ', `) in the form. Please remove the char and try again."
             }
         }
     }
