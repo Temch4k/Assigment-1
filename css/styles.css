@@ -6,11 +6,13 @@ html {
 .navbar {
     position: absolute;
     overflow: hidden;
+    /*position: absolute; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     float: right;
     color: #ffa69e;
-    z-index: 1; /* stay ontop */    
+    z-index: 1; /* stay ontop */
+
 }
   
 /*colors : ffa69e*/
@@ -21,9 +23,8 @@ html {
     align-self: center;
 }
 
-.mainForms {
-    margin-top: 60px;
-    align-self: center;
+.main {
+margin-top: 30px;
 }
 
 body {
@@ -35,7 +36,7 @@ body {
 }
 
 a {
-    color:#893168;
+color:#893168;
 }
 
 h2{
@@ -51,7 +52,11 @@ fieldset{
     border-radius: 35px;
 }
 
-
+.sidebar    {
+    width: 200px;
+    height: 400px;
+    float: left;
+}
 
 .submit-image {
     width: 10px;
@@ -86,6 +91,7 @@ body > .container {
 }
   
 
+
 @media screen and (max-width: 900px) {
     .resizeImg{
          width: 500px;
@@ -98,13 +104,14 @@ body > .container {
 }
 /* The sidebar menu */
 .sidenav {
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    overflow:hidden;
-    background-color:#86e5ee; 
+    position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 0; /* Stay on top */
+    top: 0px; /* Stay at the top */
+    left: 0;
+    background-color:#86e5ee; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    height: 3000ch;
+    width: 35ch;
 }
   
   /* The navigation menu links */
@@ -113,7 +120,19 @@ body > .container {
     color: black;
     display: #b8f2e6;
 }
-  
+.postText{
+    width: auto;
+    height: auto;
+    align-content: center;
+    position: relative;
+    left: 100px;
+}
+
+.moveDown{
+    position: relative;
+    top: 73px;
+}
+
   /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
@@ -123,6 +142,9 @@ body > .container {
 .main {
     margin-left: 160px; /* Same as the width of the sidebar */
     padding: 0px 10px;
+}
+.hasError{
+    color: red;
 }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
@@ -148,7 +170,7 @@ body > .container {
 
 .postMainBody {
       margin: auto;
-      margin-top: 15px;
+      margin-top: 20px;
 }
 
 .mediaBody {
@@ -182,20 +204,15 @@ Form.blocktext {
     margin: 0 auto;
 }
 
-  #mainDiv{
-    padding: 70px;
-  }
+#mainDiv{
+  padding: 70px;
+}
 
-  .center {
-      margin: auto;
-      text-align: center;
-  }
+.center {
+  margin: auto;
+  text-align: center;
+}
   
-  h1 {
-      text-align:center;
-  }
-
-  .moveDown{
-    position: right;
-    top: 73px;
+h1 {
+ text-align:center;
 }
