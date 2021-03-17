@@ -20,21 +20,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-
-    <link rel="shortcut icon" href="images/fevicon2.png">
-
+    <script src="js/main.js"></script>
 </head>
+<br>
+<br>
+<br>
 
 <body>
     <div>
         <header>
-            <nav class="navbar nav navbar-inverse navbar-expand badge-light">
+            <nav class="navbar badge-light">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="homePage.html">
+                        <a class="website-logo" href="homePage.html">
                             <img src="images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
                         </a>
                     </div>
@@ -55,13 +55,11 @@
     </div>
     
     <br>
-    <br>
-
     <div id="mainDiv" class="float-container mainDiv">
-        <div class="float-lg-left">
+        <div class="float-left center">
             <img src="images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" alt="" class="brdr resizeImg">
         </div>
-        <div class="float-lg-right center">
+        <div class="float-right center">
             <form onsubmit="return validateForm()" id="mainForm">
                 <fieldset class="brdr center">
                         <h1> Sign Up Now!</h1>
@@ -107,12 +105,14 @@
                                     <span>Confirm Password*:</span>
                                 </label>
                             </div>
+                            
 
                             <div class="col-sm-10 col-lg-3">
                                 <input type="password" name="txtPW2" id="txtPW2" placeholder="***************"
                                     class="col-6 form-control">
                             </div>
                         </div>
+                        <div id="passwordError" class="invisible form-control center col-4 alert-danger"></div>
 
                         <br>
 
@@ -194,22 +194,18 @@
                         </div>
 
                         <br>
-
-                        <button type="submit" name="SubmitButton" class="btn btn-danger" onclick="location.href='securityQuestions.html';">Sign Up!</button>
+                        <div id="divInvalidCharError" class="invisible alert-danger center col-8"></div><br>
+                        <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                     <br>
                     <br>
                 </fieldset>
             </form>
-            <div class="footer navbar-fixed-bottom">
-
-            </div>
         </div>
     </div>
     <br>
     <br>
-    
-    <footer class="footer">
-        <div class="container-fluid">
+    <footer>
+        <div class="container-fluid footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
@@ -241,15 +237,13 @@
                         <div class="pull-right">
                             <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
                         </div>
+                        <div>
+                            <p class="copyright">
+                                &copy; 2021 yoVerse Inc.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container-fluid bg-copyright">
-            <div class="container">
-                <p class="copyright">
-                    &copy; 2021 yoVerse Inc.
-                </p>
             </div>
         </div>
     </footer>
