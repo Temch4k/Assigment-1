@@ -3,7 +3,9 @@ const mongoose = require("mongoose"),
         name: String,
         email: String,
         birthday: Date,
-        biography: String
+        biography: String,
+        gender: String,
+        number: string
     });
 
 module.exports = mongoose.model("User", userSchema);
