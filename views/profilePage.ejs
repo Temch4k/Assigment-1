@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>yoVerse</title>
+    <meta name="keywords" content="HTML, CSS, JavaScript"> <!-- keywords for search engines -->
+    <meta name="description" content="yoVerse Website"> <!-- description for search engines -->
+    <meta name="author" content="Micah Stovall, Dax Valdez, Artsiom Skarakhod"> <!-- labels the author of the page -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="shortcut icon" href="images/fevicon2.png">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="homePage.html">
+                        <img src="images/yoVerseWebsite.png" class="website-logo">
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </ul>
+                <div class="nav navbad-nav">
+
+                    <a href="homePage.html"><img class="d-flex mr-3 postThumbnail" src="img/homeButton.png"></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main">
+        <div class="sidenav col-3 moveDown">
+            <h3>
+            <HR>
+            <a href="homePage.html">Feed</a> <br><br>
+            <a href="">Notifications</a> <br><br>
+            <a href="">Messages</a> <br><br>
+            <a href="">Help & Support</a> <br><br>
+            <a href="profileSettings.html">Settings & Privacy</a> <br><br>
+            <a href="signin.html">Log Out</a><br>
+            </HR>
+            </h3>
+        </div> <br>
+
+        <div class="adSpace col-6">
+            <a href="dogecoin.com"><img src="img/ad.jpg"></a>
+        </div> <br>
+
+        <br>
+        <form class="blocktext col-6">
+            <div class="col">
+                <fieldset class="row form-group">
+                    <!--
+                    INCLUDE A CHANGE PROFILE PIC OPTION BEFORE NEXT ASSIGNMENT
+                -->
+                    <div class="col-sm-10 col-lg-8">
+                        <label for="txtEmail">
+                            <span>Change Email:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-8">
+                        <input type="email" name="textEmail" id="txtEmail" class="col-9 form-control"
+                            placeholder="New Email">
+                    </div>
+
+                    <div class="col-sm-10 col-lg-8">
+                        <label for="txtTele" pattern="[0-9]{10}|[0-9]{3}+-+[0-9]{4}+-+[0-9]{3}">
+                            <span>Change Phone Number:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-8 ">
+                        <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
+                            class="col-9 form-control">
+                    </div>
+                </fieldset> <br>
+
+                <fieldset class="row form-group">
+                    <div class="col-sm-10 col-lg-8">
+                        <label for="txtPassword">
+                            <span>Password:</span>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-10 col-lg-8">
+                        <input type="password" name="textPW" id="txtPW" placeholder="***************"
+                            class="col-6 form-control">
+                    </div>
+
+                    <div class="col-sm-10 col-lg-8 form-group">
+                        <label for="txtPW2">
+                            <span>Confirm Password:</span>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-10 col-lg-8">
+                        <input type="password" name="textPW2" id="PW2" placeholder="***************"
+                            class="col-6 form-control">
+                    </div>
+                </fieldset> <br>
+
+                <fieldset class="form-group row">
+                    <div class="col-sm-10 col-lg-8">
+                        <label for="textFirstName" class="col-md-6 col-form-label">
+                            First Name:
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-8">
+                        <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-6"
+                            placeholder="Susie">
+                    </div> <br>
+
+                    <div class="col-sm-10 col-lg-8">
+                        <label for="textLastName" class="col-md-8 col-form-label">
+                            <span>Last Name:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-8">
+                        <input type="text" id="textLastName" name="textLastName" required class="form-control col-6"
+                            placeholder="Sal">
+                    </div>
+                </fieldset> <br>
+
+                <fieldset class="row form-group">
+                    <div class="col-sm-10 col-lg-8">
+                        <label for="txtDOB" class="col-md-12 col-form-label">
+                            <span>Date of Birth</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-7">
+                        <input type="date" id="textDOB" name="txtDOB" required class="form-control col-6"
+                            placeholder="Date of Birth">
+                    </div>
+                    <div id="divDoBError" class="invisible errorMessage">
+
+                    </div>
+                </fieldset> <br>
+
+                <fieldset class="form-group genderField">
+                    <div class="row col-sm-8">
+                        <legend class="col-form-label">Gender</legend>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group col-sm-8 row">
+                            <div class="form-check col-4">
+                                <input type="radio" id="rbMale" name="gender" value="male" class="form-check-input">
+                                <label for="rbMale" class="form-check-label">Male</label>
+                            </div>
+
+                            <div class="form-check col-4">
+                                <input type="radio" id="rbFemale" name="gender" value="female" class="form-check-input">
+                                <label for="rbMale" class="form-check-label">Female</label>
+                            </div>
+
+                            <div class="form-check col-4">
+                                <input type="radio" id="rbOther" name="gender" value="other" class="form-check-input">
+                                <label for="rbOther" class="form-check-label">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <p>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-secondary">Cancel</button>
+            </p>
+        </form> <br> <br>
+    </section>
+
+    <footer class="footer">
+        <div class="container-fluid bg-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Help</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="">
+                                    Contact us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Report a Problem
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Jobs
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-muted">
+                            <div class="pull-right">
+                                <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-copyright">
+            <div class="container">
+                <p class="copyright">
+                    &copy; 2021 yoVerse Inc.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
