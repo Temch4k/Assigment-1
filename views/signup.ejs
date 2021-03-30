@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>yoVerse</title>
+    <meta name="keywords" content="HTML, CSS, JavaScript"> <!-- keywords for search engines -->
+    <meta name="description" content="yoVerse Website"> <!-- description for search engines -->
+    <meta name="author" content="Micah Stovall, Dax Valdez, Artiom Skarakhod"> <!-- labels the author of the page -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div>
+        <header>
+            <nav class="navbar badge-light">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="website-logo" href="homePage.html">
+                            <img src="images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
+                        </a>
+                    </div>
+                    <div class="nav navbar-nav">
+                        <form class="form-inline my-2  navbar-right">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div>
+                        <button type="button" onclick="location.href='signin.html';"
+                            class="btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br>
+    </div>
+    
+    <br>
+    <div id="mainDiv" class="float-container mainDiv">
+        <div class="float-left center">
+            <img src="images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" alt="" class="brdr resizeImg">
+        </div>
+        <div class="float-right center">
+            <form onsubmit="return validateForm()" id="mainForm">
+                <fieldset class="brdr center">
+                        <h1> Sign Up Now!</h1>
+                        <br>
+                        <div class="row form-group center">
+                            <div class="col-sm-10 col-lg-3">
+                                <label for="txtEmail">
+                                    <span>Email*:</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="email" name="textEmail" id="txtEmail" class="col-9 form-control"
+                                    placeholder="Your Email">
+                            </div>
+
+                            <div class="col-sm-10 col-lg-2">
+                                <label for="txtTele">
+                                    <span>Phone Number (xxx-xxx-xxxx):</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-4 ">
+                                <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="col-9 form-control">
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row form-group center">
+                            <div class="col-sm-10 col-lg-3">
+                                <label for="txtPW">
+                                    <span>Password*:</span>
+                                </label>
+                            </div>
+
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="password" name="txtPW" id="txtPW" placeholder="***************"
+                                    class="col-6 form-control">
+                            </div>
+
+                            <div class="col-sm-10 col-lg-2 form-group">
+                                <label for="txtPW2">
+                                    <span>Confirm Password*:</span>
+                                </label>
+                            </div>
+                            
+
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="password" name="txtPW2" id="txtPW2" placeholder="***************"
+                                    class="col-6 form-control">
+                            </div>
+                        </div>
+                        <div id="passwordError" class="invisible form-control center col-4 alert-danger"></div>
+
+                        <br>
+
+                        <div class="form-group row center">
+                            <div class="col-sm-10 col-lg-3">
+                                <label for="textFirstName" class="col-md-6 col-form-label">
+                                    First Name*:
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="text" id="textFirstName" name="textFirstName" required
+                                    class="form-control col-6" placeholder="Susie">
+                            </div>
+
+                            <div class="col-sm-10 col-lg-2">
+                                <label for="textLastName" class="col-md-8 col-form-label">
+                                    <span>Last Name*:</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-3">
+                                <input type="text" id="textLastName" name="textLastName" required
+                                    class="form-control col-6" placeholder="Sal">
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row form-group center">
+                            <div class="col-sm-10 col-lg-5">
+                                <label for="txtDOB" class="col-md-12 col-form-label">
+                                    <span>Date of Birth*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10 col-lg-7">
+                                <input type="date" id="txtDOB" name="txtDOB" required class="form-control col-6">
+                            </div>
+                            <div id="divDoBError" class="invisible errorMessage">
+
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <fieldset class="form-group genderField center">
+                            <legend class="col-form-label center">Gender</legend>
+                            <div class="col-sm-12 center">
+                                <div class="form-group col-sm-8 row center">
+                                    <div class="form-check col-4">
+                                        <input type="radio" id="rbMale" name="gender" value="male"
+                                            class="form-check-input">
+                                        <label for="rbMale" class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check col-4">
+                                        <input type="radio" id="rbFemale" name="gender" value="female"
+                                            class="form-check-input">
+                                        <label for="rbMale" class="form-check-label">Female</label>
+                                    </div>
+                                    <div class="form-check col-4">
+                                        <input type="radio" id="rbOther" name="gender" value="other"
+                                            class="form-check-input">
+                                        <label for="rbOther" class="form-check-label">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <br>
+
+                        <div class="form-group col-10 center">
+                            <label for="exampleFormControlTextarea1">Biography</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Express yoself!"></textarea>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group col-8 center">
+                            <label for="formFileLg" class="form-label"><b> Add yoProfile Picture</b></label>
+                            <input id="formFileLg" type="file" />
+                        </div>
+
+                        <br>
+                        <div id="divInvalidCharError" class="invisible alert-danger center col-8"></div><br>
+                        <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
+                    <br>
+                    <br>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <footer>
+        <div class="container-fluid footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Help</h3>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="">
+                                    Contact us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Report a Problem
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Jobs
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                        </div>
+                        <div>
+                            <p class="copyright">
+                                &copy; 2021 yoVerse Inc.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
