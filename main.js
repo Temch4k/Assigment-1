@@ -1,3 +1,13 @@
+const express = require("express"),
+    app = express(),
+    errorController = require("./controllers/errorController.js"),
+    subscruberController = require("./controllers/userController.js"),
+    layouts = require("express-ejs-layouts"),
+    mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/yoverse",
+    {useNewURLParse: true});
+
 function validateForm() {
 
     var formIsValid = true;
@@ -11,8 +21,7 @@ function validateForm() {
         passwordError.innerHTML = "Passwords must match."
         passwordError.classList.remove("invisible");
         passwordHasError = true
-    }
-    else {
+    } else {
         passwordError.innerHTML = ""
         passwordError.classList.add("invisible")
     }
@@ -36,12 +45,13 @@ function validateForm() {
         formIsValid = false;
         passwordHasError = true;
     }
-    if(!passwordHasError){
+    if (!passwordHasError) {
         passwordError.innerHTML = ""
         passwordError.classList.add("invisible")
     }
     return formIsValid;
 }
+
 function checkPassword(inputText) {
     var passw = /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     if (inputText.value.match(passw)) {
