@@ -1,175 +1,174 @@
-    <div>
-        <header>
-            <nav class="navbar badge-light">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="website-logo" href="homePage.html">
-                            <img src="public/images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
-                        </a>
+<div>
+    <header>
+        <nav class="navbar badge-light">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="website-logo" href="homePage.html">
+                        <img src="public/images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
+                    </a>
+                </div>
+                <div class="nav navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div>
+                    <button type="button" onclick="location.href='signin.html';" class="btn btn-outline-warning btn-lg"
+                        id="loginBtn">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+</div>
+
+<br>
+<div id="mainDiv" class="float-container mainDiv">
+    <div class="float-left center">
+        <img src="public/images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" alt=""
+            class="brdr resizeImg">
+    </div>
+    <div class="float-right center">
+        <form onsubmit="return validateForm()" id="mainForm">
+            <fieldset class="brdr center">
+                <h1> Sign Up Now!</h1>
+                <br>
+                <div class="row form-group center">
+                    <div class="col-sm-10 col-lg-3">
+                        <label for="txtEmail">
+                            <span>Email*:</span>
+                        </label>
                     </div>
-                    <div class="nav navbar-nav">
-                        <form class="form-inline my-2  navbar-right">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                    <div class="col-sm-10 col-lg-3">
+                        <input type="email" name="textEmail" id="txtEmail" class="col-9 form-control"
+                            placeholder="Your Email">
                     </div>
-                    <div>
-                        <button type="button" onclick="location.href='signin.html';"
-                            class="btn btn-outline-warning btn-lg" id="loginBtn">Login</button>
+
+                    <div class="col-sm-10 col-lg-2">
+                        <label for="txtTele">
+                            <span>Phone Number (xxx-xxx-xxxx):</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-4 ">
+                        <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="col-9 form-control">
                     </div>
                 </div>
-            </nav>
-        </header>
-        <br>
-    </div>
-    
-    <br>
-    <div id="mainDiv" class="float-container mainDiv">
-        <div class="float-left center">
-            <img src="public/images/beautiful-girl-model-outdoors-nature-wallpaper-preview.jpg" alt="" class="brdr resizeImg">
-        </div>
-        <div class="float-right center">
-            <form onsubmit="return validateForm()" id="mainForm">
-                <fieldset class="brdr center">
-                        <h1> Sign Up Now!</h1>
-                        <br>
-                        <div class="row form-group center">
-                            <div class="col-sm-10 col-lg-3">
-                                <label for="txtEmail">
-                                    <span>Email*:</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-3">
-                                <input type="email" name="textEmail" id="txtEmail" class="col-9 form-control"
-                                    placeholder="Your Email">
-                            </div>
 
-                            <div class="col-sm-10 col-lg-2">
-                                <label for="txtTele">
-                                    <span>Phone Number (xxx-xxx-xxxx):</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-4 ">
-                                <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
-                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="col-9 form-control">
-                            </div>
-                        </div>
+                <br>
 
-                        <br>
+                <div class="row form-group center">
+                    <div class="col-sm-10 col-lg-3">
+                        <label for="txtPW">
+                            <span>Password*:</span>
+                        </label>
+                    </div>
 
-                        <div class="row form-group center">
-                            <div class="col-sm-10 col-lg-3">
-                                <label for="txtPW">
-                                    <span>Password*:</span>
-                                </label>
-                            </div>
+                    <div class="col-sm-10 col-lg-3">
+                        <input type="password" name="txtPW" id="txtPW" placeholder="***************"
+                            class="col-6 form-control">
+                    </div>
 
-                            <div class="col-sm-10 col-lg-3">
-                                <input type="password" name="txtPW" id="txtPW" placeholder="***************"
-                                    class="col-6 form-control">
-                            </div>
+                    <div class="col-sm-10 col-lg-2 form-group">
+                        <label for="txtPW2">
+                            <span>Confirm Password*:</span>
+                        </label>
+                    </div>
 
-                            <div class="col-sm-10 col-lg-2 form-group">
-                                <label for="txtPW2">
-                                    <span>Confirm Password*:</span>
-                                </label>
-                            </div>
-                            
 
-                            <div class="col-sm-10 col-lg-3">
-                                <input type="password" name="txtPW2" id="txtPW2" placeholder="***************"
-                                    class="col-6 form-control">
-                            </div>
-                        </div>
-                        <div id="passwordError" class="invisible form-control center col-4 alert-danger"></div>
+                    <div class="col-sm-10 col-lg-3">
+                        <input type="password" name="txtPW2" id="txtPW2" placeholder="***************"
+                            class="col-6 form-control">
+                    </div>
+                </div>
+                <div id="passwordError" class="invisible form-control center col-4 alert-danger"></div>
 
-                        <br>
+                <br>
 
-                        <div class="form-group row center">
-                            <div class="col-sm-10 col-lg-3">
-                                <label for="textFirstName" class="col-md-6 col-form-label">
-                                    First Name*:
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-3">
-                                <input type="text" id="textFirstName" name="textFirstName" required
-                                    class="form-control col-6" placeholder="Susie">
-                            </div>
+                <div class="form-group row center">
+                    <div class="col-sm-10 col-lg-3">
+                        <label for="textFirstName" class="col-md-6 col-form-label">
+                            First Name*:
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-3">
+                        <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-6"
+                            placeholder="Susie">
+                    </div>
 
-                            <div class="col-sm-10 col-lg-2">
-                                <label for="textLastName" class="col-md-8 col-form-label">
-                                    <span>Last Name*:</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-3">
-                                <input type="text" id="textLastName" name="textLastName" required
-                                    class="form-control col-6" placeholder="Sal">
-                            </div>
-                        </div>
+                    <div class="col-sm-10 col-lg-2">
+                        <label for="textLastName" class="col-md-8 col-form-label">
+                            <span>Last Name*:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-3">
+                        <input type="text" id="textLastName" name="textLastName" required class="form-control col-6"
+                            placeholder="Sal">
+                    </div>
+                </div>
 
-                        <br>
+                <br>
 
-                        <div class="row form-group center">
-                            <div class="col-sm-10 col-lg-5">
-                                <label for="txtDOB" class="col-md-12 col-form-label">
-                                    <span>Date of Birth*</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-10 col-lg-7">
-                                <input type="date" id="txtDOB" name="txtDOB" required class="form-control col-6">
-                            </div>
-                            <div id="divDoBError" class="invisible errorMessage">
+                <div class="row form-group center">
+                    <div class="col-sm-10 col-lg-5">
+                        <label for="txtDOB" class="col-md-12 col-form-label">
+                            <span>Date of Birth*</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-7">
+                        <input type="date" id="txtDOB" name="txtDOB" required class="form-control col-6">
+                    </div>
+                    <div id="divDoBError" class="invisible errorMessage">
 
+                    </div>
+                </div>
+
+                <br>
+
+                <fieldset class="form-group genderField center">
+                    <legend class="col-form-label center">Gender</legend>
+                    <div class="col-sm-12 center">
+                        <div class="form-group col-sm-8 row center">
+                            <div class="form-check col-4">
+                                <input type="radio" id="rbMale" name="gender" value="male" class="form-check-input">
+                                <label for="rbMale" class="form-check-label">Male</label>
+                            </div>
+                            <div class="form-check col-4">
+                                <input type="radio" id="rbFemale" name="gender" value="female" class="form-check-input">
+                                <label for="rbMale" class="form-check-label">Female</label>
+                            </div>
+                            <div class="form-check col-4">
+                                <input type="radio" id="rbOther" name="gender" value="other" class="form-check-input">
+                                <label for="rbOther" class="form-check-label">Other</label>
                             </div>
                         </div>
-
-                        <br>
-
-                        <fieldset class="form-group genderField center">
-                            <legend class="col-form-label center">Gender</legend>
-                            <div class="col-sm-12 center">
-                                <div class="form-group col-sm-8 row center">
-                                    <div class="form-check col-4">
-                                        <input type="radio" id="rbMale" name="gender" value="male"
-                                            class="form-check-input">
-                                        <label for="rbMale" class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check col-4">
-                                        <input type="radio" id="rbFemale" name="gender" value="female"
-                                            class="form-check-input">
-                                        <label for="rbMale" class="form-check-label">Female</label>
-                                    </div>
-                                    <div class="form-check col-4">
-                                        <input type="radio" id="rbOther" name="gender" value="other"
-                                            class="form-check-input">
-                                        <label for="rbOther" class="form-check-label">Other</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <br>
-
-                        <div class="form-group col-10 center">
-                            <label for="exampleFormControlTextarea1">Biography</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Express yoself!"></textarea>
-                        </div>
-
-                        <br>
-
-                        <div class="form-group col-8 center">
-                            <label for="formFileLg" class="form-label"><b> Add yoProfile Picture</b></label>
-                            <input id="formFileLg" type="file" />
-                        </div>
-
-                        <br>
-                        <div id="divInvalidCharError" class="invisible alert-danger center col-8"></div><br>
-                        <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
-                    <br>
-                    <br>
+                    </div>
                 </fieldset>
-            </form>
-        </div>
+
+                <br>
+
+                <div class="form-group col-10 center">
+                    <label for="exampleFormControlTextarea1">Biography</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Express yoself!"></textarea>
+                </div>
+
+                <br>
+
+                <div class="form-group col-8 center">
+                    <label for="formFileLg" class="form-label"><b> Add yoProfile Picture</b></label>
+                    <input id="formFileLg" type="file" />
+                </div>
+
+                <br>
+                <div id="divInvalidCharError" class="invisible alert-danger center col-8"></div><br>
+                <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
+                <br>
+                <br>
+            </fieldset>
+        </form>
     </div>
-    <br>
-    <br>
+</div>
+<br>
+<br>
