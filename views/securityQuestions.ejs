@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>yoVerse</title>
+    <meta name="keywords" content="HTML, CSS, JavaScript"> <!-- keywords for search engines -->
+    <meta name="description" content="yoVerse Website"> <!-- description for search engines -->
+    <meta name="author" content="Micah Stovall, Dax Valdez, Artiom Skarakhod"> <!-- labels the author of the page -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="images/fevicon2.png">
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-inverse navbar-expand-xl navbar-expand badge-light">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="homePage.html">
+                        <img src="images/yoVerseWebsite.png" alt="logo" class="website-logo">
+                    </a>
+                </div>
+                <div class="navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div>
+                    <button type="button" onclick="location.href='signup.html';" class=" btn btn-outline-warning btn-lg"
+                        id="loginBtn">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <br>
+    <section class="mainForms row">
+        <form id="questionForm">
+            <!-- This is our email and password fields -->
+            <fieldset class="border brdr">
+                <br>
+                <div class="row">
+                    <div class="row d-flex justify-content-center col-sm-12">
+                        <label for="q1" class="col-sm-7">Question 1:</label>
+                        <select name="q1" id="q1" class="form-control col-sm-7" onchange="updateCountry(this.id)">
+                            <option value="n">-----</option>
+                            <option value="1">In what town or city did you meet your spouse or partner?</option>
+                            <option value="2">What is the middle name of your oldest child?</option>
+                            <option value="3">What are the last five digits of your driver's license number?</option>
+                            <option value="4">What is your grandmother's (on your mother's side) maiden name?</option>
+                        </select>
+                    </div>
+                    <div id="divQ1" class="row d-flex justify-content-center col-sm-12 invisible">
+                        <div class="col-sm-7">
+                            <label for="a1" class="col-sm-7">Your Answer 1</label>
+                        </div>
+                            <input type="text" id="a1" name="a1" required class="form-control col-sm-7"
+                                placeholder="Your answer..">
+                    </div>
+                    <div class="row d-flex justify-content-center col-sm-12">
+                        <label for="q2" class="col-sm-7">Question 2:</label>
+                        <select name="q2" id="q2" class="form-control col-sm-7" onchange="updateCountry(this.id)">
+                            <option value="n">-----</option>
+                            <option value="5">What was the house number and street name you lived in as a child??</option>
+                            <option value="6">What were the last four digits of your childhood telephone number?</option>
+                            <option value="7">What primary school did you attend?</option>
+                            <option value="8">In what town or city was your first full time job?</option>
+                        </select>
+                    </div>
+                    <div id="divQ2" class="row d-flex justify-content-center col-sm-12 invisible">
+                        <div class="col-sm-7">
+                            <label for="a2" class="col-sm-7">Your Answer 2</label>
+                        </div>
+                            <input type="text" id="a2" name="a2" required class="form-control col-sm-7"
+                                placeholder="Your answer..">
+                    </div>
+                    <div class="row d-flex justify-content-center col-sm-12">
+                        <label for="q3" class="col-sm-7">Question 3:</label>
+                        <select name="q3" id="q3" class="form-control col-sm-7" onchange="updateCountry(this.id)">
+                            <option value="n">-----</option>
+                            <option value="9">What is your spouse or partner's mother's maiden name?</option>
+                            <option value="10">In what town or city did your parents meet?</option>
+                            <option value="11">What time of the day were you born? </option>
+                            <option value="12">What time of the day was your first child born?</option>
+                        </select>
+                    </div>
+                    <div id="divQ3" class="row d-flex justify-content-center col-sm-12 invisible">
+                        <div class="col-sm-7">
+                            <label for="a3" class="col-sm-7">Your Answer 3</label>
+                        </div>
+                            <input type="text" id="a3" name="a3" required class="form-control col-sm-7"
+                                placeholder="Your answer..">
+                    </div>
+                </div>
+                <div class="col-sm-5  col-lg-12  d-flex justify-content-center hyperColor">
+                    <input type="submit" class="col-sm-6 col-md-4 col-lg-3 offset-md-1 offset-sm-1 offset-xs-1
+                     btn btn-danger" onclick=" relocate_home()">
+
+                     <script>
+                        function relocate_home() {
+                            location.href = "homePage.html";
+                        } 
+                    </script>
+                </div>
+                <br>
+            </fieldset>
+            <br>
+
+        </form>
+
+    </section>
+
+    <footer class="footer">
+        <div class="container-fluid ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Help</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="">
+                                    Contact us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Report a Problem
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Jobs
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="">Privacy</a> | <a href="">Terms and Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-copyright">
+            <div class="container">
+                <p class="copyright">
+                    &copy; 2021 yoVerse Inc.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="JS/questions.js"></script>
+
+</body>
+
+</html>
