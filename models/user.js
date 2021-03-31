@@ -5,7 +5,7 @@ const mongoose = require("mongoose"),
         birthday: Date,
         biography: String,
         gender: String,
-        number: string
+        number: String
     });
 
 module.exports = mongoose.model("User", userSchema);
