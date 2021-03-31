@@ -30,9 +30,9 @@ app.listen(app.get("port"),() =>{
 });
 
 
-// app.get("/subscribers", subscribersController.getAllSubscribers);
-// app.get("/contact", subscribersController.getSubscribtionPage);
-// app.post("/subscribe", subscribersController.saveSubscriber);
+app.get("/signup", homeController.showSignUp);
+app.get("/signin", homeController.showSignIn);
+app.post("/securityQuestions", homeController.showSecQuestions);
 
 function validateForm() {
 
