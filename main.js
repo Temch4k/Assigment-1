@@ -5,7 +5,7 @@ userController = require("./controllers/userController.js"),
 layouts = require("express-ejs-layouts"),mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost:27017/yoverse",
-    { useNewUrlParser: true });
+    {useNewUrlParser: true});
 
 app.set("port", process.env.PORT || 3000);
 
@@ -32,7 +32,15 @@ app.listen(app.get("port"),() =>{
 
 app.get("/signup", homeController.showSignUp);
 app.get("/signin", homeController.showSignIn);
-app.post("/securityQuestions", homeController.showSecQuestions);
+app.get("/securityQuestions", homeController.showSecQuestions);
+app.get("/forgotPassword", homeController.showForgot);
+app.get("/home", homeController.showHome);
+
+app.get("/profilePage", homeController.showProfile);
+app.get("/home", homeController.showHome);
+
+
+
 
 function validateForm() {
 
