@@ -1,12 +1,38 @@
-const express = require("express"),
-    app = express(),
-    errorController = require("./controllers/errorController.js"),
-    subscruberController = require("./controllers/userController.js"),
-    layouts = require("express-ejs-layouts"),
-    mongoose = require("mongoose");
+const express = require("express"), app = express(),
+homeController = require("./controllers/homeController.js"),
+errorController = require("./controllers/errorController.js"),
+userController = require("./controllers/userController.js"),
+layouts = require("express-ejs-layouts"),mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost:27017/yoverse",
-    {useNewURLParse: true});
+    { useNewUrlParser: true });
+
+app.set("port", process.env.PORT || 3000);
+
+app.set("view engine", "ejs");
+app.use(layouts);
+
+app.get("/", homeController.showIndex);
+
+app.use(express.static("public"))
+app.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+
+app.use(express.json());
+
+app.get("/home", homeController.showHome);
+
+app.listen(app.get("port"),() =>{
+    console.log(`Server is running on port ${app.get("port")}`)
+});
+
+
+// app.get("/subscribers", subscribersController.getAllSubscribers);
+// app.get("/contact", subscribersController.getSubscribtionPage);
+// app.post("/subscribe", subscribersController.saveSubscriber);
 
 function validateForm() {
 
