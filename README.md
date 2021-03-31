@@ -24,3 +24,12 @@ Part 2
   For the secuirty question part of this assignemnt Artsiom began by looking up frequently used security questions and used the suggested questions from https://docs.whmcs.com/Security_Questions . He also went back into one of our first classworks and utilized the Covid Survey website which was a good template to base the form off of. The biggest challenge of this task was to take the functions that already existed and make them reusable by different parameters. To solve this problem, all he had to do was pass the id of the <select> element as the function's parameter. Since all three of the security questions had IDs of q1, q2, and a3, we needed to get DivQ1, DivQ2, and DivQ3 to appear when the corresponding ID's <select> element was called. By passing the IDs of the elements into the function, he took their last character, which was their numbers, and simply attached them to the back of the DivQ string, which, when we added a number to the end, would correspond to the ID of the <select>. After finishing the security questions, Artsiom went ahead and added a Favicon to our social media (it's the small icon that shows up on the tab of the browser, next to the tab's name), so our users would quickly identify which tab our website is open in.
 
   Overall things went smoothly while completeing this assignment, most the issues our group faced were over version control or pulling versions from our peers which did not match the versions we had on our local machines. But these are easily manageable problems and did not provide any serious roadblocks in the completion of othis assignment. 
+  
+  -------------------------------------------------------------------------------------
+Part 3
+
+Implementing MongoDB on our webapp.
+
+  For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services. 
+
+  Dax implemented the views and converted our HTML pages into EJS allowing pages as well as creating our user model. UserContoller was done by Micah which allows our webapp to retrieve and post data to our database as well as the seed which creates the database. 
