@@ -23,12 +23,14 @@ exports.getProfilePage = (req, res) => {
 
 exports.saveUser = (req, res) => {
     let newUser = new user({
-        name: req.body.name,
-        email: req.body.email,
-        birthday: req.body.birthday,
+        Fname: req.body.textFirstName,
+        Lname: req.body.textLastName,
+        email: req.body.txtEmail,
+        birthday: req.body.txtDOB,
         biography: req.body.biography,
         gender: req.body.gender,
-        number: req.body.number
+        number: req.body.txtTele,
+        password: req.body.password
     });
     newUser.save()
         .then(() => {

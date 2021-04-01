@@ -17,11 +17,9 @@ db.once("open", function () {
   console.log("Connection Successful!");
 });
 
-var user = [{
-    name: {
-      first: "Micah",
-      last: "Stovall"
-    },
+var users = [{
+    Fname: "Micah",
+    Lname: "Stovy",
     email: "micah.stovall@ucdenver.edu",
     birthday: (1998, 11, 2),
     biography: "Likes to be alive",
@@ -29,10 +27,8 @@ var user = [{
     number: 00001
   },
   {
-    name: {
-      first: "Artsiom",
-      last: "Skarakhod"
-    },
+    Fname: "Artsiome",
+    Lname: "Skarakhod",
     email: "artsiom.skarakhod@ucdenver.edu",
     birthday: (1999, 12, 8),
     biography: "Likes to touch soft fur",
@@ -40,10 +36,8 @@ var user = [{
     number: 00002
   },
   {
-    name: {
-      first: "Dax",
-      last: "Valdez"
-    },
+    Fname: "Dax",
+    Lname: "Valdez",
     email: "dax.valdez@ucdenver.edu",
     birthday: (1880, 1, 31),
     biography: "Likes to fly in the sky",
@@ -51,10 +45,8 @@ var user = [{
     number: 00003
   },
   {
-    name: {
-      first: "Bob",
-      last: "Bobberson"
-    },
+    Fname: "Bob",
+    Lname: "Bobberson",
     email: "bobby@hotmail.com",
     birthday: (2001, 4, 15),
     biography: "Walks on lava",
@@ -63,6 +55,24 @@ var user = [{
   }
 ];
 
+commands = []
+
+users.forEach(c => {
+  commands.push(
+      User.create({
+          firstName: c.firstName,
+          lastName: c.lastName,
+          dateOfBirth: c.dateOfBirth,
+          userName: c.userName,
+          email: c.email,
+          password: c.password,
+          securityQuestion: c.securityQuestion,
+          securityAnswer: c.securityAnswer,
+          gender: c.gender,
+          description: c.description
+      })
+  );
+});
 
 
 User.deleteMany()
