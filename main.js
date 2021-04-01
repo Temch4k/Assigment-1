@@ -77,27 +77,27 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const User = user;
+// const User = user;
 
-app.post('/signUp', async (req, res, next) => {
-    bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err);
-        bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
-            if (err) return next(err);
-            new User({
-                Fname: req.body.textFirstName,
-                Lname: req.body.txtLastName,
-                email: req.body.txtEmail,
-                password: req.body.txtPW,
-                number: req.body.txtTele,
-                biography: req.body.txtBiography,
-                birthday: req.body.txtDOB
-            }).save()
-            req.flash('info', 'Account made, please log in...');
-            res.redirect('/signin');
-        });
-    });
-});
+// app.post('/signUp', async (req, res, next) => {
+//     bcrypt.genSalt(10, function (err, salt) {
+//         if (err) return next(err);
+//         bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
+//             if (err) return next(err);
+//             new User({
+//                 Fname: req.body.textFirstName,
+//                 Lname: req.body.txtLastName,
+//                 email: req.body.txtEmail,
+//                 password: req.body.txtPW,
+//                 number: req.body.txtTele,
+//                 biography: req.body.txtBiography,
+//                 birthday: req.body.txtDOB
+//             }).save()
+//             req.flash('info', 'Account made, please log in...');
+//             res.redirect('/signin');
+//         });
+//     });
+// });
 
 app.post('/signin', passport.authenticate('local', {
     successRedirect: '/home',
@@ -152,6 +152,10 @@ app.get("/home", homeController.showHome);
 
 app.get("/profilePage", homeController.showProfile);
 
+app.post("/signUpAcc",userController.saveUser);
+
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError);
 
 
 
