@@ -25,7 +25,9 @@ Part 2
 
   Overall things went smoothly while completeing this assignment, most the issues our group faced were over version control or pulling versions from our peers which did not match the versions we had on our local machines. But these are easily manageable problems and did not provide any serious roadblocks in the completion of othis assignment. 
   
-----------------------------------------------------------------------------------------------
+  
+  
+-------------------------------------------------------------------------------------
 Part 3
 
 Implementing MongoDB on our webapp.
