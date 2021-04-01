@@ -1,8 +1,8 @@
 exports.showHome = (req, res) => {
-    res.render("signup");
+    res.render("home");
 }
 exports.showIndex = (req, res) => {
-    res.render("home");
+    res.render("signup");
 };
 exports.showSignIn = (req, res) => {
     res.render("login");
@@ -12,10 +12,6 @@ exports.showSignUp = (req, res) => {
 };
 exports.showSecQuestions = (req, res) => {
     res.render("securityQuestions");
-};
-
-exports.showHome = (req,res) => {
-    res.render("home");
 };
 
 exports.showForgot = (req,res) => {

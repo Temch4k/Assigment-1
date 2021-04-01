@@ -1,12 +1,14 @@
-const express = require("express"), app = express(),
-homeController = require("./controllers/homeController.js"),
-errorController = require("./controllers/errorController.js"),
-userController = require("./controllers/userController.js"),
-layouts = require("express-ejs-layouts"),mongoose = require("mongoose");
-const passport = require('passport')
-const flash = require('express-flash')
-const session = require('express-session')
-const bcrypt = require('bcrypt')
+const express = require("express"),
+    app = express(),
+    homeController = require("./controllers/homeController.js"),
+    errorController = require("./controllers/errorController.js"),
+    userController = require("./controllers/userController.js"),
+    layouts = require("express-ejs-layouts"),
+    mongoose = require("mongoose"),
+    passport = require('passport'),
+    flash = require('express-flash'),
+    session = require('express-session'),
+    bcrypt = require('bcrypt');
 
 LocalStrategy = require('passport-local').Strategy;
 
@@ -45,66 +47,78 @@ passport.use(new LocalStrategy(
 
 var MongoDBStore = require('connect-mongodb-session')(session);
 
-const mongoString = 'mongodb://localhost/express-passport-demo'
+const mongoString = 'mongodb://localhost/express-passport'
 
 var store = new MongoDBStore({
     uri: mongoString,
     collection: 'mySessions'
-  });
+});
 
-  app.use(express.static(__dirname + '/public'));
-  app.set('view-engine', 'ejs')
-  app.use(express.urlencoded({ extended: false }))
-  app.use(flash())
-  app.use(session({
-    secret:'something Super Sneaky',
+app.use(express.static(__dirname + '/public'));
+app.set('view-engine', 'ejs')
+app.use(express.urlencoded({
+    extended: false
+}))
+app.use(flash())
+app.use(session({
+    secret: 'something Super Sneaky',
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7 // 1 day
+        maxAge: 1000 * 60 * 60 * 24 // 1 day
     },
     store: store,
     resave: true,
     saveUninitialized: true
-  }));
-  app.use(passport.initialize());
-  app.use(passport.session());
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-  app.post('/register', async (req, res, next) => {
+app.post('/register', async (req, res, next) => {
     const user = await User.findOne({
-      email: req.body.email
+        email: req.body.email
     })
-  
+
     if (user) {
-      req.flash('error', 'Sorry, that name is taken. Maybe you need to <a href="/login">login</a>?');
-      res.redirect('/register');
+        req.flash('error', 'Sorry, that name is taken. Maybe you need to <a href="/login">login</a>?');
+        res.redirect('/register');
     } else if (req.body.email == "" || req.body.password == "") {
-      req.flash('error', 'Please fill out all the fields.');
-      res.redirect('/register');
+        req.flash('error', 'Please fill out all the fields.');
+        res.redirect('/register');
     } else {
-      bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err);
-        bcrypt.hash(req.body.password, salt, function (err, hash) {
-          if (err) return next(err);
-          new User({
-            email: req.body.email,
-            password: hash
-          }).save()
-          req.flash('info', 'Account made, please log in...');
-          res.redirect('/login');
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) return next(err);
+            bcrypt.hash(req.body.password, salt, function (err, hash) {
+                if (err) return next(err);
+                new User({
+                    email: req.body.email,
+                    password: hash
+                }).save()
+                req.flash('info', 'Account made, please log in...');
+                res.redirect('/login');
+            });
         });
-      });
     }
-  });
+});
 
-  app.post('/login', passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/login', failureFlash: true }))
+app.post('/login', passport.authenticate('login', {
+    successRedirect : '/home', 
+    failureRedirect : '/login', 
+    failureFlash : true
+}));
 
-  /* This code is based off of JacobWrenns code on the passport/express on github and was changed to work with this assingment*/
+app.get('/home', function(request, response) {
+        response.render('pages/home');
+});
+
+/* This code is based off of JacobWrenns code on the passport/express on github and was changed to work with this assingment*/
 
 
 
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost:27017/yoverse",
-    {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost:27017/yoverse", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+});
 
 app.set("port", process.env.PORT || 3000);
 
@@ -122,9 +136,11 @@ app.use(
 
 app.use(express.json());
 
+
+
 app.get("/home", homeController.showHome);
 
-app.listen(app.get("port"),() =>{
+app.listen(app.get("port"), () => {
     console.log(`Server is running on port ${app.get("port")}`)
 });
 
