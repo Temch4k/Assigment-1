@@ -8,4 +8,4 @@ const mongoose = require("mongoose"),
         number: String
     });
 
-module.exports = mongoose.model("User", user, "myData");
+module.exports = mongoose.model("User", user);

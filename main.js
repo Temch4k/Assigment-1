@@ -45,14 +45,25 @@ passport.use(new LocalStrategy(
     }
 ));
 
+//store session data in this db
+
 var MongoDBStore = require('connect-mongodb-session')(session);
 
-const mongoString = 'mongodb://localhost/express-passport'
+const sessionData = 'mongodb://localhost/express-passport'
 
 var store = new MongoDBStore({
-    uri: mongoString,
-    collection: 'mySessions'
+    uri: sessionData,
+    collection: 'sessions'
 });
+
+//Then store user data in this db
+
+const userData = 'mongodb://localhost/users'
+
+var store = new MongoDBStore({
+    uri: userData,
+    collection: 'users'
+})
 
 app.use(express.static(__dirname + '/public'));
 app.set('view-engine', 'ejs')
@@ -72,25 +83,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/register', async (req, res, next) => {
-    const user = await User.findOne({
+app.post('/signUp', async (req, res, next) => {
+    const user = await user.findOne({
         email: req.body.email
     })
 
     if (user) {
-        req.flash('error', 'Sorry, that name is taken. Maybe you need to <a href="/login">login</a>?');
-        res.redirect('/register');
-    } else if (req.body.email == "" || req.body.password == "") {
-        req.flash('error', 'Please fill out all the fields.');
-        res.redirect('/register');
+        req.flash('error', 'Sorry, that email is taken. Maybe you need to <a href="/login">login</a>?');
+        res.redirect('/signUp');
     } else {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) return next(err);
-            bcrypt.hash(req.body.password, salt, function (err, hash) {
+            bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
                 if (err) return next(err);
                 new User({
-                    email: req.body.email,
-                    password: hash
+                    email: req.body.txtEmail,
+                    password: req.body.txtPW,
+                    number: req.body.txtTele,
+                    biography: req.body.txtBiography,
+                    birthday: req.body.txtDOB
                 }).save()
                 req.flash('info', 'Account made, please log in...');
                 res.redirect('/login');
@@ -99,7 +110,7 @@ app.post('/register', async (req, res, next) => {
     }
 });
 
-app.post('/login', passport.authenticate('login', {
+app.post('/login', passport.authenticate('local', {
     successRedirect : '/home', 
     failureRedirect : '/login', 
     failureFlash : true

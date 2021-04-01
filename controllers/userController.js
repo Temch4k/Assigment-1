@@ -1,5 +1,3 @@
-"use strict";
-
 const user = require("../models/user");
 
 exports.getAllUsers = (req, res) => {
@@ -8,7 +6,7 @@ exports.getAllUsers = (req, res) => {
         .then(user => {
             res.render("user", {
                 user: user
-            });
+            })
         })
         .catch(error => {
             console.log(error.message);
@@ -24,7 +22,7 @@ exports.getProfilePage = (req, res) => {
 };
 
 exports.saveUser = (req, res) => {
-    let newUser= new user({
+    let newUser = new user({
         name: req.body.name,
         email: req.body.email,
         birthday: req.body.birthday,
@@ -32,12 +30,11 @@ exports.saveUser = (req, res) => {
         gender: req.body.gender,
         number: req.body.number
     });
-    newUser
-        .save()
-        .then(result => {
+    newUser.save()
+        .then(() => {
             res.render("thanks");
         })
         .catch(error => {
-            if (error) res.send(error);
+            res.send(error)
         });
 };
