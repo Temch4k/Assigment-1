@@ -1,6 +1,6 @@
 exports.showHome = (req, res) => {
     res.render("home");
-}
+};
 exports.showIndex = (req, res) => {
     res.render("signup");
 };

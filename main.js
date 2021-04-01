@@ -85,8 +85,8 @@ app.post('/signUp', async (req, res, next) => {
         bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
             if (err) return next(err);
             new User({
-                fName: req.body.textFirstName,
-                lName: req.body.txtLastName,
+                Fname: req.body.textFirstName,
+                Lname: req.body.txtLastName,
                 email: req.body.txtEmail,
                 password: req.body.txtPW,
                 number: req.body.txtTele,
@@ -105,9 +105,9 @@ app.post('/signin', passport.authenticate('local', {
     failureFlash: true
 }));
 
-app.get('/home', function (request, response) {
-    response.render('pages/home');
-});
+// app.get('/home', function (request, response) {
+//     response.render('home');
+// });
 
 /* This code is based off of JacobWrenns code on the passport/express on github and was changed to work with this assingment*/
 
@@ -139,8 +139,6 @@ app.use(express.json());
 
 
 
-app.get("/home", homeController.showHome);
-
 app.listen(app.get("port"), () => {
     console.log(`Server is running on port ${app.get("port")}`)
 });
@@ -153,7 +151,6 @@ app.get("/forgotPassword", homeController.showForgot);
 app.get("/home", homeController.showHome);
 
 app.get("/profilePage", homeController.showProfile);
-app.get("/home", homeController.showHome);
 
 
 
