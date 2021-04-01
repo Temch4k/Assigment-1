@@ -32,4 +32,8 @@ Implementing MongoDB on our webapp.
 
   For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services. 
 
-  Dax implemented the views and converted our HTML pages into EJS allowing pages as well as creating our user model. UserContoller was done by Micah which allows our webapp to retrieve and post data to our database as well as the seed which creates the database. 
+  Artsiom worked on the directory system, created the homeController that was the one to process all of the page directories and functions. He connected all of the pages together that using the ejs files instead of the html, like we had in the last part of the assignment. He fixed a few page sizing errors that we had on the securityQuestions page, and created the layout.ejs that will be the main page through which everything is going to be loaded.  ----------------------------------------Dax implemented the views and converted our HTML pages into EJS allowing pages as well as creating our user model. ------------------------ UserContoller was done by Micah which allows our webapp to retrieve and post data to our database as well as the seed which creates the database. 
+
+*Add what dax did
+
+Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
