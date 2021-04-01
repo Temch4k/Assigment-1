@@ -3,9 +3,9 @@ const user = require("../models/user");
 exports.getAllUsers = (req, res) => {
     user.find({})
         .exec()
-        .then(user => {
-            res.render("user", {
-                user: user
+        .then(users => {
+            res.render("users", {
+                users: users
             })
         })
         .catch(error => {

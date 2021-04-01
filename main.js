@@ -1,3 +1,5 @@
+const user = require("./models/user.js");
+
 const express = require("express"),
     app = express(),
     homeController = require("./controllers/homeController.js"),
@@ -56,7 +58,7 @@ var store = new MongoDBStore({
     collection: 'sessions'
 });
 
-app.post("/signUp, userController.saveUser");
+
 
 //Then store user data in this db
 
@@ -85,41 +87,36 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/signUp', async (req, res, next) => {
-    const user = await user.findOne({
-        email: req.body.email
-    })
+const User = user;
 
-    if (user) {
-        req.flash('error', 'Sorry, that email is taken.');
-        res.redirect('/signUp');
-    } else {
-        bcrypt.genSalt(10, function (err, salt) {
+app.post('/signUp', async (req, res, next) => {
+    bcrypt.genSalt(10, function (err, salt) {
+        if (err) return next(err);
+        bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
             if (err) return next(err);
-            bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
-                if (err) return next(err);
-                new User({
-                    email: req.body.txtEmail,
-                    password: req.body.txtPW,
-                    number: req.body.txtTele,
-                    biography: req.body.txtBiography,
-                    birthday: req.body.txtDOB
-                }).save()
-                req.flash('info', 'Account made, please log in...');
-                res.redirect('/signin');
-            });
+            new User({
+                fName: req.body.textFirstName,
+                lName: req.body.txtLastName,
+                email: req.body.txtEmail,
+                password: req.body.txtPW,
+                number: req.body.txtTele,
+                biography: req.body.txtBiography,
+                birthday: req.body.txtDOB
+            }).save()
+            req.flash('info', 'Account made, please log in...');
+            res.redirect('/signin');
         });
-    }
+    });
 });
 
 app.post('/signin', passport.authenticate('local', {
-    successRedirect : '/home', 
-    failureRedirect : '/signin', 
-    failureFlash : true
+    successRedirect: '/home',
+    failureRedirect: '/signin',
+    failureFlash: true
 }));
 
-app.get('/home', function(request, response) {
-        response.render('pages/home');
+app.get('/home', function (request, response) {
+    response.render('pages/home');
 });
 
 /* This code is based off of JacobWrenns code on the passport/express on github and was changed to work with this assingment*/
