@@ -59,16 +59,6 @@ var store = new MongoDBStore({
 });
 
 
-
-//Then store user data in this db
-
-const userData = 'mongodb://localhost/userData'
-
-var store = new MongoDBStore({
-    uri: userData,
-    collection: 'users'
-})
-
 app.use(express.static(__dirname + '/public'));
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({

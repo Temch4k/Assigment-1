@@ -63,7 +63,7 @@ commands = []
 
 users.forEach(c => {
   commands.push(
-      User.create({
+      user.save({
         Fname: c.Fname,
         Lname: c.Lname,
         email: c.email,
