@@ -56,9 +56,11 @@ var store = new MongoDBStore({
     collection: 'sessions'
 });
 
+app.post("/signUp, userController.saveUser");
+
 //Then store user data in this db
 
-const userData = 'mongodb://localhost/users'
+const userData = 'mongodb://localhost/userData'
 
 var store = new MongoDBStore({
     uri: userData,
@@ -89,7 +91,7 @@ app.post('/signUp', async (req, res, next) => {
     })
 
     if (user) {
-        req.flash('error', 'Sorry, that email is taken. Maybe you need to <a href="/login">login</a>?');
+        req.flash('error', 'Sorry, that email is taken.');
         res.redirect('/signUp');
     } else {
         bcrypt.genSalt(10, function (err, salt) {
@@ -104,15 +106,15 @@ app.post('/signUp', async (req, res, next) => {
                     birthday: req.body.txtDOB
                 }).save()
                 req.flash('info', 'Account made, please log in...');
-                res.redirect('/login');
+                res.redirect('/signin');
             });
         });
     }
 });
 
-app.post('/login', passport.authenticate('local', {
+app.post('/signin', passport.authenticate('local', {
     successRedirect : '/home', 
-    failureRedirect : '/login', 
+    failureRedirect : '/signin', 
     failureFlash : true
 }));
 
@@ -121,6 +123,7 @@ app.get('/home', function(request, response) {
 });
 
 /* This code is based off of JacobWrenns code on the passport/express on github and was changed to work with this assingment*/
+
 
 
 
