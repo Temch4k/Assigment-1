@@ -25,16 +25,18 @@ exports.saveUser = (req, res) => {
     let newUser = new user({
         Fname: req.body.textFirstName,
         Lname: req.body.textLastName,
-        email: req.body.txtEmail,
+        email: req.body.textEmail,
         birthday: req.body.txtDOB,
         biography: req.body.biography,
         gender: req.body.gender,
-        number: req.body.txtTele,
-        password: req.body.password
+        number: req.body.textTele,
+        password: req.body.txtPW
     });
+    console.log(newUser);
+
     newUser.save()
         .then(() => {
-            res.render("signin");
+            res.render("login");
         })
         .catch(error => {
             res.send(error)
