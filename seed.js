@@ -24,7 +24,8 @@ var users = [{
     birthday: (1998, 11, 2),
     biography: "Likes to be alive",
     gender: "Male",
-    number: 00001
+    number: 00001,
+    password: "twiddledietwiddlo"
   },
   {
     Fname: "Artsiome",
@@ -33,7 +34,8 @@ var users = [{
     birthday: (1999, 12, 8),
     biography: "Likes to touch soft fur",
     gender: "Male",
-    number: 00002
+    number: 00002,
+    password: "drowssap"
   },
   {
     Fname: "Dax",
@@ -42,7 +44,8 @@ var users = [{
     birthday: (1880, 1, 31),
     biography: "Likes to fly in the sky",
     gender: "Male",
-    number: 00003
+    number: 00003,
+    password: "password"
   },
   {
     Fname: "Bob",
@@ -51,7 +54,8 @@ var users = [{
     birthday: (2001, 4, 15),
     biography: "Walks on lava",
     gender: "Male",
-    number: 00004
+    number: 00004,
+    password: "thisandthat"
   }
 ];
 
@@ -60,16 +64,14 @@ commands = []
 users.forEach(c => {
   commands.push(
       User.create({
-          firstName: c.firstName,
-          lastName: c.lastName,
-          dateOfBirth: c.dateOfBirth,
-          userName: c.userName,
-          email: c.email,
-          password: c.password,
-          securityQuestion: c.securityQuestion,
-          securityAnswer: c.securityAnswer,
-          gender: c.gender,
-          description: c.description
+        Fname: c.Fname,
+        Lname: c.Lname,
+        email: c.email,
+        birthday: c.birthday,
+        biography: c.biography,
+        gender: c.gender,
+        number: c.number,
+        password: c.password
       })
   );
 });
