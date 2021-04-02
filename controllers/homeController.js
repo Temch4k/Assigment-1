@@ -2,7 +2,7 @@ exports.showHome = (req, res) => {
     res.render("home");
 };
 exports.showIndex = (req, res) => {
-    res.render("signup");
+    res.render("login");
 };
 exports.showSignIn = (req, res) => {
     res.render("login");
@@ -25,3 +25,7 @@ exports.showProfile = (req,res) => {
 exports.showSIerror=(req,res) =>{
     res.render("signinError");
 };
+
+exports.showSUerror=(req,res) =>{
+    res.render("signupError")
+}
