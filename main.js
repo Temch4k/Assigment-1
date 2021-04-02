@@ -151,11 +151,14 @@ app.get("/forgotPassword", homeController.showForgot);
 app.get("/home", homeController.showHome);
 
 app.get("/profilePage", homeController.showProfile);
+app.get("/sigine", homeController.showSIerror);
+
 
 app.post("/signUpAcc",userController.saveUser);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
+
 
 
 

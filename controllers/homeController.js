@@ -22,3 +22,6 @@ exports.showProfile = (req,res) => {
     res.render("profilePage");
 };
 
+exports.showSIerror=(req,res) =>{
+    res.render("signinError");
+};
