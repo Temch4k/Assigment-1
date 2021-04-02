@@ -27,10 +27,10 @@ exports.saveUser = (req, res) => {
         Lname: req.body.textLastName,
         email: req.body.txtEmail,
         birthday: req.body.txtDOB,
-        biography: req.body.biography,
+        biography: req.body.txtBiography,
         gender: req.body.gender,
         number: req.body.txtTele,
-        password: req.body.password
+        password: req.body.txtPW
     });
     newUser.save()
         .then(() => {
