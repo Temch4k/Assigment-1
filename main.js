@@ -77,6 +77,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
 // const User = user;
 
 // app.post('/signUp', async (req, res, next) => {
@@ -99,7 +101,7 @@ app.use(passport.session());
 //     });
 // });
 
-app.post('/signin', passport.authenticate('local', {
+app.post('/loginUser', passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/signin',
     failureFlash: true
@@ -150,9 +152,12 @@ app.get("/securityQuestions", homeController.showSecQuestions);
 app.get("/forgotPassword", homeController.showForgot);
 app.get("/home", homeController.showHome);
 
+
+
 app.get("/profilePage", homeController.showProfile);
 
 app.post("/signUpAcc",userController.saveUser);
+app.post("/loginUser", userController.login);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

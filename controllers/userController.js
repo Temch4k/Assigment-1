@@ -21,24 +21,43 @@ exports.getProfilePage = (req, res) => {
     res.render("profilePage");
 };
 
-exports.saveUser = (req, res) => {
-    let newUser = new user({
-        Fname: req.body.textFirstName,
-        Lname: req.body.textLastName,
-        email: req.body.textEmail,
-        birthday: req.body.txtDOB,
-        biography: req.body.txtBiography,
-        gender: req.body.gender,
-        number: req.body.txtTele,
-        password: req.body.txtPW
-    });
-    console.log(newUser);
-
-    newUser.save()
-        .then(() => {
-            res.render("login");
-        })
-        .catch(error => {
-            res.send(error)
+exports.saveUser = async (req, res, next) => {
+    const tempUser = await user.findOne({
+        email: req.body.txtEmail
+    })
+    if (tempUser) {
+        req.flash('error', 'Sorry, that name is taken.')
+    } else {
+        let newUser = new user({
+            Fname: req.body.textFirstName,
+            Lname: req.body.textLastName,
+            email: req.body.txtEmail,
+            birthday: req.body.txtDOB,
+            biography: req.body.txtBiography,
+            gender: req.body.gender,
+            number: req.body.txtTele,
+            password: req.body.txtPW
         });
+        console.log(newUser);
+        newUser.save()
+            .then(() => {
+                res.render("login");
+            })
+            .catch(error => {
+                res.send(error)
+            });
+    }
+};
+
+exports.login = async (req, res, next) =>{
+    const tempUser = await user.findOne({
+        email: req.body.txtEmail
+    })
+    if(tempUser){
+        if(tempUser.password == req.body.txtPassword){
+            res.render("home");
+        }else{
+            res.render("home");
+        }
+    }
 };
