@@ -155,12 +155,17 @@ app.get("/home", homeController.showHome);
 
 
 app.get("/profilePage", homeController.showProfile);
+app.get("/sigine", homeController.showSIerror);
+app.get("/signupe", homeController.showSUerror);
+
+
 
 app.post("/signUpAcc",userController.saveUser);
 app.post("/loginUser", userController.login);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
+
 
 
 
