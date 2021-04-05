@@ -38,6 +38,10 @@ exports.saveUser = async (req, res, next) => {
             number: req.body.txtTele,
             password: req.body.txtPW
         });
+        let secondaryPassword = req.body.txtPW2
+        if(newUser.password != secondaryPassword){
+            res.render
+        }
         console.log(newUser);
         newUser.save()
             .then(() => {
@@ -59,5 +63,7 @@ exports.login = async (req, res, next) =>{
         }else{
             res.render("home");
         }
+    }else{
+        res.render("home")
     }
 };

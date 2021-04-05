@@ -79,27 +79,6 @@ app.use(passport.session());
 
 
 
-// const User = user;
-
-// app.post('/signUp', async (req, res, next) => {
-//     bcrypt.genSalt(10, function (err, salt) {
-//         if (err) return next(err);
-//         bcrypt.hash(req.body.txtPW, salt, function (err, hash) {
-//             if (err) return next(err);
-//             new User({
-//                 Fname: req.body.textFirstName,
-//                 Lname: req.body.txtLastName,
-//                 email: req.body.txtEmail,
-//                 password: req.body.txtPW,
-//                 number: req.body.txtTele,
-//                 biography: req.body.txtBiography,
-//                 birthday: req.body.txtDOB
-//             }).save()
-//             req.flash('info', 'Account made, please log in...');
-//             res.redirect('/signin');
-//         });
-//     });
-// });
 
 app.post('/loginUser', passport.authenticate('local', {
     successRedirect: '/home',
@@ -107,16 +86,7 @@ app.post('/loginUser', passport.authenticate('local', {
     failureFlash: true
 }));
 
-// app.get('/home', function (request, response) {
-//     response.render('home');
-// });
 
-/* This code is based off of JacobWrenns code on the passport/express on github and was changed to work with this assingment*/
-
-
-
-
-//mongoose.Promise = global.Promise;
 
 mongoose.connect("mongodb://localhost:27017/yoverse", {
     useUnifiedTopology: true,
@@ -165,59 +135,3 @@ app.post("/loginUser", userController.login);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
-
-
-
-
-function validateForm() {
-
-    var formIsValid = true;
-    var password = document.querySelector("#txtPW");
-    var confirmPassword = document.querySelector("#txtPW2");
-    var passwordError = document.querySelector("#passwordError")
-    var passwordHasError = false;
-
-    if (password.value != confirmPassword.value) {
-        formIsValid = false;
-        passwordError.innerHTML = "Passwords must match."
-        passwordError.classList.remove("invisible");
-        passwordHasError = true
-    } else {
-        passwordError.innerHTML = ""
-        passwordError.classList.add("invisible")
-    }
-    var elements = document.getElementsByTagName("input");
-    var invalidChars = ['<', '>', '#', '{', '}', '(', ')', '!', '~', '"', "'", '`'];
-
-    for (let i = 0; i < elements.length; i++) {
-        for (let j = 0; j < invalidChars.length; j++) {
-            if (elements[i].value.indexOf(invalidChars[j]) != -1) {
-                elements[i].classList.add("hasError");
-                formIsValid = false;
-                passwordHasError = true;
-                var divInvalidChar = document.querySelector("#divInvalidCharError");
-                divInvalidChar.classList.remove("invisible");
-                divInvalidChar.innerHTML = "You have entered an invalid char(#, !, ~, {, }, (, ), ', ) in the form. Please remove the char and try again."
-            }
-        }
-    }
-    if (checkPassword(password) != true) {
-        passwordError.innerHTML = "Your password must include one number, one uppercase and one lowercase letter";
-        formIsValid = false;
-        passwordHasError = true;
-    }
-    if (!passwordHasError) {
-        passwordError.innerHTML = ""
-        passwordError.classList.add("invisible")
-    }
-    return formIsValid;
-}
-
-function checkPassword(inputText) {
-    var passw = /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-    if (inputText.value.match(passw)) {
-        return true;
-    } else {
-        return false;
-    }
-}
