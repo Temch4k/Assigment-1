@@ -25,8 +25,11 @@ exports.saveUser = async (req, res, next) => {
     const tempUser = await user.findOne({
         email: req.body.txtEmail
     })
+    let errorMessage
     if (tempUser) {
-        req.flash('error', 'Sorry, that name is taken.')
+        errorMessage = 'That email is taken, try logging in dude.'
+        console.log(errorMessage)
+        res.render("signupError")
     } else {
         let newUser = new user({
             Fname: req.body.textFirstName,
@@ -38,17 +41,16 @@ exports.saveUser = async (req, res, next) => {
             number: req.body.txtTele,
             password: req.body.txtPW
         });
-        /*res.render("signup")
-        let errorMessage = ""
+        
         let secondaryPassword = req.body.txtPW2
         if (newUser.password != secondaryPassword) {
             errorMessage = "Passwords must match. "
+        } else {
+            if (newUser.Fname == "" || newUser.Lname == "" || newUser.biography == "" || newUser.email == "" || newUser.gender == "") {
+                errorMessage = errorMessage + "One neccisary field was left blank."
+            }
         }
-        if (newUser.Fname == "" || newUser.Lname == "" || newUser.biography == "" || newUser.email == "" || newUser.gender == "") {
-            errorMessage = errorMessage + "One neccisary field was left blank."
-        }
-        */
-        if (errorMessage == "") {
+        if (errorMessage == undefined) {
             console.log(newUser);
             newUser.save()
                 .then(() => {
@@ -57,8 +59,10 @@ exports.saveUser = async (req, res, next) => {
                 .catch(error => {
                     res.send(error)
                 });
-        } else {
-            res.render("signup")
+        }else{
+            console.log(errorMessage)
+            console.log(newUser)
+            res.render("signupError")
         }
     }
 };
@@ -67,13 +71,18 @@ exports.login = async (req, res, next) => {
     const tempUser = await user.findOne({
         email: req.body.txtEmail
     })
+    var errorMessage;
     if (tempUser) {
         if (tempUser.password == req.body.txtPassword) {
             res.render("home");
         } else {
-            res.render("home");
+            errorMessage = "Incorrect Password"
+            console.log(errorMessage)
+            res.render("signinError");
         }
     } else {
-        res.render("home")
+        errorMessage = "Unknown email"
+        console.log(errorMessage)
+        res.render("signinError")
     }
 };
