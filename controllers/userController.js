@@ -38,32 +38,42 @@ exports.saveUser = async (req, res, next) => {
             number: req.body.txtTele,
             password: req.body.txtPW
         });
+        /*res.render("signup")
+        let errorMessage = ""
         let secondaryPassword = req.body.txtPW2
-        if(newUser.password != secondaryPassword){
-            res.render
+        if (newUser.password != secondaryPassword) {
+            errorMessage = "Passwords must match. "
         }
-        console.log(newUser);
-        newUser.save()
-            .then(() => {
-                res.render("login");
-            })
-            .catch(error => {
-                res.send(error)
-            });
+        if (newUser.Fname == "" || newUser.Lname == "" || newUser.biography == "" || newUser.email == "" || newUser.gender == "") {
+            errorMessage = errorMessage + "One neccisary field was left blank."
+        }
+        */
+        if (errorMessage == "") {
+            console.log(newUser);
+            newUser.save()
+                .then(() => {
+                    res.render("login");
+                })
+                .catch(error => {
+                    res.send(error)
+                });
+        } else {
+            res.render("signup")
+        }
     }
 };
 
-exports.login = async (req, res, next) =>{
+exports.login = async (req, res, next) => {
     const tempUser = await user.findOne({
         email: req.body.txtEmail
     })
-    if(tempUser){
-        if(tempUser.password == req.body.txtPassword){
+    if (tempUser) {
+        if (tempUser.password == req.body.txtPassword) {
             res.render("home");
-        }else{
+        } else {
             res.render("home");
         }
-    }else{
+    } else {
         res.render("home")
     }
 };

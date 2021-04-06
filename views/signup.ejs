@@ -161,7 +161,12 @@
                 </div>
 
                 <br>
-                <div id="divInvalidCharError" class="invisible alert-danger center col-8"></div><br>
+                <br>
+                <% if(locals.errorMessage){ %>
+                     <div id="divInvalidCharError" class="alert-danger center col-8">
+                         <h2><%locals.errorMessage%></h2>
+                     </div>
+                <% } %>
                 <button type="submit" onsubmit="location.href='/securityQuestions';" name="SubmitButton"
                     class="btn btn-danger">Sign Up!</button>
                 <br>

@@ -118,6 +118,7 @@ app.listen(app.get("port"), () => {
 
 app.get("/signup", homeController.showSignUp);
 app.get("/signin", homeController.showSignIn);
+
 app.get("/securityQuestions", homeController.showSecQuestions);
 app.get("/forgotPassword", homeController.showForgot);
 app.get("/home", homeController.showHome);
