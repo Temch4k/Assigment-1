@@ -1,4 +1,4 @@
-# Assigment 1
+## Assigment 1
 For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
 
   To begin our project we first tackled the design aspexts of this project and that first involved choosing the name of our social media platform, which we decided on "yoVerse", because it combined two words: your and universe, which is a great title for an up and coming social media platform where users can share their thoughts and experinces with the world. The next step in creating our social media platform was to figure out the graphic design aspect which included choosing the color scheme and creating a logo. To select the colors we utilized Coolors.co, to randomize different color patterns and find interesting color schemes that would fit our websites mood and feel. Once we settled on our desired color grid, we then chose one of the mpst eye catching colors and created a Logo with it to ensure it would match our website aesthetic. Our team used freelogodesign.org to create our logo with matching colors and moved on to designing our website.
@@ -15,7 +15,7 @@ For this project, our group decided to go with the standard social media website
 
 
 -------------------------------------------------------------------------------------
-Part 2
+## Part 2
 
   Let's continue working on our final social media project for the Web Application Development class. On this assignment, our team had to make the project more dynamic and add some security to our account creation, such as password validation and the addition of security questions during our user's account creation process to make the process more secure and interactive. 
   
@@ -29,14 +29,14 @@ Part 2
   
   
 --------------------------------------------------------------------------------------
-Part 3
+## Part 3
 
 Implementing MongoDB on our webapp.
 
   For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services. 
 
-  Artsiom worked on the directory system, created the homeController that was the one to process all of the page directories and functions. He connected all of the pages together that using the ejs files instead of the html, like we had in the last part of the assignment. He fixed a few page sizing errors that we had on the securityQuestions page, and created the layout.ejs that will be the main page through which everything is going to be loaded.  ----------------------------------------Dax implemented the views and converted our HTML pages into EJS allowing pages as well as creating our user model. ------------------------ UserContoller was done by Micah which allows our webapp to retrieve and post data to our database as well as the seed which creates the database. 
+  Artsiom worked on the directory system, created the homeController that was the one to process all of the page directories and functions. He connected all of the pages together that using the ejs files instead of the html, like we had in the last part of the assignment. He fixed a few page sizing errors that we had on the securityQuestions page, and created the layout.ejs that will be the main page through which everything is going to be loaded.  Dax implemented the views and converted our HTML pages into EJS allowing pages as well as creating our user model. UserContoller was done by Micah which allows our webapp to retrieve and post data to our database as well as the seed which creates the database. 
 
-  Dax got the mongo database running. He created the models and did a good amount of bug fixes. He also was in charge of the signup and signin data as well as the logic for the checks. He made sure that when a user logs in that the database searches for the specified email address then matches it to the associated password. He also, made sure that all the tables in the signup were populated and the passwords matched. If any of these conditions were not met, an error message was created and placed within the views for signup and login.
+Dax got the mongo database running. He created the models and did a good amount of bug fixes. He also was in charge of the signup and signin data as well as the logic for the checks. He made sure that when a user logs in that the database searches for the specified email address then matches it to the associated password. He also, made sure that all the tables in the signup were populated and the passwords matched. If any of these conditions were not met, an error message was created and placed within the views for signup and login.
 
-  Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
+Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
