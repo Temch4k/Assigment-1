@@ -1,5 +1,5 @@
 ## Assigment 1
-For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
+```For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
 
   To begin our project we first tackled the design aspexts of this project and that first involved choosing the name of our social media platform, which we decided on "yoVerse", because it combined two words: your and universe, which is a great title for an up and coming social media platform where users can share their thoughts and experinces with the world. The next step in creating our social media platform was to figure out the graphic design aspect which included choosing the color scheme and creating a logo. To select the colors we utilized Coolors.co, to randomize different color patterns and find interesting color schemes that would fit our websites mood and feel. Once we settled on our desired color grid, we then chose one of the mpst eye catching colors and created a Logo with it to ensure it would match our website aesthetic. Our team used freelogodesign.org to create our logo with matching colors and moved on to designing our website.
 
@@ -13,10 +13,10 @@ For this project, our group decided to go with the standard social media website
   -- Click The Profile button in right hand corner of homepage to view profile --
 
 
+```
 
--------------------------------------------------------------------------------------
 ## Part 2
-
+```
   Let's continue working on our final social media project for the Web Application Development class. On this assignment, our team had to make the project more dynamic and add some security to our account creation, such as password validation and the addition of security questions during our user's account creation process to make the process more secure and interactive. 
   
   Dax and Micah worked on the assignment's password part, while Artsiom went with the website's security questions. The password validation form took a little bit of troubleshooting to get running, however once the correct place to call the validateFormm() action was found things worked smoothly. Dax implemented the check if both password fields were the same and that no bizzare characters were present within any input fields. Micah implemented the check for if the password contained an uppercase, lowercase and number. 
@@ -25,9 +25,13 @@ For this project, our group decided to go with the standard social media website
 
   Overall things went smoothly while completeing this assignment, most the issues our group faced were over version control or pulling versions from our peers which did not match the versions we had on our local machines. But these are easily manageable problems and did not provide any serious roadblocks in the completion of othis assignment.
   
+```
+  
   
  
- 
+## Part 3
+
+```
 Implementing MongoDB on our webapp.
 
   For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services. 
@@ -37,6 +41,4 @@ Implementing MongoDB on our webapp.
 Dax got the mongo database running. He created the models and did a good amount of bug fixes. He also was in charge of the signup and signin data as well as the logic for the checks. He made sure that when a user logs in that the database searches for the specified email address then matches it to the associated password. He also, made sure that all the tables in the signup were populated and the passwords matched. If any of these conditions were not met, an error message was created and placed within the views for signup and login.
 
 Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
-
-
-# Part 3
+```
