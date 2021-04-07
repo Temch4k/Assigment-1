@@ -29,9 +29,10 @@ Part 2
   
   
 --------------------------------------------------------------------------------------
+
 Part 3
 
-Implementing MongoDB on our webapp.
+  Implementing MongoDB on our webapp.
 
   For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services. 
 
