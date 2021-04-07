@@ -131,7 +131,7 @@ app.get("/signupe", homeController.showSUerror);
 
 
 app.post("/signUpAcc",userController.saveUser);
-app.post("/loginUser", userController.login);
+app.post("/signInUser",userController.signInUser);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

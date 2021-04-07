@@ -26,10 +26,11 @@ exports.saveUser = async (req, res, next) => {
         email: req.body.txtEmail
     })
     let errorMessage
+    console.log(typeof(errorMessage))
     if (tempUser) {
         errorMessage = 'That email is taken, try logging in dude.'
         console.log(errorMessage)
-        res.render("signupError")
+        res.render("signup", {errorMessage})
     } else {
         let newUser = new user({
             Fname: req.body.textFirstName,
@@ -62,12 +63,13 @@ exports.saveUser = async (req, res, next) => {
         }else{
             console.log(errorMessage)
             console.log(newUser)
-            res.render("signupError")
+            res.render("signup", {errorMessage})
         }
     }
 };
 
-exports.login = async (req, res, next) => {
+exports.signInUser = async (req, res, next) => {
+    console.log("random string")
     const tempUser = await user.findOne({
         email: req.body.txtEmail
     })
@@ -78,11 +80,11 @@ exports.login = async (req, res, next) => {
         } else {
             errorMessage = "Incorrect Password"
             console.log(errorMessage)
-            res.render("signinError");
+            res.render("login", {errorMessage})
         }
     } else {
         errorMessage = "Unknown email"
         console.log(errorMessage)
-        res.render("signinError")
+        res.render("login", {errorMessage})
     }
 };

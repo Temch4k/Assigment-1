@@ -47,11 +47,15 @@ fieldset{
 }
 
 .brdr{
-    border: 10px solid;
-    border-radius: 35px;
+    border: 5px solid;
+    border-radius: 28px;
 }
 
-
+.alert-warning{
+    color: #faf3dd;
+    border-color: #ffa69e;
+    border-radius: 24px;
+}
 
 .submit-image {
     width: 10px;

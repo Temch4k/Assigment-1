@@ -22,7 +22,7 @@
 
 <br>
 <section>
-    <form action="/loginUser" method="post" id="mainDiv" id="signInForm">
+    <form action="/signInUser" method="post" id="mainDiv" id="signInForm">
         <!-- This is our email and password fields -->
         <fieldset class="border brdr">
             <h2 class="d-flex justify-content-center">Sign in</h2>
@@ -33,10 +33,12 @@
                 <div class="col-lg-6 row">
 
                     <!-- Email -->
-                    <div class="form-group col-lg-12 d-flex justify-content-center">
+                    <div class="form-group col-lg-12 d-flex justify-content-center center">
                         <div class="col-sm-4 col-md-6 col-lg-6">
-                            <label for="txtEmail" class="col-form-label col-lg-4">
-                                <span>Email: </span>
+                            <label for="txtEmail" class="col-form-label center col-lg-4">
+                                <span>
+                                    <font size="+2"> Email: </font>
+                                </span>
                             </label>
                         </div>
 
@@ -47,10 +49,12 @@
                     </div>
 
                     <!-- Password -->
-                    <div class="form-group col-lg-12 d-flex justify-content-center">
+                    <div class="form-group col-lg-12 d-flex justify-content-center center">
                         <div class="col-sm-4 col-md-6 col-lg-6 ">
                             <label for="txtPassword" class="col-form-label col-lg-4">
-                                <span>Password: </span>
+                                <span>
+                                    <font size="+2"> Password: </font>
+                                </span>
                             </label>
                         </div>
                         <div class="col-sm-8 col-md-6 col-lg-6">
@@ -61,37 +65,33 @@
 
 
                     <!-- Remember me check Box-->
-                    <div class="form-group col-lg-12 d-flex justify-content-center">
+                    <div class="form-group col-lg-12 d-flex center justify-content-center">
                         <label for="rememberMe" class="">
                             <input type="checkbox" id="rememberMe" name="rememberMe" value="Yes">
                             remember me</label>
                     </div>
 
-                    <!-- Buttons -->
-                    
-                    <!-- has to change-->
-                    <a href="/home" class="col-lg-12 d-flex justify-content-center">
-                        <input type="submit" value="Login" class="col-sm-6 col-md-4 col-lg-3 
-                                                    offset-md-1 offset-sm-1 offset-xs-1
-                                                        btn btn-danger" onclick=" relocate_home()">
-                        <button type="reset" class="col-sm-6  col-md-4 col-lg-3 btn btn-light">Cancel</button>
+                    <% if(locals.errorMessage){ %>
+                    <div id="divInvalidCharError" class="alert-warning center col-4 brdr">
+                        <h2><font size="4"><%= locals.errorMessage %></font></h2>
+                    </div>
+                    <br><br><br><br>
+                    <% } %>
 
-                        <script>
-                            function relocate_home() {
-                                location.href = "/home";
-                            }
-                        </script>
-                    </a>
+                    <div class="center col-12">
+                        <button type="submit" onsubmit="location.href='/securityQuestions';" name="SubmitButton"
+                            class="col-4 btn btn-danger center">Login!</button>
+                    </div>
 
                     <!-- Forgot Your Password-->
                     <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor center">
                         <a class="center" href="/forgotPassword">Forgot your password?</a>
                     </div>
-                    <div class="center">Don't have an account....?</div>
+                    <div class="center col-12">Don't have an account....?</div>
 
                     <!-- Sing up Link-->
-                    <div class="col-sm-5  col-lg-12  d-flex justify-content-center hyperColor">
-                        <a href="/signup" class="center" >Sign Up</a>
+                    <div class="col-sm-5  col-lg-12  d-flex justify-content-center center hyperColor">
+                        <a href="/signup" class="center">Sign Up</a>
                     </div>
                 </div>
                 <div class="col-lg-3"></div>
