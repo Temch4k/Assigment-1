@@ -26,8 +26,8 @@ For this project, our group decided to go with the standard social media website
   Overall things went smoothly while completeing this assignment, most the issues our group faced were over version control or pulling versions from our peers which did not match the versions we had on our local machines. But these are easily manageable problems and did not provide any serious roadblocks in the completion of othis assignment.
   
   
- # Part 3
-
+ 
+ 
 Implementing MongoDB on our webapp.
 
   For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services. 
@@ -37,3 +37,6 @@ Implementing MongoDB on our webapp.
 Dax got the mongo database running. He created the models and did a good amount of bug fixes. He also was in charge of the signup and signin data as well as the logic for the checks. He made sure that when a user logs in that the database searches for the specified email address then matches it to the associated password. He also, made sure that all the tables in the signup were populated and the passwords matched. If any of these conditions were not met, an error message was created and placed within the views for signup and login.
 
 Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
+
+
+# Part 3
