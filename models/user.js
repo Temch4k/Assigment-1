@@ -1,3 +1,6 @@
+const passport = require("passport");
+passportLocalMongoose = require("passport-local-mongoose");
+
 const mongoose = require("mongoose"),
     userSchema = mongoose.Schema({
         name: {
