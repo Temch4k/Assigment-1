@@ -1,4 +1,172 @@
-const user = require("../models/user");
+"use strict";
+
+const user = require("../models/user"),
+    const passport = required("passport"),
+    const getUserParams = body => {
+        return {
+            name: {
+                first: body.first,
+                last: body.last
+            },
+            email: body.email,
+            password: body.password,
+            biography: body.biography,
+            birthday: body.biography,
+            gender: body.gender,
+        };
+    };
+
+module.exports={
+    login:(req,res)=>{
+        res.render("/signin")
+    },
+    indexView: (req, res) =>{
+        res.render("/profileView");//come back to 
+    },
+    new: (req, res) =>{
+        res.render("signup");
+    },
+    create: (req, res, next)=>{
+        if(req.skip){
+            return next();
+        }
+        let userParams = getUserParams(req.body);
+
+        let newUser = new user(userParams);
+        user.register(newUser, req.body.password, (error, user)=>{
+            if(user){
+                req.flash("success", "User account created succesfully");
+                res.locals.redirect = "/users";
+                nexy();
+            }
+            else {
+                req.flash("Error", `Failed to create user account: ${error.message}`);
+                res.locals.redirect = "/users/new";
+                next();
+            }
+        })
+    },
+    validate: (req, res, next) =>{
+        req.santizeBody("email").normalizeEmail({
+            all_lowercase: true
+        }).trim();
+        
+        req.check("name.first", "First name not valid").notEmpty().all_lowercase()
+        req.check("name.last", "Last name not valid").notEmpty().all_lowercase()
+
+        req.check("gender", "Gender not valide").notEmpty()
+
+        req.check("email", "email is not valid").isEmail();
+        req.check("biography", "Biography is not valid").notEmpty().isLength({
+            min: 1,
+            max: 500
+        });
+        req.check("password", "password cannot be empty").netEmpty();
+
+        
+        req.getValidationResults().then((error) =>{
+            if(!error.isEmpty()){
+                let messages = error.array().map (e => e.msg);
+                req.flash("error", messages.join(" and "));
+                req.skip = true;
+
+                res.local.redirect = "/signin";
+                next();
+            }
+            else{
+                next();
+            }
+        })
+    },
+    authenticate: passport.authenticate("local", {
+        failureRedirect: "/signin",
+        failureFlash: "Login failed try your credentials again",
+        successRedirect: "/",
+        successFlash: "Logged in"
+    }),
+    logout: (req,res,ext)=>{
+        req.logout();
+        req.flash("success", "you've been logged out");
+        res.locals.redirect = "/";
+        next();
+    },
+    redirectView: (req, res, next) => {
+        let redirectPath = res.locals.redirect;
+        if(redirectPath != undefined) res.redirect(redirectPath);
+        next();
+    },
+    show: (req, res, next) => {
+        let userId = req.params.id;
+        User.findById(userId)
+        .then(user => {
+            res.locals.user = user;
+            next();
+        })
+        .catch(error=>{
+            console.log(`Error fetching user by ID: ${error.message}`);
+        });
+    },
+    showView: (req, res) => {
+        res.render("user/show");
+    },
+    edit: (req, res, next)=>{
+        res.render("user/editProfile")
+    },
+    update: (req, res, next) => {
+        if(req.skip)
+        { 
+            return next();
+        }
+        let userId = req.params.id;
+        let updatedUser = new User({
+            name: {
+                first: req.body.first,
+                last: req.body.last
+            },
+            email: req.body.email,
+            password: req.body.password,
+            biography: req.body.biography,
+            birthday: req.body.birthday,
+            gender: req.body.gender
+        });
+        User.findByIdAndUpdate(userId,
+            {
+                $set:
+                {
+                    'name.first': req.body.first,
+                    'name.last': req.body.last,
+                    email: req.body.email,
+                    password: req.body.password,
+                    biography: req.body.biography,
+                    birthday: req.body.biography,
+                    gender: req.body.gender
+                }
+            }
+        )
+            .then(user => {
+                res.locals.user = user;
+                res.locals.redirect = `/users/${user._id}`;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            });
+    },
+    delete: (req, res, next) =>{
+        let userId = req.params.id;
+        User.findByIdAndRemove(userId)
+        .then(() =>{
+            res.locals.redirect = "/users";
+            next();
+        })
+        .catch(error=>{
+            console.log(`Error fetching user by ID: ${error.message}`);
+            next(error);
+        });
+    }
+}
+
 
 exports.getAllUsers = (req, res) => {
     user.find({})
