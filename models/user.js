@@ -42,8 +42,8 @@ const mongoose = require("mongoose"),
         return `Name: ${this.name} Email: ${this.email} Birthday: ${this.birthday} Biography: ${this.biography} Number: ${this.number} Gender: ${this.gender}`;
     };
 
-    userSchema.methods.findLocalSubscribers = function () {
-        return this.model("Subscriber")
+    userSchema.methods.findLocalUser = function () {
+        return this.model("User")
             .find({
                 zipCode: this.zipCode
             })
