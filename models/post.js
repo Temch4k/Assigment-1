@@ -1,29 +1,19 @@
 "use strict";
 
 const passport = require("passport");
+const user = require("./user");
 passportLocalMongoose = require("passport-local-mongoose");
 
 const mongoose = require("mongoose"),
     postSchema = new mongoose.Schema({
         _user : {
-            type: Number, ref: 'User'
+            type: String, ref: user.first + " " + user.last
         },
-        message : {
+        content : {
             type: String,
             min: 1,
             max: 500
-        } 
+        },
+        date: { type: Date, default: Date.now }
     });
-
-    postSchema.methods.getInfo = function () {
-        return `user: ${this._user} postMessage: ${this._user}`;
-    };
-
-    postSchema.methods.findLocalPosts = function () {
-        return this.model("Post")
-            .find({
-            })
-            .exec();
-    }
-
 module.exports = mongoose.model("post", postSchema);
