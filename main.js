@@ -75,8 +75,8 @@ var store = new MongoDBStore({
     collection: 'sessions'
 });
 
-
-router.use(express.static("public"));
+router.use(express.static(__dirname + '/public'));
+//router.use(express.static("public"));
 router.use(layouts);
 router.use(
     express.urlencoded({
@@ -147,7 +147,7 @@ app.post('/loginUser', passport.authenticate('local', {
 }));
 
 
-app.get("/", homeController.showIndex);
+router.get("/", homeController.showIndex);
 
 
 app.listen(app.get("port"), () => {
