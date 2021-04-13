@@ -42,7 +42,7 @@ const mongoose = require("mongoose"),
         return `Name: ${this.name} Email: ${this.email} Birthday: ${this.birthday} Biography: ${this.biography} Number: ${this.number} Gender: ${this.gender}`;
     };
 
-    subscriberSchema.methods.findLocalSubscribers = function () {
+    userSchema.methods.findLocalSubscribers = function () {
         return this.model("Subscriber")
             .find({
                 zipCode: this.zipCode
