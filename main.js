@@ -167,10 +167,8 @@ router.get("/profilePage", homeController.showProfile);
 router.get("/sigine", homeController.showSIerror);
 router.get("/signupe", homeController.showSUerror);
 
-
-
-router.post("/signUpAcc",userController.saveUser);
-router.post("/signInUser",userController.signInUser);
+router.post("/signUpAcc", function(req, res){userController.saveUser});
+router.post("/signInUser",function(req,res){userController.signInUser});
 
 router.use(errorController.pageNotFoundError);
 router.use(errorController.internalServerError);
