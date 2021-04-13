@@ -1,8 +1,8 @@
 "use strict";
 
 const user = require("../models/user"),
-    const passport = required("passport"),
-    const getUserParams = body => {
+    passport = required("passport"),
+    getUserParams = body => {
         return {
             name: {
                 first: body.first,
