@@ -1,19 +1,28 @@
-const user = require("./models/user.js");
+// Dax's passport
+// const user = require("./models/user.js");
 
 const express = require("express"),
     app = express(),
     homeController = require("./controllers/homeController.js"),
     errorController = require("./controllers/errorController.js"),
     userController = require("./controllers/userController.js"),
+
+    User = require("./models/user"),
     layouts = require("express-ejs-layouts"),
     mongoose = require("mongoose"),
     passport = require('passport'),
+    cookieParser = require("cookie-parser"),
     flash = require('express-flash'),
     session = require('express-session'),
-    bcrypt = require('bcrypt');
+    router = express.Router(),
+    methodOverride = require("method-override"),
+    expressValidator = require("express-validator"),
+    connectFlash = require("connect-flash"),
+    bcrypt = require('bcrypt'),
+    LocalStrategy = require('passport-local').Strategy;
 
-LocalStrategy = require('passport-local').Strategy;
-
+// Dax's passport
+/*
 passport.serializeUser(function (user, done) {
     done(null, user._id);
 });
@@ -45,9 +54,17 @@ passport.use(new LocalStrategy(
             })
         })
     }
-));
+));*/
 
 //store session data in this db
+
+mongoose.connect("mongodb://localhost:27017/yoverse", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+});
+app.set("port", process.env.PORT || 3000);
+
+app.set("view engine", "ejs");
 
 var MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -59,11 +76,52 @@ var store = new MongoDBStore({
 });
 
 
-app.use(express.static(__dirname + '/public'));
-app.set('view-engine', 'ejs')
-app.use(express.urlencoded({
-    extended: false
-}))
+router.use(express.static("public"));
+router.use(layouts);
+router.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+router.use(methodOverride("_method", {methods: ["POST", "GET"]}));
+
+app.use(express.json());
+
+//Cookie stuff for later from authclasswork
+/*
+router.use(cookieParser("my_passcode"));
+router.use(expressSession({
+    secret: "my_passcode",
+    cookie: {
+        maxAge: 360000
+    },
+    resave: false,
+    saveUninitialized: false
+}));*/
+
+// passport stuff for later
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+router.use(connectFlash());
+
+
+//flash stuff for later
+/*
+router.use((req, res, next) => {
+    res.locals.flashMessages = req.flash();
+    res.locals.loggedIn = req.isAuthenticated();
+    res.locals.currentUser = req.user;
+    next();
+});*/
+
+// express vlaidator for later
+/*
+router.use(expressValidator());*/
+
+
 app.use(flash())
 app.use(session({
     secret: 'something Super Sneaky',
@@ -74,8 +132,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
+// Dax's passport
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 
@@ -87,28 +147,7 @@ app.post('/loginUser', passport.authenticate('local', {
 }));
 
 
-
-mongoose.connect("mongodb://localhost:27017/yoverse", {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-});
-
-app.set("port", process.env.PORT || 3000);
-
-app.set("view engine", "ejs");
-app.use(layouts);
-
 app.get("/", homeController.showIndex);
-
-app.use(express.static("public"))
-app.use(
-    express.urlencoded({
-        extended: false
-    })
-);
-
-app.use(express.json());
-
 
 
 app.listen(app.get("port"), () => {
@@ -116,25 +155,25 @@ app.listen(app.get("port"), () => {
 });
 
 
-app.get("/signup", homeController.showSignUp);
-app.get("/signin", homeController.showSignIn);
-app.get("/securityQuestions", homeController.showSecQuestions);
-app.get("/forgotPassword", homeController.showForgot);
-app.get("/home", homeController.showHome);
+router.get("/signup", homeController.showSignUp);
+router.get("/signin", homeController.showSignIn);
+router.get("/securityQuestions", homeController.showSecQuestions);
+router.get("/forgotPassword", homeController.showForgot);
+router.get("/home", homeController.showHome);
 
 
 
-app.get("/profilePage", homeController.showProfile);
-app.get("/sigine", homeController.showSIerror);
-app.get("/signupe", homeController.showSUerror);
+router.get("/profilePage", homeController.showProfile);
+router.get("/sigine", homeController.showSIerror);
+router.get("/signupe", homeController.showSUerror);
 
 
 
-app.post("/signUpAcc",userController.saveUser);
-app.post("/signInUser",userController.signInUser);
+router.post("/signUpAcc",userController.saveUser);
+router.post("/signInUser",userController.signInUser);
 
-app.use(errorController.pageNotFoundError);
-app.use(errorController.internalServerError);
+router.use(errorController.pageNotFoundError);
+router.use(errorController.internalServerError);
 
 
 function validateForm() {
