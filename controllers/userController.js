@@ -1,7 +1,6 @@
 "use strict";
-
+const passport = require("passport");
 const user = require("../models/user"),
-    passport = require("passport"),
     getUserParams = body => {
         return {
             name: {
