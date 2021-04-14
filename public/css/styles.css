@@ -203,3 +203,16 @@ Form.blocktext {
     position: right;
     top: 73px;
 }
+
+.button {
+    background-color: #ed4a0f;
+    padding: 0.3vw 3vw;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+  }
+
+  .button:hover{
+    background-color: #ffa69e;
+  }

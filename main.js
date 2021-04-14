@@ -21,6 +21,9 @@ const express = require("express"),
     bcrypt = require('bcrypt'),
     LocalStrategy = require('passport-local').Strategy;
 
+    var MongoDBStore = require('connect-mongodb-session')(session);
+
+
 // Dax's passport
 /*
 passport.serializeUser(function (user, done) {
@@ -66,8 +69,6 @@ app.set("port", process.env.PORT || 3000);
 
 app.set("view engine", "ejs");
 
-var MongoDBStore = require('connect-mongodb-session')(session);
-
 const sessionData = 'mongodb://localhost/express-passport'
 
 var store = new MongoDBStore({
@@ -76,6 +77,7 @@ var store = new MongoDBStore({
 });
 
 router.use(express.static(__dirname + '/public'));
+console.log(__dirname);
 //router.use(express.static("public"));
 router.use(layouts);
 router.use(
@@ -86,6 +88,10 @@ router.use(
 router.use(methodOverride("_method", {methods: ["POST", "GET"]}));
 
 app.use(express.json());
+
+app.listen(app.get("port"), () => {
+    console.log(`Server is running on port ${app.get("port")}`)
+});
 
 //Cookie stuff for later from authclasswork
 /*
@@ -139,42 +145,43 @@ app.use(session({
 
 
 
-
+/*
 app.post('/loginUser', passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/signin',
     failureFlash: true
-}));
+}));*/
 
 
-router.get("/", homeController.showIndex);
 
-
-app.listen(app.get("port"), () => {
-    console.log(`Server is running on port ${app.get("port")}`)
-});
-
-
+/*
 router.get("/signup", homeController.showSignUp);
 router.get("/signin", homeController.showSignIn);
 router.get("/securityQuestions", homeController.showSecQuestions);
 router.get("/forgotPassword", homeController.showForgot);
 router.get("/home", homeController.showHome);
 
-
-
 router.get("/profilePage", homeController.showProfile);
 router.get("/sigine", homeController.showSIerror);
 router.get("/signupe", homeController.showSUerror);
+*/
 
+router.get("/", homeController.index);
 
+router.get("/user", userController.indexView);
 
-router.post("/signUpAcc",userController.saveUser);
-router.post("/signInUser",userController.signInUser);
+router.get("/user/login", userController.login);
+router.post("/user/login", userController.authenticate);
+
+router.get("/user/signup", userController.new);
+router.post("/user/create", userController.create, userController.redirectView);
+
+// still need login procedure
 
 router.use(errorController.pageNotFoundError);
 router.use(errorController.internalServerError);
 
+app.use("/", router);
 
 function validateForm() {
 

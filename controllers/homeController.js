@@ -1,8 +1,12 @@
+
+module.exports = {
+    index: (req,res) => {
+        res.render("welcome");
+    }
+}
+
 exports.showHome = (req, res) => {
     res.render("home");
-};
-exports.showIndex = (req, res) => {
-    res.render("login");
 };
 exports.showSignIn = (req, res) => {
     res.render("login");

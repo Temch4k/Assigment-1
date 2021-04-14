@@ -18,13 +18,13 @@ const user = require("../models/user"),
 
 module.exports={
     login:(req,res)=>{
-        res.render("/signin")
+        res.render("user/login");
     },
     indexView: (req, res) =>{
-        res.render("/profileView");//come back to 
+        res.render("user/index");//come back to 
     },
     new: (req, res) =>{
-        res.render("signup");
+        res.render("user/signup");
     },
     create: (req, res, next)=>{
         if(req.skip){
@@ -36,12 +36,12 @@ module.exports={
         user.register(newUser, req.body.password, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
-                res.locals.redirect = "/users";
+                res.locals.redirect = "users/login";
                 nexy();
             }
             else {
                 req.flash("Error", `Failed to create user account: ${error.message}`);
-                res.locals.redirect = "/users/new";
+                res.locals.redirect = "users/signup";
                 next();
             }
         })
@@ -70,7 +70,7 @@ module.exports={
                 req.flash("error", messages.join(" and "));
                 req.skip = true;
 
-                res.local.redirect = "/signin";
+                res.local.redirect = "login";
                 next();
             }
             else{
@@ -79,7 +79,7 @@ module.exports={
         })
     },
     authenticate: passport.authenticate("local", {
-        failureRedirect: "/signin",
+        failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
         successRedirect: "/",
         successFlash: "Logged in"

@@ -13,7 +13,7 @@
                 </form>
             </div>
             <div>
-                <button type="button" onclick="location.href='/signup';" class=" btn btn-outline-warning btn-lg"
+                <button type="button" onclick="location.href='signup';" class=" btn btn-outline-warning btn-lg"
                     id="loginBtn">Sign Up</button>
             </div>
         </div>
@@ -22,16 +22,14 @@
 
 <br>
 <section>
-    <form action="/signInUser" method="post" id="mainDiv" id="signInForm">
-        <!-- This is our email and password fields -->
-        <fieldset class="border brdr">
+    <!-- This is our email and password fields -->
+    <fieldset class="border brdr">
+        <form action="/user/login" method="POST" id="mainDiv" id="signInForm">
             <h2 class="d-flex justify-content-center">Sign in</h2>
             <br>
             <div class="row">
                 <div class="col-lg-3"></div>
-
                 <div class="col-lg-6 row">
-
                     <!-- Email -->
                     <div class="form-group col-lg-12 d-flex justify-content-center center">
                         <div class="col-sm-4 col-md-6 col-lg-6">
@@ -72,31 +70,33 @@
                     </div>
 
                     <% if(locals.errorMessage){ %>
-                    <div id="divInvalidCharError" class="alert-warning center col-4 brdr">
-                        <h2><font size="4"><%= locals.errorMessage %></font></h2>
-                    </div>
-                    <br><br><br><br>
+                        <div id="divInvalidCharError" class="alert-warning center col-4 brdr">
+                            <h2>
+                                <font size="4">
+                                    <%= locals.errorMessage %>
+                                </font>
+                            </h2>
+                        </div>
+                        <br><br><br><br>
                     <% } %>
 
                     <div class="center col-12">
-                        <button type="submit" onsubmit="location.href='/securityQuestions';" name="SubmitButton"
+                        <button type="submit" name="SubmitButton"
                             class="col-4 btn btn-danger center">Login!</button>
                     </div>
-
-                    <!-- Forgot Your Password-->
-                    <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor center">
-                        <a class="center" href="/forgotPassword">Forgot your password?</a>
-                    </div>
-                    <div class="center col-12">Don't have an account....?</div>
-
-                    <!-- Sing up Link-->
-                    <div class="col-sm-5  col-lg-12  d-flex justify-content-center center hyperColor">
-                        <a href="/signup" class="center">Sign Up</a>
-                    </div>
                 </div>
-                <div class="col-lg-3"></div>
             </div>
             <br>
-        </fieldset>
-    </form>
+        </form>
+    </fieldset>
+    <!-- Forgot Your Password-->
+    <div class="col-sm-5 col-lg-12 offset-sm-1 d-flex justify-content-center hyperColor center">
+        <a class="center" href="forgotPassword">Forgot your password?</a>
+    </div>
+    <div class="center col-12">Don't have an account....?</div>
+
+    <!-- Sing up Link-->
+    <div class="col-sm-5  col-lg-12  d-flex justify-content-center center hyperColor">
+        <a href="signup" class="center">Sign Up</a>
+    </div>
 </section>

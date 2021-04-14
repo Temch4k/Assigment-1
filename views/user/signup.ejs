@@ -14,7 +14,7 @@
                     </form>
                 </div>
                 <div>
-                    <button type="button" onclick="location.href='/signin';" class="btn btn-outline-warning btn-lg"
+                    <button type="button" onclick="location.href='login';" class="btn btn-outline-warning btn-lg"
                         id="loginBtn">Login</button>
                 </div>
             </div>
@@ -29,7 +29,7 @@
         <img src="/images/beautfulWomanOrangeFlowers.jpg" alt="" class="brdr resizeImg">
     </div>
     <div class="float-right center">
-        <form action="/signUpAcc" method="post" id="mainForm">
+        <form action="/user/create" method="POST" id="mainForm">
             <fieldset class="brdr center">
                 <h1> Sign Up Now!</h1>
                 <br>
@@ -167,8 +167,7 @@
                          <h2><%= locals.errorMessage %></h2>
                      </div>
                 <% } %>
-                <button type="submit" onsubmit="location.href='/securityQuestions';" name="SubmitButton"
-                    class="btn btn-danger">Sign Up!</button>
+                <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                 <br>
                 <br>
             </fieldset>
