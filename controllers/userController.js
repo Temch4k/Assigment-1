@@ -42,6 +42,7 @@ module.exports={
                 nexy();
             }
             else {
+                console.log(error.message);
                 req.flash("Error", `Failed to create user account: ${error.message}`);
                 res.locals.redirect = "signup";
                 next();
@@ -94,8 +95,9 @@ module.exports={
     },
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
+        console.log(redirectPath);
         if(redirectPath != undefined) res.redirect(redirectPath);
-        next();
+        else next();
     },
     show: (req, res, next) => {
         let userId = req.params.id;

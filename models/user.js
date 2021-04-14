@@ -2,7 +2,7 @@ const passport = require("passport");
 passportLocalMongoose = require("passport-local-mongoose");
 
 const mongoose = require("mongoose"),
-    userSchema = new mongoose.Schema({
+    userSchema = mongoose.Schema({
         name: {
             first: {
                 type: String,
@@ -42,6 +42,10 @@ const mongoose = require("mongoose"),
         return `Name: ${this.name} Email: ${this.email} Birthday: ${this.birthday} Biography: ${this.biography} Number: ${this.number} Gender: ${this.gender}`;
     };
 
+    userSchema.plugin(passportLocalMongoose, {
+        usernameField: 'email'
+    });
+
     userSchema.methods.findLocalUser = function () {
         return this.model("User")
             .find({
@@ -49,10 +53,5 @@ const mongoose = require("mongoose"),
             })
             .exec();
     }
-    
-userSchema.plugin(passportLocalMongoose,{
-    usernameField: "email"
-});
 
-userSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model("User", userSchema);

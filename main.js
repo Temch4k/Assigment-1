@@ -19,6 +19,7 @@ const express = require("express"),
     expressValidator = require("express-validator"),
     connectFlash = require("connect-flash"),
     bcrypt = require('bcrypt'),
+    bodyParser = require('body-parser'),
     LocalStrategy = require('passport-local').Strategy;
 
     var MongoDBStore = require('connect-mongodb-session')(session);
@@ -127,6 +128,9 @@ router.use((req, res, next) => {
 /*
 router.use(expressValidator());*/
 
+app.use(bodyParser.urlencoded());
+
+app.use(bodyParser.json());
 
 app.use(flash())
 app.use(session({
