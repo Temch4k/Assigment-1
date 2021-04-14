@@ -8,7 +8,7 @@ const User = require("../models/user"),
                 last: body.textLastName
             },
             email: body.txtEmail,
-            userName: body.txtEmail,
+            username: body.txtEmail,
             password: body.txtPW, 
             number: body.txtTele,
             biography: body.txtBiography,
@@ -37,6 +37,7 @@ module.exports={
         let userParams = getUserParams(req.body);
 
         let newUser = new User(userParams);
+        console.log(newUser);
         User.register(newUser, req.body.txtPW, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");

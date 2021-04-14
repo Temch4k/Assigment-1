@@ -95,18 +95,17 @@ app.listen(app.get("port"), () => {
 });
 
 //Cookie stuff for later from authclasswork
-/*
+
 router.use(cookieParser("my_passcode"));
-router.use(expressSession({
+router.use(session({
     secret: "my_passcode",
     cookie: {
         maxAge: 360000
     },
     resave: false,
     saveUninitialized: false
-}));*/
+}));
 
-// passport stuff for later
 router.use(passport.initialize());
 router.use(passport.session());
 passport.use(User.createStrategy());
@@ -114,64 +113,46 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 router.use(connectFlash());
 
+// passport stuff for later
+
+
 
 //flash stuff for later
-/*
+
 router.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
-});*/
+});
 
 // express vlaidator for later
 /*
 router.use(expressValidator());*/
 
-app.use(bodyParser.urlencoded());
+//app.use(bodyParser.urlencoded());
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
-app.use(flash())
-app.use(session({
-    secret: 'something Super Sneaky',
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 1 day
-    },
-    store: store,
-    resave: true,
-    saveUninitialized: true
-}));
-
-// Dax's passport
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-
+// app.use(flash())
+// app.use(session({
+//     secret: 'something Super Sneaky',
+//     cookie: {
+//         maxAge: 1000 * 60 * 60 * 24 // 1 day
+//     },
+//     store: store,
+//     resave: true,
+//     saveUninitialized: true
+// }));
 
 /*
-app.post('/loginUser', passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/signin',
-    failureFlash: true
-}));*/
-
-
-
-/*
-router.get("/signup", homeController.showSignUp);
-router.get("/signin", homeController.showSignIn);
 router.get("/securityQuestions", homeController.showSecQuestions);
 router.get("/forgotPassword", homeController.showForgot);
 router.get("/home", homeController.showHome);
-
 router.get("/profilePage", homeController.showProfile);
-router.get("/sigine", homeController.showSIerror);
-router.get("/signupe", homeController.showSUerror);
 */
 
 router.get("/", homeController.index);
-
 
 router.get("/user", userController.indexView);
 
