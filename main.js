@@ -168,6 +168,7 @@ router.get("/signupe", homeController.showSUerror);
 
 router.get("/", homeController.index);
 
+
 router.get("/user", userController.indexView);
 
 router.get("/user/login", userController.login);
@@ -175,6 +176,9 @@ router.post("/user/login", userController.authenticate);
 
 router.get("/user/signup", userController.new);
 router.post("/user/create", userController.create, userController.redirectView);
+
+router.get("/user/forgotPassword", userController.forgotPassword);
+
 
 // still need login procedure
 

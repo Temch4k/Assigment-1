@@ -19,6 +19,9 @@ module.exports={
     login:(req,res)=>{
         res.render("user/login");
     },
+    forgotPassword:(req,res)=>{
+        res.render("user/forgotPassword");
+    },
     indexView: (req, res) =>{
         res.render("user/index");//come back to 
     },
@@ -35,12 +38,12 @@ module.exports={
         user.register(newUser, req.body.password, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
-                res.locals.redirect = "users/login";
+                res.locals.redirect = "login";
                 nexy();
             }
             else {
                 req.flash("Error", `Failed to create user account: ${error.message}`);
-                res.locals.redirect = "users/signup";
+                res.locals.redirect = "signup";
                 next();
             }
         })
