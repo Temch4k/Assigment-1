@@ -18,12 +18,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    userName: {
+    username: {
         type: String,
         required: true
     },
     birthday: {
-        type: String,
+        type: Date,
     },
     biography: {
         type: String,

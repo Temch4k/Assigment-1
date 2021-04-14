@@ -18,8 +18,11 @@ db.once("open", function () {
 });
 
 var users = [{
-    Fname: "Micah",
-    Lname: "Stovy",
+    name: {
+      first: "Micah",
+      last: "Stovy",
+    },
+    userName:"micah.stovall@ucdenver.edu",
     email: "micah.stovall@ucdenver.edu",
     birthday: (1998, 11, 2),
     biography: "Likes to be alive",
@@ -28,8 +31,11 @@ var users = [{
     password: "twiddledietwiddlo"
   },
   {
-    Fname: "Artsiome",
-    Lname: "Skarakhod",
+    name: {
+      first: "Artsiom",
+      last: "Skarakhod",
+    },
+    userName:"artsiom.skarakhod@ucdenver.edu",
     email: "artsiom.skarakhod@ucdenver.edu",
     birthday: (1999, 12, 8),
     biography: "Likes to touch soft fur",
@@ -38,8 +44,11 @@ var users = [{
     password: "drowssap"
   },
   {
-    Fname: "Dax",
-    Lname: "Valdez",
+    name: {
+      first: "Dax",
+      last: "Valdez",
+    },
+    userName:"dax.valdez@ucdenver.edu",
     email: "dax.valdez@ucdenver.edu",
     birthday: (1880, 1, 31),
     biography: "Likes to fly in the sky",
@@ -48,8 +57,11 @@ var users = [{
     password: "password"
   },
   {
-    Fname: "Bob",
-    Lname: "Bobberson",
+    name: {
+      first: "Bob",
+      last: "Bobberson",
+    }, 
+    userName: "bobby@hotmail.com",
     email: "bobby@hotmail.com",
     birthday: (2001, 4, 15),
     biography: "Walks on lava",
@@ -64,8 +76,11 @@ commands = []
 users.forEach(c => {
   commands.push(
       user.save({
-        Fname: c.Fname,
-        Lname: c.Lname,
+        name:{
+          first: c.Fname,
+          last: c.Lname
+        },
+        userName: c.userName,
         email: c.email,
         birthday: c.birthday,
         biography: c.biography,

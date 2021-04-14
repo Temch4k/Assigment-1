@@ -2,18 +2,17 @@
 const passport = require("passport");
 const User = require("../models/user"),
     getUserParams = body => {
-        let dob = body.txtDOB.month + "/" + body.txtDOB.day + "/" + body.txtDOB.year;
         return {
             name: {
                 first: body.textFirstName,
                 last: body.textLastName
             },
             email: body.txtEmail,
-            userName: body.txtEmail,
+            username: body.txtEmail,
             password: body.txtPW, 
             number: body.txtTele,
             biography: body.txtBiography,
-            birthday: dob,
+            birthday: body.txtDOB,
             gender: body.gender,
         };
     };
