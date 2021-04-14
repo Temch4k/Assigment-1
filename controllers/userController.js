@@ -2,6 +2,7 @@
 const passport = require("passport");
 const User = require("../models/user"),
     getUserParams = body => {
+        let dob = body.txtDOB.month + "/" + body.txtDOB.day + "/" + body.txtDOB.year;
         return {
             name: {
                 first: body.textFirstName,
@@ -12,7 +13,7 @@ const User = require("../models/user"),
             password: body.txtPW, 
             number: body.txtTele,
             biography: body.txtBiography,
-            birthday: body.txtDOB,
+            birthday: dob,
             gender: body.gender,
         };
     };
@@ -37,6 +38,7 @@ module.exports={
         let userParams = getUserParams(req.body);
 
         let newUser = new User(userParams);
+        console.log(newUser);
         User.register(newUser, req.body.txtPW, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
