@@ -86,7 +86,7 @@ module.exports={
     authenticate: passport.authenticate("local", {
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
-        successRedirect: "/",
+        successRedirect: "/home",
         successFlash: "Logged in"
     }),
     logout: (req,res,ext)=>{
@@ -239,26 +239,5 @@ exports.saveUser = async (req, res, next) => {
             console.log(newUser)
             res.render("signup", {errorMessage})
         }
-    }
-};
-
-exports.signInUser = async (req, res, next) => {
-    console.log("random string")
-    const tempUser = await user.findOne({
-        email: req.body.txtEmail
-    })
-    var errorMessage;
-    if (tempUser) {
-        if (tempUser.password == req.body.txtPassword) {
-            res.render("home");
-        } else {
-            errorMessage = "Incorrect Password"
-            console.log(errorMessage)
-            res.render("login", {errorMessage})
-        }
-    } else {
-        errorMessage = "Unknown email"
-        console.log(errorMessage)
-        res.render("login", {errorMessage})
     }
 };
