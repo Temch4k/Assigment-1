@@ -1,16 +1,18 @@
 "use strict";
 const passport = require("passport");
-const user = require("../models/user"),
+const User = require("../models/user"),
     getUserParams = body => {
         return {
             name: {
-                first: body.first,
-                last: body.last
+                first: body.textFirstName,
+                last: body.textLastName
             },
-            email: body.email,
-            password: body.password,
-            biography: body.biography,
-            birthday: body.biography,
+            email: body.txtEmail,
+            userName: body.txtEmail,
+            password: body.txtPW, 
+            number: body.txtTele,
+            biography: body.txtBiography,
+            birthday: body.txtDOB,
             gender: body.gender,
         };
     };
@@ -34,12 +36,12 @@ module.exports={
         }
         let userParams = getUserParams(req.body);
 
-        let newUser = new user(userParams);
-        user.register(newUser, req.body.password, (error, user)=>{
+        let newUser = new User(userParams);
+        User.register(newUser, req.body.txtPW, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
                 res.locals.redirect = "login";
-                nexy();
+                next();
             }
             else {
                 console.log(error.message);
