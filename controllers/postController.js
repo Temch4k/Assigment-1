@@ -2,6 +2,11 @@
 
 const Post = require("../models/post");
 
+// TODO:
+// take in posts from home.ejs
+// save new posts
+// ensure that posts are displayed in home.ejs correctly
+
 module.exports = {
     create: (req, res, next) => {
         let newPost = new Post({
