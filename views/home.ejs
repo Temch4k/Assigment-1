@@ -46,11 +46,11 @@
 
 <div class="row postContainer">
     <div class="col-12">
-        <form>
+        <form action="/user/update" method="POST">
             <div class="row">
                 <div class="col-12">
-                    <label for="postDescription">Post here...</label>
-                    <textarea class="form-control" id="postDescription" rows="5" cols="50"></textarea>
+                    <label for="postBody">Post here...</label>
+                    <textarea class="form-control" id="postBody" rows="5" cols="50"></textarea>
                 </div>
 
                 <div class="col-12" id="PostButtonContainer">
@@ -63,7 +63,8 @@
     </div>
 </div>
 
-<% availablePosts.forEach(post => { %>
+<% users.forEach(user => { %>
+<% user.posts.forEach(Post => { %>
 <div class="row">
     <div class="col-6 postContainer">
         <div class="card">
@@ -72,15 +73,16 @@
                     <!-- Need to link uploaded photo with profile picture -->
                     <img class="d-flex mr-3 postThumbnail" src="/img/profilePic1.jpg">
                     <div class="media-body">
-                        <h5 class="mt-0"><%= post._user %></h5>
-                        <i><%= post.date %></i>
-                        <div class="postMainBody"><%= post.body %></div>
+                        <h5 class="mt-0"><%= Post.userID %></h5>
+                        <i><%= Post.date %></i>
+                        <div class="postMainBody"><%= Post.postBody %></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<% }); %>
 <% }); %>
 
 <div class="row col-6" style="margin:auto">

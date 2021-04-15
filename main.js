@@ -1,11 +1,14 @@
 // Dax's passport
 // const user = require("./models/user.js");
 
+const post = require("./models/post.js");
+
 const express = require("express"),
     app = express(),
     homeController = require("./controllers/homeController.js"),
     errorController = require("./controllers/errorController.js"),
     userController = require("./controllers/userController.js"),
+    postController = require("./controllers/postController.js"),
 
     User = require("./models/user"),
     layouts = require("express-ejs-layouts"),
@@ -186,3 +189,19 @@ function checkPassword(inputText) {
         return false;
     }
 }
+/*
+Post.create( {
+    _user: "",
+    body: ""
+}).then(post => {
+    console.log(post);
+    User.findOne({}).then(
+        user => {
+            user.posts.push(post._id);
+            user.save();
+            User.populate(user, "posts").then(user =>
+                console.log(user));
+        }
+    )
+});
+*/

@@ -53,6 +53,10 @@ userSchema.plugin(passportLocalMongoose, {
     usernameField: "username"
 });
 
+userSchema.virtual("fullName").get(function() {
+    return `${this.name.first} ${this.name.last}`;
+});
+
 userSchema.methods.findLocalUser = function () {
     return this.model("User")
         .find({

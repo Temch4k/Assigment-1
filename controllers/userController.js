@@ -14,6 +14,7 @@ const User = require("../models/user"),
             biography: body.txtBiography,
             birthday: body.txtDOB,
             gender: body.gender,
+            posts: body.posts
         };
     };
 
@@ -133,7 +134,8 @@ module.exports={
             password: req.body.password,
             biography: req.body.biography,
             birthday: req.body.birthday,
-            gender: req.body.gender
+            gender: req.body.gender,
+            posts: req.body.posts
         });
         User.findByIdAndUpdate(userId,
             {
@@ -145,7 +147,8 @@ module.exports={
                     password: req.body.password,
                     biography: req.body.biography,
                     birthday: req.body.biography,
-                    gender: req.body.gender
+                    gender: req.body.gender,
+                    posts: req.body.posts
                 }
             }
         )

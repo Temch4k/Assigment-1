@@ -79,7 +79,7 @@ var Post = [
   },
   {
     _user: "dax.valdez@ucdenver.edu",
-    body: "Woo Hoo! Just won the soccer gamew today"
+    body: "Woo Hoo! Just won the soccer game today"
   },
   {
     _user: "micah.stovall@ucdenver.edu",

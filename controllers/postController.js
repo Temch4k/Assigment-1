@@ -23,7 +23,7 @@ module.exports = {
     create: (req, res, next) => {
         let newPost = new post({
             userId: req.body.userId, //needs to be adjusted for relational data
-            postMessage: req.body.postMessage
+            postBody: req.body.postBody
         });
         post.create(newpost)
             .then(post => {
