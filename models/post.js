@@ -9,7 +9,7 @@ const mongoose = require("mongoose"),
         _user : {
             type: String, ref: user.first + " " + user.last
         },
-        content : {
+        body : {
             type: String,
             min: 1,
             max: 500
