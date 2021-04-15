@@ -145,25 +145,23 @@ router.use(expressValidator());*/
 //     saveUninitialized: true
 // }));
 
-/*
+
+// login or sign up page
+router.get("/", homeController.index);
+
+// user routing
+router.get("/user", userController.indexView);
+router.get("/user/login", userController.login);
+router.post("/user/login", userController.authenticate);
+router.get("/user/signup", userController.new);
+router.post("/user/create", userController.create, userController.redirectView);
+router.get("/user/forgotPassword", userController.forgotPassword);
+
+// home routing
 router.get("/securityQuestions", homeController.showSecQuestions);
 router.get("/forgotPassword", homeController.showForgot);
 router.get("/home", homeController.showHome);
 router.get("/profilePage", homeController.showProfile);
-*/
-
-router.get("/", homeController.index);
-
-router.get("/user", userController.indexView);
-
-router.get("/user/login", userController.login);
-router.post("/user/login", userController.authenticate);
-
-router.get("/user/signup", userController.new);
-router.post("/user/create", userController.create, userController.redirectView);
-
-router.get("/user/forgotPassword", userController.forgotPassword);
-
 
 // still need login procedure
 
