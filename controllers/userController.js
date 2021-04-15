@@ -8,7 +8,7 @@ const User = require("../models/user"),
                 last: body.textLastName
             },
             email: body.txtEmail,
-            username: body.txtEmail,
+            username: body.username,
             password: body.txtPW, 
             number: body.txtTele,
             biography: body.txtBiography,
@@ -37,7 +37,6 @@ module.exports={
         let userParams = getUserParams(req.body);
 
         let newUser = new User(userParams);
-        console.log(newUser);
         User.register(newUser, req.body.txtPW, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
@@ -87,7 +86,7 @@ module.exports={
     authenticate: passport.authenticate("local", {
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
-        successRedirect: "/home",
+        successRedirect: "home",
         successFlash: "Logged in"
     }),
     logout: (req,res,ext)=>{
@@ -211,6 +210,7 @@ exports.saveUser = async (req, res, next) => {
             Fname: req.body.textFirstName,
             Lname: req.body.textLastName,
             email: req.body.txtEmail,
+            username: req.body.username,
             birthday: req.body.txtDOB,
             biography: req.body.txtBiography,
             gender: req.body.gender,

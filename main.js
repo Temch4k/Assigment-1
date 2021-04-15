@@ -20,47 +20,9 @@ const express = require("express"),
     connectFlash = require("connect-flash"),
     bcrypt = require('bcrypt'),
     bodyParser = require('body-parser'),
+    passportLocal = require("passport-local"),
     LocalStrategy = require('passport-local').Strategy;
-
     var MongoDBStore = require('connect-mongodb-session')(session);
-
-
-// Dax's passport
-/*
-passport.serializeUser(function (user, done) {
-    done(null, user._id);
-});
-
-passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
-        done(err, user);
-    });
-});
-
-passport.use(new LocalStrategy(
-    function (username, password, done) {
-        User.findOne({
-            email: username
-        }, (err, user) => {
-            if (err) return done(err)
-            if (!user) return done(null, false, {
-                message: 'User not found!'
-            });
-            bcrypt.compare(password, user.password, function (err, res) {
-                if (err) return done(err)
-                if (res) {
-                    return done(null, user);
-                } else {
-                    return done(null, false, {
-                        message: 'Incorrect password!'
-                    });
-                }
-            })
-        })
-    }
-));*/
-
-//store session data in this db
 
 mongoose.connect("mongodb://localhost:27017/yoverse", {
     useUnifiedTopology: true,
@@ -76,6 +38,8 @@ var store = new MongoDBStore({
     uri: sessionData,
     collection: 'sessions'
 });
+
+
 
 router.use(express.static(__dirname + '/public'));
 console.log(__dirname);
@@ -120,13 +84,13 @@ router.use(connectFlash());
 //flash stuff for later
 
 router.use((req, res, next) => {
-    res.locals.flashMessages = req.flash();
+    res.locals.flashMessages = req.flash
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
 });
 
-// express vlaidator for later
+// express vlaidator for laters
 /*
 router.use(expressValidator());*/
 
@@ -151,6 +115,7 @@ router.get("/forgotPassword", homeController.showForgot);
 router.get("/home", homeController.showHome);
 router.get("/profilePage", homeController.showProfile);
 */
+
 
 router.get("/", homeController.index);
 
