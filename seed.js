@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose"),
+  Post = require("./models/post")
   User = require("./models/user");
 
 mongoose.connect(
@@ -71,6 +72,24 @@ var users = [{
   }
 ];
 
+var Post = [
+  {
+  _user: "bobby@hotmail.com",
+  body: "I just walked on lava again!"
+  },
+  {
+    _user: "dax.valdez@ucdenver.edu",
+    body: "Woo Hoo! Just won the soccer gamew today"
+  },
+  {
+    _user: "micah.stovall@ucdenver.edu",
+    body: "I ate the biggest burrito ever last night!"
+  },
+  {
+    _user: "artsiom.skarakhod@ucdenver.edu",
+    body: "Was out on a walk and spotted a barn owl. Neat!"
+  }
+];
 commands = []
 
 users.forEach(c => {
