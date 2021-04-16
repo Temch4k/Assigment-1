@@ -34,6 +34,9 @@ module.exports={
     showHome: (req, res) => {
         res.render("user/home");
     },
+    showSecQuestions: (req, res) =>{
+        res.render("user/securityQuestions");
+    },
     create: (req, res, next)=>{
         if(req.skip){
             return next();
@@ -88,9 +91,9 @@ module.exports={
         })
     },
     authenticate: passport.authenticate("local", {
+        successRedirect: "home",
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
-        successRedirect: "home",
         successFlash: "Logged in"
     }),
     logout: (req,res,ext)=>{

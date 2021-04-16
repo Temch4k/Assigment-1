@@ -112,6 +112,12 @@ router.use(expressValidator());*/
 //     saveUninitialized: true
 // }));
 
+// if(loggedIn)
+// {
+//     router.get("/user/login", userController.showHome);
+//     router.get("/user/signup", userController.showHome);
+//     router.get("/user/forgotPassword", userController.forgotPassword);
+// }
 
 
 router.get("/", homeController.index);
@@ -128,9 +134,7 @@ router.get("/user/home", userController.showHome);
 
 
 // home routing
-router.get("/securityQuestions", homeController.showSecQuestions);
-router.get("/forgotPassword", homeController.showForgot);
-router.get("/home", homeController.showHome);
+router.get("/user/securityQuestions", userController.showSecQuestions);
 router.get("/profilePage", homeController.showProfile);
 
 // still need login procedure
