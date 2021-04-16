@@ -1,3 +1,7 @@
+const { render } = require("ejs");
+const mongoose = require("mongoose");
+const User = require("../models/user");
+const Post = require("../models/post");
 
 module.exports = {
     index: (req,res) => {
@@ -10,7 +14,11 @@ module.exports = {
         res.render("forgotPassword");
     },
     showHome: (req, res) => {
-        res.render("home");
+        res.render('home', {
+            User: User,
+            userArray: [{type: mongoose.Schema.Types.ObjectId, ref: User}],
+            post: [{type: mongoose.Schema.Types.ObjectId, ref: User.posts}]
+        });
     },
     showProfile: (req, res) => {
         res.render("profilePage");
@@ -23,6 +31,11 @@ module.exports = {
     }
 }
 
+exports.showUsers = (req, res) => {
+    res.render('home', {
+                  user: users
+          });
+}
 
     // exports.showSecQuestions = (req, res) => {
     //     res.render("securityQuestions");

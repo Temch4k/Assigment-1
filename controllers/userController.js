@@ -162,6 +162,33 @@ module.exports={
                 next(error);
             });
     },
+    updatePost: (req, res, next) => {
+        if(req.skip)
+        { 
+            return next();
+        }
+        let userId = req.params.id;
+        let updatedUser = new User({
+            posts: req.body.posts
+        });
+        User.findByIdAndUpdate(userId,
+            {
+                $set:
+                {
+                    posts: req.body.posts
+                }
+            }
+        )
+            .then(user => {
+                res.locals.user = user;
+                res.locals.redirect = `/home`;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            });
+    },
     delete: (req, res, next) =>{
         let userId = req.params.id;
         User.findByIdAndRemove(userId)
