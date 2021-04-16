@@ -39,25 +39,28 @@ const userSchema = new mongoose.Schema({
         type: String,
         min: [5],
         max: [20]
-    }
+    },
+    posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}]
 }, {
     timestamps: true
 });
 
 userSchema.methods.getInfo = function () {
-    return `Name: ${this.name} Email: ${this.email} Birthday: ${this.birthday} Biography: ${this.biography} Number: ${this.number} Gender: ${this.gender}`;
+    return `name ${this.name} username ${this.username} email ${this.email} birthday ${this.birthday} biography ${this.biography} number ${this.number} gender ${this.gender}`;
 };
 
-
-
 userSchema.plugin(passportLocalMongoose, {
-    usernameField: "email"
+    usernameField: "username"
+});
+
+userSchema.virtual("fullName").get(function() {
+    return `${this.name.first} ${this.name.last}`;
 });
 
 userSchema.methods.findLocalUser = function () {
     return this.model("User")
         .find({
-            zipCode: this.zipCode
+            username: this.username
         })
         .exec();
 }

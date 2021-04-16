@@ -32,7 +32,25 @@
         <form action="/user/create" method="POST" id="mainForm">
             <fieldset class="brdr center">
                 <h1> Sign Up Now!</h1>
+
                 <br>
+
+                <div class="row form-group center">
+                    <div class="col-sm-10 col-lg-5">
+                        <label for="txtUserName" class="col-md-12 col-form-label">
+                            <span>User Name*:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-10 col-lg-7">
+                        <input type="text" required id="txtUserName" name="username" required class="form-control col-6">
+                    </div>
+                    <div id="divDoBError" class="invisible errorMessage">
+
+                    </div>
+                </div>
+
+                <br>
+
                 <div class="row form-group center">
                     <div class="col-sm-10 col-lg-3">
                         <label for="txtEmail">
@@ -163,9 +181,9 @@
                 <br>
                 <br>
                 <% if(locals.errorMessage){ %>
-                     <div id="divInvalidCharError" class="alert-danger center col-8">
-                         <h2><%= locals.errorMessage %></h2>
-                     </div>
+                <div id="divInvalidCharError" class="alert-danger center col-8">
+                    <h2><%= locals.errorMessage %></h2>
+                </div>
                 <% } %>
                 <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                 <br>

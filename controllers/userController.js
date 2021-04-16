@@ -8,12 +8,13 @@ const User = require("../models/user"),
                 last: body.textLastName
             },
             email: body.txtEmail,
-            username: body.txtEmail,
+            username: body.username,
             password: body.txtPW, 
             number: body.txtTele,
             biography: body.txtBiography,
             birthday: body.txtDOB,
             gender: body.gender,
+            posts: body.posts
         };
     };
 
@@ -40,7 +41,6 @@ module.exports={
         let userParams = getUserParams(req.body);
 
         let newUser = new User(userParams);
-        console.log(newUser);
         User.register(newUser, req.body.txtPW, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
@@ -90,7 +90,7 @@ module.exports={
     authenticate: passport.authenticate("local", {
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
-        successRedirect: "/",
+        successRedirect: "home",
         successFlash: "Logged in"
     }),
     logout: (req,res,ext)=>{
@@ -137,7 +137,8 @@ module.exports={
             password: req.body.password,
             biography: req.body.biography,
             birthday: req.body.birthday,
-            gender: req.body.gender
+            gender: req.body.gender,
+            posts: req.body.posts
         });
         User.findByIdAndUpdate(userId,
             {
@@ -149,13 +150,41 @@ module.exports={
                     password: req.body.password,
                     biography: req.body.biography,
                     birthday: req.body.biography,
-                    gender: req.body.gender
+                    gender: req.body.gender,
+                    posts: req.body.posts
                 }
             }
         )
             .then(user => {
                 res.locals.user = user;
                 res.locals.redirect = `/users/${user._id}`;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            });
+    },
+    updatePost: (req, res, next) => {
+        if(req.skip)
+        { 
+            return next();
+        }
+        let userId = req.params.id;
+        let updatedUser = new User({
+            posts: req.body.posts
+        });
+        User.findByIdAndUpdate(userId,
+            {
+                $set:
+                {
+                    posts: req.body.posts
+                }
+            }
+        )
+            .then(user => {
+                res.locals.user = user;
+                res.locals.redirect = `/home`;
                 next();
             })
             .catch(error => {
@@ -214,6 +243,7 @@ exports.saveUser = async (req, res, next) => {
             Fname: req.body.textFirstName,
             Lname: req.body.textLastName,
             email: req.body.txtEmail,
+            username: req.body.username,
             birthday: req.body.txtDOB,
             biography: req.body.txtBiography,
             gender: req.body.gender,
@@ -243,26 +273,5 @@ exports.saveUser = async (req, res, next) => {
             console.log(newUser)
             res.render("signup", {errorMessage})
         }
-    }
-};
-
-exports.signInUser = async (req, res, next) => {
-    console.log("random string")
-    const tempUser = await user.findOne({
-        email: req.body.txtEmail
-    })
-    var errorMessage;
-    if (tempUser) {
-        if (tempUser.password == req.body.txtPassword) {
-            res.render("home");
-        } else {
-            errorMessage = "Incorrect Password"
-            console.log(errorMessage)
-            res.render("login", {errorMessage})
-        }
-    } else {
-        errorMessage = "Unknown email"
-        console.log(errorMessage)
-        res.render("login", {errorMessage})
     }
 };

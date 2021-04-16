@@ -1,6 +1,6 @@
-"use strict";
 
 const mongoose = require("mongoose"),
+  Post = require("./models/post")
   User = require("./models/user");
 
 mongoose.connect(
@@ -71,11 +71,30 @@ var users = [{
   }
 ];
 
+var post = [
+  {
+  _user: "bobby@hotmail.com",
+  postBody: "I just walked on lava again!"
+  },
+  {
+    _user: "dax.valdez@ucdenver.edu",
+    postBody: "Woo Hoo! Just won the soccer game today"
+  },
+  {
+    _user: "micah.stovall@ucdenver.edu",
+    postBody: "I ate the biggest burrito ever last night!"
+  },
+  {
+    _user: "artsiom.skarakhod@ucdenver.edu",
+    postBody: "Was out on a walk and spotted a barn owl. Neat!"
+  }
+];
+
 commands = []
 
 users.forEach(c => {
   commands.push(
-      user.save({
+      User.create({
         name:{
           first: c.Fname,
           last: c.Lname
@@ -86,11 +105,11 @@ users.forEach(c => {
         biography: c.biography,
         gender: c.gender,
         number: c.number,
-        password: c.password
+        password: c.password,
+        post: c.post
       })
   );
 });
-
 
 User.deleteMany()
   .exec()
@@ -99,8 +118,6 @@ User.deleteMany()
   });
 
 var commands = [];
-
-
 
 Promise.all(commands)
   .then(r => {
