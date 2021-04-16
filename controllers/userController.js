@@ -1,5 +1,7 @@
 "use strict";
+const flashMessages = require("connect-flash");
 const passport = require("passport");
+const post = require("../models/post");
 const User = require("../models/user"),
     getUserParams = body => {
         return {
@@ -56,30 +58,32 @@ module.exports={
         })
     },
     validate: (req, res, next) =>{
-        req.santizeBody("email").normalizeEmail({
+        req.sanitizeBody("txtEmail").normalizeEmail({
             all_lowercase: true
         }).trim();
         
-        req.check("name.first", "First name not valid").notEmpty().all_lowercase()
-        req.check("name.last", "Last name not valid").notEmpty().all_lowercase()
+        req.check("textFirstName", "First name not valid").notEmpty()
+        req.check("textLastName", "Last name not valid").notEmpty()
+        req.check("txtDOB", "Birthday has to be earlier than today").notEmpty()
+        req.check("txtPW", "Passwords must match").equals(req.body.txtPW2)
 
         req.check("gender", "Gender not valide").notEmpty()
 
-        req.check("email", "email is not valid").isEmail();
-        req.check("biography", "Biography is not valid").notEmpty().isLength({
+        req.check("txtEmail", "email is not valid").isEmail();
+        req.check("txtBiography", "Biography is not valid").notEmpty().isLength({
             min: 1,
             max: 500
         });
-        req.check("password", "password cannot be empty").netEmpty();
+        req.check("txtPW", "password cannot be empty").notEmpty();
 
         
-        req.getValidationResults().then((error) =>{
+        req.getValidationResult().then((error) =>{
             if(!error.isEmpty()){
                 let messages = error.array().map (e => e.msg);
                 req.flash("error", messages.join(" and "));
                 req.skip = true;
 
-                res.local.redirect = "login";
+                res.locals.redirect = "signup";
                 next();
             }
             else{

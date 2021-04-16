@@ -9,7 +9,6 @@ const express = require("express"),
     errorController = require("./controllers/errorController.js"),
     userController = require("./controllers/userController.js"),
     postController = require("./controllers/postController.js"),
-
     User = require("./models/user"),
     layouts = require("express-ejs-layouts"),
     mongoose = require("mongoose"),
@@ -42,7 +41,7 @@ var store = new MongoDBStore({
     collection: 'sessions'
 });
 
-
+router.use(expressValidator())
 
 router.use(express.static(__dirname + '/public'));
 console.log(__dirname);
@@ -87,32 +86,16 @@ router.use(connectFlash());
 //flash stuff for later
 
 router.use((req, res, next) => {
-    res.locals.flashMessages = req.flash
+    res.locals.flashMessages = req.flash();
+    next();
+  });
+
+router.use((req, res, next) => {
+    res.locals.flashMessages = req.flash();
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
 });
-
-// express vlaidator for laters
-/*
-router.use(expressValidator());*/
-
-//app.use(bodyParser.urlencoded());
-
-//app.use(bodyParser.json());
-
-// app.use(flash())
-// app.use(session({
-//     secret: 'something Super Sneaky',
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24 // 1 day
-//     },
-//     store: store,
-//     resave: true,
-//     saveUninitialized: true
-// }));
-
-
 
 router.get("/", homeController.index);
 
@@ -121,7 +104,7 @@ router.get("/user", userController.indexView);
 router.get("/user/login", userController.login);
 router.post("/user/login", userController.authenticate);
 router.get("/user/signup", userController.new);
-router.post("/user/create", userController.create, userController.redirectView);
+router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
 
 router.get("/user/home", userController.showHome);
@@ -192,19 +175,3 @@ function checkPassword(inputText) {
         return false;
     }
 }
-/*
-Post.create( {
-    _user: "",
-    body: ""
-}).then(post => {
-    console.log(post);
-    User.findOne({}).then(
-        user => {
-            user.posts.push(post._id);
-            user.save();
-            User.populate(user, "posts").then(user =>
-                console.log(user));
-        }
-    )
-});
-*/
