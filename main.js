@@ -164,6 +164,9 @@ router.post("/user/create", userController.create, userController.redirectView);
 
 router.get("/user/forgotPassword", userController.forgotPassword);
 
+router.get("/user/home", userController.showHome);
+
+
 
 // still need login procedure
 

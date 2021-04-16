@@ -30,6 +30,9 @@ module.exports={
     new: (req, res) =>{
         res.render("user/signup");
     },
+    showHome: (req, res) => {
+        res.render("user/home");
+    },
     create: (req, res, next)=>{
         if(req.skip){
             return next();
