@@ -71,24 +71,28 @@
     </div>
 </div>
 
-<% availablePosts.forEach(post => { %>
-<div class="row">
-    <div class="col-6 postContainer">
-        <div class="card">
-            <div class="card-block">
-                <div class="media">
-                    <!-- Need to link uploaded photo with profile picture -->
-                    <img class="d-flex mr-3 postThumbnail" src="/img/profilePic1.jpg">
-                    <div class="media-body">
-                        <h5 class="mt-0"><%= post._user %></h5>
-                        <i><%= post.date %></i>
-                        <div class="postMainBody"><%= post.content %></div>
+<% userArray.forEach(Post => { %>
+    <% post.forEach(Post => { %>
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <!-- Need to link uploaded photo with profile picture -->
+                        <!-- Or make a stock user profile photo -->
+                        <img class="d-flex mr-3 postThumbnail" src="/img/profilePic1.jpg">
+                        <div class="media-body">
+                            <h5 class="mt-0"><%= User.fullName %></h5>
+                            <i><%= post.date %></i>
+                            <div class="postMainBody"><%= post.postBody %></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<% }); %>
 <% }); %>
 
 <div class="row col-6" style="margin:auto">
