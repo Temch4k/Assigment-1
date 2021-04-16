@@ -54,7 +54,7 @@
 
 <div class="row postContainer">
     <div class="col-12">
-        <form>
+        <form action="/user/home" method="POST">
             <div class="row">
                 <div class="col-12">
                     <label for="postDescription">Post here...</label>
@@ -80,7 +80,7 @@
                     <div class="media">
                         <!-- Need to link uploaded photo with profile picture -->
                         <!-- Or make a stock user profile photo -->
-                        <img class="d-flex mr-3 postThumbnail" src="/img/profilePic1.jpg">
+                        <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
                         <div class="media-body">
                             <h5 class="mt-0"><%= User.fullName %></h5>
                             <i><%= post.date %></i>
