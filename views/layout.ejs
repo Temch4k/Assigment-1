@@ -23,7 +23,15 @@
 
 <body>
     <%-body%>
-
+    <div>
+        <% if (flashMessages) { %>
+          <% if (flashMessages.success) { %>
+            <div class="alert alert-primary"><%= flashMessages.success %></div>
+          <% } else if (flashMessages.error) { %>
+            <div class="alert alert-warning"><%= flashMessages.error %></div>
+          <% } %>
+        <% } %>
+    </div>
         <br>
         <br>
         <footer>
@@ -53,6 +61,8 @@
                         </div>
                     </div>
 
+
+                    
                     <br>
                     <div class="row">
                         <div class="col-md-12">

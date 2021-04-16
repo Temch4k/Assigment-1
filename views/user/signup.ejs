@@ -42,7 +42,8 @@
                         </label>
                     </div>
                     <div class="col-sm-10 col-lg-7">
-                        <input type="text" required id="txtUserName" name="username" required class="form-control col-6">
+                        <input type="text" required id="txtUserName" name="username" required
+                            class="form-control col-6">
                     </div>
                     <div id="divDoBError" class="invisible errorMessage">
 
@@ -69,7 +70,7 @@
                     </div>
                     <div class="col-sm-10 col-lg-4 ">
                         <input type="tel" required name="txtTele" id="txtTele" placeholder="333-333-3333"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="col-9 form-control">
+                            class="col-9 form-control">
                     </div>
                 </div>
 
@@ -180,11 +181,6 @@
 
                 <br>
                 <br>
-                <% if(locals.errorMessage){ %>
-                <div id="divInvalidCharError" class="alert-danger center col-8">
-                    <h2><%= locals.errorMessage %></h2>
-                </div>
-                <% } %>
                 <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                 <br>
                 <br>
