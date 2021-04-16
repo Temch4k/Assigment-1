@@ -216,3 +216,6 @@ Form.blocktext {
   .button:hover{
     background-color: #ffa69e;
   }
+  .alert{
+      color: #893168;
+  }

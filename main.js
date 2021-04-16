@@ -87,11 +87,6 @@ router.use(connectFlash());
 
 router.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
-    next();
-  });
-
-router.use((req, res, next) => {
-    res.locals.flashMessages = req.flash();
     res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
     next();
