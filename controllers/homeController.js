@@ -13,6 +13,7 @@ module.exports = {
     showHome: (req, res) => {
         res.render('home', {
             User: User,
+            /* figure out way to place all users into array */
             userArray: [{type: mongoose.Schema.Types.ObjectId, ref: User}],
             post: [{type: mongoose.Schema.Types.ObjectId, ref: User.posts}]
         });

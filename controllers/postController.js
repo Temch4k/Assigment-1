@@ -25,7 +25,7 @@ module.exports = {
             userId: req.body.userId, //needs to be adjusted for relational data
             postBody: req.body.postBody
         });
-        post.create(newpost)
+        post.register(newpost)
             .then(post => {
                 res.locals.post = post;
                 res.locals.redirect = "/post";
