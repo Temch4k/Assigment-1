@@ -14,6 +14,9 @@ const mongoose = require("mongoose"),
             min: 1,
             max: 500
         },
+        posterName:{
+            type: String
+        },
         date: { type: Date, default: Date.now }
     });
 module.exports = mongoose.model("post", postSchema);

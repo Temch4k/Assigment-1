@@ -23,11 +23,15 @@ module.exports = {
     },
     create: (req, res, next) => {
         let user = req.params.id;
+        let currentUserID = res.locals.currentUser._id;
+        var username =res.locals.currentUser.username;
+        
         let newPost = new Post({
             userId: user,    //needs to be adjusted for relational data
-            postBody: req.body.postbody
+            postBody: req.body.postbody,
+            posterName: username
         });
-        if((res.locals.currentUser._id == user)){
+        if(currentUserID == user){
             Post.create(newPost)
                 .then(p => {
                         // add post to user object

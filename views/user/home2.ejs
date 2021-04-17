@@ -69,24 +69,25 @@
     <div class="row">
         <div class="col-6 postContainer">
             <div class="card">
+                <% posts.forEach(post=> { %>
                 <div class="card-block">
                     <div class="media">
                         <!-- Need to link uploaded photo with profile picture -->
                         <!-- Or make a stock user profile photo -->
-                        <% posts.forEach(post=> { %>
                             <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
                             <div class="media-body">
                                 <h5 class="mt-0"></h5>
                                 <i>
-                                    <%= post._id %>
+                                    <%= post.posterName %>
                                 </i>
                                 <div class="postMainBody">
-                                    <%= post.body %>
+                                    <%= post.postBody %>
                                 </div>
                             </div>
-                            <%})%>
                     </div>
                 </div>
+                <%})%>
+
             </div>
         </div>
     </div>
