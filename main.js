@@ -30,7 +30,7 @@ mongoose.connect("mongodb://localhost:27017/yoverse", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
-app.set("port", process.env.PORT || 4000);
+app.set("port", process.env.PORT || 3000);
 
 app.set("view engine", "ejs");
 
@@ -110,6 +110,7 @@ router.post("/user/create", userController.validate, userController.create, user
 router.get("/user/forgotPassword", userController.forgotPassword);
 router.get("/user/home", postController.index, userController.showHome);
 router.get("/user/profilePage", userController.showProfileSettings);
+router.get("/user/:id/Profile", userController.show, postController.indexByUsername, userController.showProfile);
 router.post("/post/:id/create", postController.create, userController.redirectView);
 
 // home routing

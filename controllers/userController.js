@@ -4,6 +4,9 @@ const passport = require("passport");
 const post = require("../models/post");
 const User = require("../models/user"),
     getUserParams = body => {
+        var bd = JSON.stringify(body.txtDOB);
+        bd = bd.substr(1,10);
+        console.log(bd);
         return {
             name: {
                 first: body.textFirstName,
@@ -15,6 +18,7 @@ const User = require("../models/user"),
             number: body.txtTele,
             biography: body.txtBiography,
             birthday: body.txtDOB,
+            numBiDay: bd,
             gender: body.gender,
             posts: body.posts
         };
@@ -41,6 +45,9 @@ module.exports={
     },
     showProfileSettings: (req, res) =>{
         res.render("user/profilePage");
+    },
+    showProfile: (req, res) =>{
+        res.render("user/Profile");
     },
     create: (req, res, next)=>{
         if(req.skip){
@@ -101,7 +108,6 @@ module.exports={
         successRedirect: "home",
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
-        successFlash: "Logged in"
     }),
     logout: (req,res,ext)=>{
         req.logout();

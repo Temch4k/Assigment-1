@@ -23,8 +23,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    birthday: {
-        type: Date,
+    birthday:{
+        type:Date,
+        required: true
+    },
+    numBiDay: {
+        type:String
     },
     biography: {
         type: String,

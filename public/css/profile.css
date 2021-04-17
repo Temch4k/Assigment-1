@@ -1,0 +1,75 @@
+.sidenav {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    background-color:#86e5ee; 
+}
+  
+  /* The navigation menu links */
+.sidenav a {
+    font-size: 20px;
+    color: black;
+    display: #b8f2e6;
+}
+  
+  /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.postBox {
+    top: 142px;
+    margin: auto;
+}
+#PostButtonContainer {
+    margin: auto;
+    margin-top: 25px;
+}
+
+.postContainer {
+    color: black;
+    margin: auto;
+    padding: 25px 25px;
+}
+
+.postThumbnail {
+    width: 100px;
+}
+
+.postMainBody {
+    margin: auto;
+    margin-top: 15px;
+}
+
+.mediaBody {
+    text-decoration: black;
+}
+
+
+#profilePic{
+    border-radius: 50%;
+}
+
+#profilePageBody{
+    background-color: #faf3dd;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 240px;
+    margin-top:10px;
+}
+
+#profileName{
+    border: 1px solid;
+    border-radius: 28px;
+    color: black;
+}
+
+#birthday{
+    color: #ffa69e;
+}
+.profileDiv{
+    margin-top:50px;
+}

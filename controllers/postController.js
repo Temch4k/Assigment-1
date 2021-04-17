@@ -1,17 +1,31 @@
 "use strict";
 
 const Post = require("../models/post");
+const user = require("../models/user");
 const User = require("../models/user");
+
+
 
 module.exports = {
     index: (req, res, next)=>{
-        Post.find()
+        Post.find().sort({date:-1})
         .then(posts=>{
             res.locals.posts = posts;
             next();
         })
         .catch(error=>{
-            console.log(`Error fetching subscriber data: ${error.message}`);
+            console.log(`Error fetching post data: ${error.message}`);
+            next(error);
+        });
+    },
+    indexByUsername: (req, res, next)=>{
+        Post.find({posterName:user.username}).sort({date:-1})
+        .then(posts=>{
+            res.locals.posts = posts;
+            next();
+        })
+        .catch(error=>{
+            console.log(`Error fetching post data: ${error.message}`);
             next(error);
         });
     },
@@ -25,7 +39,7 @@ module.exports = {
         let user = req.params.id;
         let currentUserID = res.locals.currentUser._id;
         var username =res.locals.currentUser.username;
-        
+
         let newPost = new Post({
             userId: user,    //needs to be adjusted for relational data
             postBody: req.body.postbody,

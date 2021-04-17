@@ -101,27 +101,6 @@ body > .container {
     }
 }
 /* The sidebar menu */
-.sidenav {
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    overflow:hidden;
-    background-color:#86e5ee; 
-}
-  
-  /* The navigation menu links */
-.sidenav a {
-    font-size: 20px;
-    color: black;
-    display: #b8f2e6;
-}
-  
-  /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
-}
   
   /* Style page content */
 .main {
@@ -133,35 +112,6 @@ body > .container {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
-}
-
-#PostButtonContainer {
-      margin: auto;
-      margin-top: 25px;
-}
-
-.postContainer {
-      color: black;
-      margin: auto;
-      padding: 25px 25px;
-}
-
-.postThumbnail {
-      width: 100px;
-}
-
-.postMainBody {
-      margin: auto;
-      margin-top: 15px;
-}
-
-.mediaBody {
-      text-decoration: black;
-}
-
-.postBox {
-    top: 142px;
-    margin: auto;
 }
 
 .adSpace {

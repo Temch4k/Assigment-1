@@ -17,6 +17,9 @@ const mongoose = require("mongoose"),
         posterName:{
             type: String
         },
-        date: { type: Date, default: Date.now }
+        date: { type: Date, default: Date.now },
+        dd:{
+            type: String
+        }
     });
 module.exports = mongoose.model("post", postSchema);

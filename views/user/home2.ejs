@@ -3,7 +3,7 @@
         <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="profilePage">
+                    <a class="navbar-brand" href="home">
                         <img src="/images/yoVerseWebsite.png" class="website-logo">
                     </a>
                 </div>
@@ -14,7 +14,7 @@
                     </form>
                     </ul>
                     <div class="nav navbad-nav">
-                        <a href="profilePage"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
+                        <a href="<%= `/user/${currentUser._id}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
                     </div>
                     <p>
                         <%= currentUser.name.first + " " + currentUser.name.last %>
@@ -84,6 +84,8 @@
                                     <%= post.postBody %>
                                 </div>
                             </div>
+                            <% datee = JSON.stringify(post.date) %>
+                            <%= datee.substr(1,10) %>
                     </div>
                 </div>
                 <%})%>
