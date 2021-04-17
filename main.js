@@ -25,11 +25,12 @@ const post = require("./models/post.js");
     // LocalStrategy = require('passport-local').Strategy;
     var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
+
 mongoose.connect("mongodb://localhost:27017/yoverse", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 
 app.set("view engine", "ejs");
 
@@ -40,7 +41,7 @@ var store = new MongoDBStore({
     collection: 'sessions'
 });
 
-router.use(expressValidator())
+router.use(expressValidator());
 
 router.use(express.static(__dirname + '/public'));
 console.log(__dirname);
@@ -110,8 +111,9 @@ router.post("/user/login", userController.authenticate);
 router.get("/user/signup", userController.new);
 router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
-
 router.get("/user/home", userController.showHome);
+router.post("user/home", postController.create);
+
 
 
 // home routing
@@ -124,6 +126,9 @@ router.use(errorController.pageNotFoundError);
 router.use(errorController.internalServerError);
 
 app.use("/", router);
+
+// user post
+
 
 function validateForm() {
 
@@ -168,6 +173,71 @@ function validateForm() {
     }
     return formIsValid;
 }
+
+// router.route('/moviecollection/:movieid')
+//     .get(authJwtController.isAuthenticated, function (req, res) {
+//         // find the movie using the request title
+//         // .select is there to tell us what will be returned
+//         if(req.query == null || req.query.review !== "true"){
+//             Movie.findOne({_id: req.params.movieid}).select("title year genre actors").exec(function (err, movie) {
+//                 // if we have an error then we display it
+//                 if(err) 
+//                 {
+//                     return res.status(401).json({message: "Something is wrong: \n", error: err});
+//                 }
+//                 // otherwise just show the movie that was returned
+//                 else if(movie == null)
+//                 {
+//                     return res.status(404).json({success: false, message: "Error: movies not found."});
+//                 }
+//                 else
+//                 {
+//                     return res.status(200).json(movie);
+//                 }
+//             })
+//         }
+//         else 
+//         {
+//             Movie.aggregate()
+//             .match({_id: mongoose.Types.ObjectId(req.params.movieid)})
+//             .lookup({from: 'reviews', localField: '_id', foreignField: 'movieid', as: 'reviews'})
+//             .exec(function (err, movie) {
+//                 if (err)
+//                 {
+//                     return res.send(err);
+//                 }
+//                 // find average reviews four our movies
+//                 var numOfMovies = movie.length;
+//                 if (movie && numOfMovies > 0) 
+//                 {
+//                     // add all of the average values together
+//                     for (let i = 0; i < numOfMovies; i++) 
+//                     {
+//                         let sum = 0;
+//                         // go through all of the review values and add them
+//                         for (let k = 0; k < movie[i].reviews.length; k++) 
+//                         {
+//                             sum = sum + movie[i].reviews[k].rating;
+//                         }
+//                         // adds the avg review to the movie
+//                         if (movie[i].reviews.length > 0) 
+//                         {
+//                             movie[i] = Object.assign({},movie[i],{avgRating: (sum/movie[i].reviews.length).toFixed(2)});
+//                         }
+//                     }
+//                     movie.sort((a,b) => {
+//                         return b.avgRating - a.avgRating;
+//                 });
+//                 return res.status(200).json({
+//                     result: movie
+//                 });
+//             }
+//                 else {
+//                     return res.status(404).json({success: false, message: "Not found."});
+//                 }
+//             });
+//         }
+//     })
 
 function checkPassword(inputText) {
     var passw = /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
