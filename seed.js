@@ -4,11 +4,12 @@ const mongoose = require("mongoose"),
   User = require("./models/user");
 
 mongoose.connect(
-  "mongodb://localhost:27017/yoverse", {
-    useNewUrlParser: true
-  }
+  "mongodb://localhost:27017/yoverse", 
+  {useNewUrlParser: true}
 );
+
 mongoose.set("useCreateIndex", true);
+
 var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
@@ -22,7 +23,7 @@ var users = [{
       first: "Micah",
       last: "Stovy",
     },
-    userName:"micah.stovall@ucdenver.edu",
+    username:"micah.stovall@ucdenver.edu",
     email: "micah.stovall@ucdenver.edu",
     birthday: (1998, 11, 2),
     biography: "Likes to be alive",
@@ -35,7 +36,7 @@ var users = [{
       first: "Artsiom",
       last: "Skarakhod",
     },
-    userName:"artsiom.skarakhod@ucdenver.edu",
+    username:"artsiom.skarakhod@ucdenver.edu",
     email: "artsiom.skarakhod@ucdenver.edu",
     birthday: (1999, 12, 8),
     biography: "Likes to touch soft fur",
@@ -48,7 +49,7 @@ var users = [{
       first: "Dax",
       last: "Valdez",
     },
-    userName:"dax.valdez@ucdenver.edu",
+    username:"dax.valdez@ucdenver.edu",
     email: "dax.valdez@ucdenver.edu",
     birthday: (1880, 1, 31),
     biography: "Likes to fly in the sky",
@@ -61,7 +62,7 @@ var users = [{
       first: "Bob",
       last: "Bobberson",
     }, 
-    userName: "bobby@hotmail.com",
+    username: "bobby@hotmail.com",
     email: "bobby@hotmail.com",
     birthday: (2001, 4, 15),
     biography: "Walks on lava",
@@ -90,26 +91,26 @@ var post = [
   }
 ];
 
-commands = []
+commands = [];
 
-users.forEach(c => {
-  commands.push(
-      User.create({
-        name:{
-          first: c.Fname,
-          last: c.Lname
-        },
-        userName: c.userName,
-        email: c.email,
-        birthday: c.birthday,
-        biography: c.biography,
-        gender: c.gender,
-        number: c.number,
-        password: c.password,
-        post: c.post
-      })
-  );
-});
+// users.forEach(c => {
+//   commands.push(
+//       User.create({
+//         name:{
+//           first: c.first,
+//           last: c.last
+//         },
+//         username: c.username,
+//         email: c.email,
+//         birthday: c.birthday,
+//         biography: c.biography,
+//         gender: c.gender,
+//         number: c.number,
+//         password: c.password,
+//         post: c.post
+//       })
+//   );
+// });
 
 User.deleteMany()
   .exec()
@@ -118,6 +119,13 @@ User.deleteMany()
   });
 
 var commands = [];
+
+users.forEach(c => {
+  let newUser = new User(c);
+  commands.push(
+      User.register(newUser, c.password)
+  );
+});
 
 Promise.all(commands)
   .then(r => {

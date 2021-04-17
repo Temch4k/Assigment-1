@@ -164,7 +164,7 @@ module.exports={
         )
             .then(user => {
                 res.locals.user = user;
-                res.locals.redirect = `/users/${user._id}`;
+                res.locals.redirect = `/user/${user._id}`;
                 next();
             })
             .catch(error => {
