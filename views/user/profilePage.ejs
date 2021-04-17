@@ -1,6 +1,6 @@
 <% if(loggedIn){ %>
 <header>
-    <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+    <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="home">
@@ -14,8 +14,7 @@
                 </form>
             </ul>
             <div class="nav navbad-nav">
-
-                <a href="home"><img class="d-flex mr-3 postThumbnail" src="/img/homeButton.png"></a>
+                <a href="<%= `/user/${currentUser._id}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
             </div>
         </div>
     </nav>
@@ -30,14 +29,15 @@
             <a href="">Messages</a> <br><br>
             <a href="">Help & Support</a> <br><br>
             <a href="profileSettings">Settings & Privacy</a> <br><br>
-            <a href="login">Log Out</a><br>
+            <a href="/user/logout">Log Out</a><br>
             </HR>
         </h3>
     </div> 
     <br>
     <br>
+    <div class="mainDiv">
     <form class="blocktext col-6">
-        <div class="col">
+        <div class="col" >
             <fieldset class="row form-group">
                 <!--
                     INCLUDE A CHANGE PROFILE PIC OPTION BEFORE NEXT ASSIGNMENT
@@ -154,6 +154,7 @@
             <button type="reset" class="btn btn-secondary">Cancel</button>
         </p>
     </form> <br> <br>
+</div>
 </section>
 
 <%} else {%>

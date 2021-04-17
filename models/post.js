@@ -7,7 +7,7 @@ passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose"),
     postSchema = new mongoose.Schema({
         userID : {
-            type: String, ref: user.first + " " + user.last
+            type: String
         },
         postBody : {
             type: String,

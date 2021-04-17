@@ -19,7 +19,8 @@ module.exports = {
         });
     },
     indexByUsername: (req, res, next)=>{
-        Post.find({posterName:user.username}).sort({date:-1})
+        let user = req.params.username;
+        Post.find({posterName: user}).sort({date:-1})
         .then(posts=>{
             res.locals.posts = posts;
             next();
@@ -41,7 +42,7 @@ module.exports = {
         var username =res.locals.currentUser.username;
 
         let newPost = new Post({
-            userId: user,    //needs to be adjusted for relational data
+            userID: user,    //needs to be adjusted for relational data
             postBody: req.body.postbody,
             posterName: username
         });

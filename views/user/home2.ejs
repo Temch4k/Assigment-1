@@ -14,9 +14,10 @@
                     </form>
                     </ul>
                     <div class="nav navbad-nav">
-                        <a href="<%= `/user/${currentUser._id}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
+                        <a href="<%= `/user/${currentUser.username}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
                     </div>
-                    <p>
+                        <h5>Logged in as:</h5>
+                        <br>    
                         <%= currentUser.name.first + " " + currentUser.name.last %>
                             <br>
                             <%= currentUser.username %>
@@ -128,7 +129,7 @@
         <br>
 
         <body>
-            <div class="container" style="color: black;" id="mainDiv">
+            <div class="container mainDiv" style="color: black;">
                 <fieldset class="brdr">
                     <div class="text-center">
                         <div>

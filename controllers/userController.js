@@ -109,7 +109,7 @@ module.exports={
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
     }),
-    logout: (req,res,ext)=>{
+    logout: (req,res,next)=>{
         req.logout();
         req.flash("success", "you've been logged out");
         res.locals.redirect = "/";
@@ -122,14 +122,14 @@ module.exports={
         else next();
     },
     show: (req, res, next) => {
-        let userId = req.params.id;
-        User.findById(userId)
+        let userId = req.params.username;
+        User.findOne({username: userId})
         .then(user => {
             res.locals.user = user;
             next();
         })
         .catch(error=>{
-            console.log(`Error fetching user by ID: ${error.message}`);
+            console.log(`Error fetching user by username: ${error.message}`);
         });
     },
     showView: (req, res) => {

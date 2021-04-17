@@ -17,8 +17,9 @@ html {
 /*colors : faf3dd*/
 /*colors : b8f2e6*/
 .mainDiv{
-    width: 800px;
+    width: 1000px;
     align-self: center;
+    margin-top: 70px;
 }
 
 .mainForms {
@@ -135,23 +136,18 @@ body > .container {
 Form.blocktext {
     margin: 0 auto;
 }
+.center {
+    margin: auto;
+    text-align: center;
+}
 
-  #mainDiv{
-    padding: 70px;
-  }
+h1 {
+    text-align:center;
+}
 
-  .center {
-      margin: auto;
-      text-align: center;
-  }
-  
-  h1 {
-      text-align:center;
-  }
-
-  .moveDown{
-    position: right;
-    top: 73px;
+.moveDown{
+position: right;
+top: 73px;
 }
 
 .button {
@@ -168,4 +164,13 @@ Form.blocktext {
   }
   .alert{
       color: #893168;
+  }
+
+  #signinForm{
+      margin-top:60px;
+  }
+  .higherStyling{
+    margin-top:45px;
+    margin-bottom:30px;
+
   }

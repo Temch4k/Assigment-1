@@ -23,8 +23,34 @@
         </header>
         <br>
     </div>
-<%}%>
-<div id="mainDiv" class ="profileDiv">
+<% }else { %>
+    <div>
+        <header>
+            <nav class="navbar badge-light">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="website-logo" href="/user/home">
+                            <img src="/images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
+                        </a>
+                    </div>
+                    <div class="nav navbar-nav">
+                        <form class="form-inline my-2  navbar-right">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div>
+                        <button type="button" onclick="location.href='/user/profilePage';" class="btn btn-outline-warning btn-lg"
+                            id="loginBtn">Your Profile Settings</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br>
+    </div>
+<%} %>
+
+<div class ="profileDiv mainDiv">
     <% if(user){ %>
         <body id="profilePageBody">
             <fieldset class="border brdr">
@@ -67,19 +93,18 @@
                                     <div class="media">
                                         <!-- Need to link uploaded photo with profile picture -->
                                         <!-- Or make a stock user profile photo -->
-                                            <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
-                                            <div class="media-body">
-                                                <h5 class="mt-0"></h5>
-                                                <i>
-                                                    <%= post.posterName %>
-                                                </i>
-                                                <div class="postMainBody">
-                                                    <%= post.postBody %>
-                                                </div>
+                                        <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
+                                        <div class="media-body">
+                                            <h5 class="mt-0"></h5>
+                                            <i>
+                                                <%= post.posterName %>
+                                            </i>
+                                            <div class="postMainBody">
+                                                <%= post.postBody %>
                                             </div>
-                                            <%= post.date.getMonth() %>
-                                            /
-                                            <%= post.date.getDay() %>
+                                        </div>
+                                        <% datee = JSON.stringify(post.date) %>
+                                        <%= datee.substr(1,10) %>
                                     </div>
                                 </div>
                                 <%})%>
