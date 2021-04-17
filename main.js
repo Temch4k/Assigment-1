@@ -93,12 +93,6 @@ router.use((req, res, next) => {
 
 //app.use(bodyParser.json());
 
-// if(loggedIn)
-// {
-//     router.get("/user/login", userController.showHome);
-//     router.get("/user/signup", userController.showHome);
-//     router.get("/user/forgotPassword", userController.forgotPassword);
-// }
 
 
 router.get("/", homeController.index);
@@ -111,14 +105,12 @@ router.post("/user/login", userController.authenticate);
 router.get("/user/signup", userController.new);
 router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
-router.get("/user/home", userController.showHome);
-router.post("user/home", postController.create);
-
-
+router.get("/user/home", userController.showHome, postController.index);
+router.get("/user/profilePage", userController.showProfileSettings);
+router.post("/post/:id/create", postController.create, userController.redirectView);
 
 // home routing
 router.get("/user/securityQuestions", userController.showSecQuestions);
-router.get("/profilePage", homeController.showProfile);
 
 // still need login procedure
 

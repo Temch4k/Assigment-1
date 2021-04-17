@@ -1,0 +1,142 @@
+<% if(loggedIn){ %>
+    <header>
+        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="profilePage">
+                        <img src="/images/yoVerseWebsite.png" class="website-logo">
+                    </a>
+                </div>
+                <div class="nav navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    </ul>
+                    <div class="nav navbad-nav">
+                        <a href="profilePage"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
+                    </div>
+                    <p>
+                        <%= currentUser.name.first + " " + currentUser.name.last %>
+                            <br>
+                            <%= currentUser.username %>
+                    </p>
+                </div>
+        </nav>
+    </header>
+
+    <div class="sidenav col-3">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <h2>
+            <a href="home">Feed</a> <br>
+            <br>
+            <a href="">Notifications</a> <br>
+            <br>
+            <a href="">Messages</a> <br>
+            <br>
+            <a href="">Hashtags</a> <br>
+            <br>
+            <a href="">Trending</a> <br>
+            <br>
+            <a href="">Recommended</a> <br>
+        </h2>
+        <hr>
+    </div> <br>
+
+    <div class="postContainer">
+        <div class="">
+            <form action="<%= `/post/${currentUser._id}/create` %>" method="POST" id="wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="postDescription">Post here...</label>
+                        <textarea class="form-control" name="postbody" id="postDescription" rows="5"
+                            cols="50"></textarea>
+                    </div>
+                    <div class="col-12" id="PostButtonContainer">
+                        <button type="submit" class="btn btn-success">
+                            Share!
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 postContainer">
+            <div class="card">
+                <div class="card-block">
+                    <div class="media">
+                        <!-- Need to link uploaded photo with profile picture -->
+                        <!-- Or make a stock user profile photo -->
+                        <% posts.forEach(post=> { %>
+                            <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
+                            <div class="media-body">
+                                <h5 class="mt-0"></h5>
+                                <i>
+                                    <%= post._id %>
+                                </i>
+                                <div class="postMainBody">
+                                    <%= post.body %>
+                                </div>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row col-6" style="margin:auto">
+        <a href="">Load older Posts</a>
+    </div>
+
+    <br>
+    <br>
+    </div>
+    <br>
+    <%} else {%>
+        <header>
+            <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/user">
+                            <img src="/images/yoVerseWebsite.png" alt="logo" class="website-logo">
+                        </a>
+                    </div>
+                    <div class="nav navbar-nav">
+                        <form class="form-inline my-2  navbar-right">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div>
+                        <button type="button" onclick="location.href='signup';" class=" btn btn-outline-warning btn-lg"
+                            id="loginBtn">Sign Up</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br>
+
+        <body>
+            <div class="container" style="color: black;" id="mainDiv">
+                <fieldset class="brdr">
+                    <div class="text-center">
+                        <div>
+                            You are not signed in!
+                        </div>
+                        <a href="login">
+                            <span class="button">Sign in</span>
+                        </a>
+                    </div>
+                </fieldset>
+            </div>
+        </body>
+        
+        <%}%>

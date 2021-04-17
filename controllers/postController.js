@@ -1,18 +1,19 @@
 "use strict";
 
 const Post = require("../models/post");
+const User = require("../models/user");
 
 module.exports = {
-    index: (req, res, next) => {
+    index: (req, res, next)=>{
         Post.find()
-            .then(posts => {
-                res.locals.post = posts;
-                next()
-            })
-            .catch(error => {
-                console.log(`Error fetching post data: ${error.message}`);
-                next(error);
-            })
+        .then(posts=>{
+            res.locals.posts = posts;
+            next();
+        })
+        .catch(error=>{
+            console.log(`Error fetching subscriber data: ${error.message}`);
+            next(error);
+        });
     },
     indexView: (req, res) => {
         res.render("posts/index");
@@ -21,20 +22,31 @@ module.exports = {
         this.res.render("/post/new");
     },
     create: (req, res, next) => {
-        let newPost = new post({
-            userId: req.body.userId, //needs to be adjusted for relational data
-            postBody: req.body.postBody
+        let user = req.params.id;
+        let newPost = new Post({
+            userId: user,    //needs to be adjusted for relational data
+            postBody: req.body.postbody
         });
-        post.register(newpost)
-            .then(post => {
-                res.locals.post = post;
-                res.locals.redirect = "/post";
-                next();
-            })
-            .catch(error => {
-                console.log(`Error saving post: ${error.message}`)
-                next(error)
-            })
+        if((res.locals.currentUser._id == user)){
+            Post.create(newPost)
+                .then(p => {
+                        // add post to user object
+                        User.findByIdAndUpdate(user, { $push: { posts: p._id } })
+                            .then(user => {
+                                console.log("posted added");
+                                res.locals.redirect = "/user/home";
+                                next();
+                            })
+                        .catch(error => {
+                            console.log(`Error fetching user by ID: ${error.message}`);
+                            next(error);
+                        })
+                    })
+                .catch(error => {
+                    console.log(`Error saving post: ${error.message}`)
+                    next(error)
+        })
+        }
     },
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;

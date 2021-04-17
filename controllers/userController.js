@@ -34,10 +34,13 @@ module.exports={
         res.render("user/signup");
     },
     showHome: (req, res) => {
-        res.render("user/home");
+        res.render("user/home2");
     },
     showSecQuestions: (req, res) =>{
         res.render("user/securityQuestions");
+    },
+    showProfileSettings: (req, res) =>{
+        res.render("user/profilePage");
     },
     create: (req, res, next)=>{
         if(req.skip){

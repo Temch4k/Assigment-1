@@ -15,16 +15,6 @@
                 <div class="nav navbad-nav">
                     <a href="/profilePage"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
                 </div>
-                <% if (loggedIn) { %>
-                    <p>Logged in as <a href="<%= `/user/${currentUser._id}`%>">
-                            <%= currentUser.name.first %>
-                            <%= currentUser.name.last %>
-    
-                        </a>
-                        <a href="/user/logout">
-                            <span class="button">Log out</span>
-                        </a>
-                    </p>
                 </div>
     </nav>
 </header>
