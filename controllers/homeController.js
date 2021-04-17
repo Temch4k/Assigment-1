@@ -31,6 +31,6 @@ module.exports = {
 
 exports.showUsers = (req, res) => {
     res.render('home', {
-                  user: users
+                  user: user
           });
 }

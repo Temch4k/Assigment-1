@@ -1,30 +1,29 @@
-// Dax's passport
-// const user = require("./models/user.js");
-
 const post = require("./models/post.js");
 
-const express = require("express"),
+    const express = require("express"),
+    router = express.Router(),
     app = express(),
     homeController = require("./controllers/homeController.js"),
     errorController = require("./controllers/errorController.js"),
     userController = require("./controllers/userController.js"),
     postController = require("./controllers/postController.js"),
+    methodOverride = require("method-override"),
+    passport = require('passport'),
+    cookieParser = require("cookie-parser"),
+    expressSession = require('express-session'),
+    expressValidator = require("express-validator"),
+    connectFlash = require("connect-flash"),
     User = require("./models/user"),
     layouts = require("express-ejs-layouts"),
     mongoose = require("mongoose"),
-    passport = require('passport'),
-    cookieParser = require("cookie-parser"),
-    flash = require('express-flash'),
-    session = require('express-session'),
-    router = express.Router(),
-    methodOverride = require("method-override"),
-    expressValidator = require("express-validator"),
-    connectFlash = require("connect-flash"),
-    bcrypt = require('bcrypt'),
-    bodyParser = require('body-parser'),
     passportLocal = require("passport-local"),
-    LocalStrategy = require('passport-local').Strategy;
-    var MongoDBStore = require('connect-mongodb-session')(session);
+    
+    flash = require('express-flash'),
+    bcrypt = require('bcrypt'),
+    bodyParser = require('body-parser');
+    // passportLocal = require("passport-local"),
+    // LocalStrategy = require('passport-local').Strategy;
+    var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
 
 mongoose.connect("mongodb://localhost:27017/yoverse", {
@@ -46,7 +45,6 @@ router.use(expressValidator());
 
 router.use(express.static(__dirname + '/public'));
 console.log(__dirname);
-//router.use(express.static("public"));
 router.use(layouts);
 router.use(
     express.urlencoded({
@@ -64,7 +62,7 @@ app.listen(app.get("port"), () => {
 //Cookie stuff for later from authclasswork
 
 router.use(cookieParser("my_passcode"));
-router.use(session({
+router.use(expressSession({
     secret: "my_passcode",
     cookie: {
         maxAge: 360000
@@ -80,9 +78,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 router.use(connectFlash());
 
-// passport stuff for later
-
-
 
 //flash stuff for later
 
@@ -93,31 +88,11 @@ router.use((req, res, next) => {
     next();
 });
 
-// express vlaidator for laters
-/*
-router.use(expressValidator());*/
 
 //app.use(bodyParser.urlencoded());
 
 //app.use(bodyParser.json());
 
-// app.use(flash())
-// app.use(session({
-//     secret: 'something Super Sneaky',
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24 // 1 day
-//     },
-//     store: store,
-//     resave: true,
-//     saveUninitialized: true
-// }));
-
-// if(loggedIn)
-// {
-//     router.get("/user/login", userController.showHome);
-//     router.get("/user/signup", userController.showHome);
-//     router.get("/user/forgotPassword", userController.forgotPassword);
-// }
 
 
 router.get("/", homeController.index);
@@ -126,17 +101,19 @@ router.get("/", homeController.index);
 router.get("/user", userController.indexView);
 router.get("/user/login", userController.login);
 router.post("/user/login", userController.authenticate);
+router.get("/user/logout", userController.logout, userController.redirectView);
+
+
+
 router.get("/user/signup", userController.new);
 router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
-router.get("/user/home", userController.showHome);
-router.post("user/home", postController.create);
-
-
+router.get("/user/home", postController.index, userController.showHome);
+router.get("/user/profilePage", userController.showProfileSettings);
+router.post("/post/:id/create", postController.create, userController.redirectView);
 
 // home routing
 router.get("/user/securityQuestions", userController.showSecQuestions);
-router.get("/profilePage", homeController.showProfile);
 
 // still need login procedure
 

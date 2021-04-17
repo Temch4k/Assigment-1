@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
     },
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     birthday: {
         type: Date,
@@ -51,7 +52,7 @@ userSchema.methods.getInfo = function () {
 };
 
 userSchema.plugin(passportLocalMongoose, {
-    usernameField: "username"
+    usernameField: "email"
 });
 
 userSchema.virtual("fullName").get(function() {
