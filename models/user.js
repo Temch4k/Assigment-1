@@ -40,7 +40,8 @@ const userSchema = new mongoose.Schema({
         min: [5],
         max: [20]
     },
-    posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}]
+    posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
+    friends: [{type: userSchema}]
 }, {
     timestamps: true
 });
