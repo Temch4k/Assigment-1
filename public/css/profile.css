@@ -19,6 +19,17 @@
 .sidenav a:hover {
     color: #f1f1f1;
 }
+.bluebutton{
+    color: aqua;
+}
+
+#usernameLink{
+    color: white;
+}
+
+.alignPostBox{
+    left: 150px;
+}
 
 .postBox {
     top: 142px;

@@ -14,9 +14,9 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
-                <div>
-                    <h5>Logged in as:</h5>
-                    <%= currentUser.username %>
+                <div class="brdrBlk">
+                    <h5>Logged in as: <a class="text-center btn btn-info" id="usernameLink" href="<%= `/user/${currentUser.username}/Profile` %>"><%= currentUser.username %></a></h5>
+                    
                 </div>
                 <div class="nav navbad-nav">
                     <a href="<%= `/user/${currentUser.username}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
@@ -56,7 +56,7 @@
         </span>
         <div class="card">
             <!-- link users --> 
-            <%# User.forEach(user=> { %>
+            <!--<%# User.forEach(user=> { %>
                 <div class="card-block">
                         <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
                         <div class="media-body">
@@ -72,9 +72,9 @@
         </div>
     </div> -->
 
-    <div class="postContainer">
-        <div class="postContainer" id="postBox">
-            <form action="<%= `/post/${currentUser._id}/create` %>" method="POST" id="wrapper">
+    <div class="postContainer alignPostBox">
+        <div class="postContainer alignPostBox" id="postBox">
+            <form class="alignPostBox" action="<%= `/post/${currentUser._id}/create` %>" method="POST" id="wrapper">
                 <div class="row">
                     <div class="col-12">
                         <label for="postDescription">Post here...</label>
@@ -88,48 +88,54 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6 postContainer">
-            <div class="card ">
-                <% posts.forEach(post=> { %>
-                <div class="card-block">
-                    <div class="media">
-                        <!-- Need to link uploaded photo with profile picture -->
-                        <!-- Or make a stock user profile photo -->
-                            <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
-                            <div class="media-body">
-                                <h5 class="mt-0"></h5>
-                                <i>
-                                    <%= post.fullName %>    
-                                    (<%= post.posterName %>)
-                                </i>
-                                <div class="postMainBody">
-                                    <%= post.postBody %>
-                                </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card ">
+                        <% posts.forEach(post=> { %>
+                        <div class="card-block">
+                            <div class="media">
+                                <!-- Need to link uploaded photo with profile picture -->
+                                <!-- Or make a stock user profile photo -->
+                                    <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
+                                    <div class="media-body">
+                                        <h5 class="mt-0"></h5>
+                                        <!--add link to profile page here-->    
+                                        <i class="btn btn-info">
+                                            <%= post.fullName %>    
+                                            <%= post.posterName %>
+                                        </i>
+                                        <div class="postMainBody">
+                                            <%= post.postBody %>
+                                        </div>
+                                        <div id="dateHide">
+                                            <% datee = JSON.stringify(post.date) %>
+                                            <%= datee.substr(1,10) %>
+                                        </div>
+                                    </div>
+                                    
+                                    <% if(post.posterName == currentUser.username){ %>
+                                        <a class="button" href="<%= `/post/${post._id}/delete?_method=DELETE` %>">
+                                            delete
+                                        </a>
+                                    <%}%>
                             </div>
-                            <div id="dateHide">
-                            <% datee = JSON.stringify(post.date) %>
-                            <%= datee.substr(1,10) %>
-                            </div>
-                            <% if(post.posterName == currentUser.username){ %>
-                                <a href="<%= `/post/${post._id}/delete?_method=DELETE` %>">
-                                    delete
-                                </a>
-                            <%}%>
+                        </div>
+                        <%})%>
+        
                     </div>
                 </div>
-                <%})%>
-
+            </div>
+            <BR>
+            <div class="row col-6" style="margin:auto">
+                <a href="">Load older Posts</a>
             </div>
         </div>
+        
     </div>
-    </div>
+    
 
-    <div class="row col-6" style="margin:auto">
-        <a href="">Load older Posts</a>
-    </div>
+    
 
     <br>
     <br>

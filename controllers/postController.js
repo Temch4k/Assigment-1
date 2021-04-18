@@ -40,7 +40,7 @@ module.exports = {
         let user = req.params.id;
         let currentUserID = res.locals.currentUser._id;
         var username =res.locals.currentUser.username;
-        var name = res.locals.currentUser.name.first + " "+res.locals.currentUser.name.last;
+        var name = res.locals.currentUser.name.first + " " + res.locals.currentUser.name.last;
 
         let newPost = new Post({
             userID: user,    //needs to be adjusted for relational data
