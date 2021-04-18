@@ -181,6 +181,38 @@ module.exports={
                 next(error);
             });
     },
+    updateSecurityQuestions: (req, res, next) => {
+        let user = req.params.id;
+        let currentUserID = res.locals.currentUser._id;
+        var username =res.locals.currentUser.username;
+
+        let secQ1 = req.body.q1;
+        let secQ2 = req.body.q2;
+        let secQ3 = req.body.q3;
+
+        if(currentUserID == user){
+            Post.create(newPost)
+                .then(p => {
+                        // add post to user object
+                        User.findByIdAndUpdate(user, { $push: { securityQuestion1Answer: secQ1 } })
+                        User.findByIdAndUpdate(user, { $push: { securityQuestion2Answer: secQ2 } })
+                        User.findByIdAndUpdate(user, { $push: { securityQuestion3Answer: secQ3 } })
+                            .then(user => {
+                                console.log("Security Questions added");
+                                res.locals.redirect = "/user/Login";
+                                next();
+                            })
+                        .catch(error => {
+                            console.log(`Error fetching user by ID: ${error.message}`);
+                            next(error);
+                        })
+                    })
+                .catch(error => {
+                    console.log(`Error saving post: ${error.message}`)
+                    next(error)
+        })
+        }
+    },
     updatePost: (req, res, next) => {
         if(req.skip)
         { 
