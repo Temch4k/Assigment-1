@@ -4,7 +4,7 @@
             <nav class="navbar badge-light">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="website-logo" href="/user/">
+                        <a class="website-logo" href="/user/home">
                             <img src="/images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
                         </a>
                     </div>
@@ -39,6 +39,10 @@
                                 aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
+                    </div>
+                    <div>
+                        <h5>Logged in as:</h5>
+                        <%= currentUser.username %>
                     </div>
                     <div>
                         <button type="button" onclick="location.href='/user/profilePage';"

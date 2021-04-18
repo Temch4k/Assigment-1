@@ -17,6 +17,9 @@ const mongoose = require("mongoose"),
         posterName:{
             type: String
         },
+        fullName:{
+            type: String
+        },
         date: { type: Date, default: Date.now },
         dd:{
             type: String

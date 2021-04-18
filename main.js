@@ -108,11 +108,17 @@ router.get("/user/signup", userController.new);
 router.post("/user/create", userController.validate, userController.create, userController.authenticate, userController.redirectView);
 //router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
+router.get("/user/profileSettings", userController.showUnfinished);
 router.get("/user/home", postController.index, userController.showHome);
 router.get("/user/profilePage", userController.showProfileSettings);
+router.get("/user/allUsers", userController.AllUsers, userController.showAllUsers);
+
+
 router.put("/users/:id/update", userController.update, userController.redirectView);
 router.get("/user/:username/Profile", userController.show, postController.indexByUsername, userController.showProfile);
+
 router.post("/post/:id/create", postController.create, userController.redirectView);
+router.delete("/post/:id/delete", postController.delete, postController.redirectView);
 
 
 // home routing

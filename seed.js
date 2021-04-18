@@ -29,7 +29,7 @@ var users = [{
     numBiDay: "1998-11-2",
     biography: "Likes to be alive",
     gender: "Male",
-    number: 00001,
+    number: "720-123-2222",
     password: "twiddledietwiddlo"
   },
   {
@@ -43,8 +43,8 @@ var users = [{
     numBiDay: "2000-3-12",
     biography: "Likes to touch soft fur",
     gender: "Male",
-    number: 00002,
-    password: "drowssap"
+    number: "123-333-2222",
+    password: "art"
   },
   {
     name: {
@@ -57,7 +57,7 @@ var users = [{
     numBiDay: "1880-1-31",
     biography: "Likes to fly in the sky",
     gender: "Male",
-    number: 00003,
+    number: "123-333-2227",
     password: "password"
   },
   {
@@ -71,7 +71,7 @@ var users = [{
     numBiDay: "2001-4-15",
     biography: "Walks on lava",
     gender: "Male",
-    number: 00004,
+    number: "000-123-3344",
     password: "thisandthat"
   }
 ];
@@ -97,24 +97,6 @@ var post = [
 
 commands = [];
 
-// users.forEach(c => {
-//   commands.push(
-//       User.create({
-//         name:{
-//           first: c.first,
-//           last: c.last
-//         },
-//         username: c.username,
-//         email: c.email,
-//         birthday: c.birthday,
-//         biography: c.biography,
-//         gender: c.gender,
-//         number: c.number,
-//         password: c.password,
-//         post: c.post
-//       })
-//   );
-// });
 
 User.deleteMany()
   .exec()

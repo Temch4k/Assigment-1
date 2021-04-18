@@ -1,0 +1,85 @@
+    <header>
+        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+            <div class="container-fluid">
+                <% if(loggedIn){ %>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home">
+                        <img src="/images/yoVerseWebsite.png" class="website-logo">
+                    </a>
+                </div>
+                <%}else{%>
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">
+                            <img src="/images/yoVerseWebsite.png" class="website-logo">
+                        </a>
+                    </div>
+                <%}%>
+                <div class="nav navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <% if(loggedIn){ %>
+                <div>
+                    <h5>Logged in as:</h5>
+                    <%= currentUser.username %>
+                </div>
+                <div class="nav navbad-nav">
+                    <a href="<%= `/user/${currentUser.username}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
+                </div>
+                <%}else{%>
+                    <div>
+                        <button type="button" onclick="location.href='login';" class=" btn btn-outline-warning btn-lg"
+                            id="loginBtn">Login</button>
+                    </div>
+                <%}%>
+            </div>
+        </nav>
+    </header>
+
+
+<table class="table higherStyling">
+    <thread>
+        <tr>
+            <th>Photo</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Follow</th>
+            <th>Visit Page</th>
+        </tr>
+    </thread>
+    <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td>
+                    <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
+                </td>
+                <td>
+                    <%= user.name.first %>
+                    <%= user.name.last %>
+                </td>
+                <td>
+                    <%= user.username %>
+                </td>
+                <td>
+                    <div class="follow">
+                        <% if(loggedIn){ %>
+                            <a class="" href="">
+                                follow
+                        <%}else{%>
+                            <a href=" " title="You need to log in to follow">follow</a>
+                        <%}%>
+                    </div>
+                </td>
+                <td>
+                    <a href="<%=`/user/${user.username}/Profile` %>">
+                        Visit Page
+                    </a>
+                </td>
+                </td>
+            </tr>
+            <% })%>
+    </tbody>
+</table>
