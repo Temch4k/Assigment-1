@@ -12,9 +12,9 @@ const User = require("../models/user"),
                 first: body.textFirstName,
                 last: body.textLastName
             },
-            email: body.txtEmail,
+            email: body.email,
             username: body.username,
-            password: body.txtPW, 
+            password: body.password, 
             number: body.txtTele,
             biography: body.txtBiography,
             birthday: body.txtDOB,
@@ -56,10 +56,10 @@ module.exports={
         let userParams = getUserParams(req.body);
 
         let newUser = new User(userParams);
-        User.register(newUser, req.body.txtPW, (error, user)=>{
+        User.register(newUser, req.body.password, (error, user)=>{
             if(user){
                 req.flash("success", "User account created succesfully");
-                res.locals.redirect = "login";
+                res.locals.redirect = "securityQuestions";
                 next();
             }
             else {
@@ -71,23 +71,23 @@ module.exports={
         })
     },
     validate: (req, res, next) =>{
-        req.sanitizeBody("txtEmail").normalizeEmail({
+        req.sanitizeBody("email").normalizeEmail({
             all_lowercase: true
         }).trim();
         
         req.check("textFirstName", "First name not valid").notEmpty()
         req.check("textLastName", "Last name not valid").notEmpty()
         req.check("txtDOB", "Birthday has to be earlier than today").notEmpty()
-        req.check("txtPW", "Passwords must match").equals(req.body.txtPW2)
+        req.check("password", "Passwords must match").equals(req.body.txtPW2)
 
         req.check("gender", "Gender not valide").notEmpty()
 
-        req.check("txtEmail", "email is not valid").isEmail();
+        req.check("email", "email is not valid").isEmail();
         req.check("txtBiography", "Biography is not valid").notEmpty().isLength({
             min: 1,
             max: 500
         });
-        req.check("txtPW", "password cannot be empty").notEmpty();
+        req.check("password", "password cannot be empty").notEmpty();
 
         
         req.getValidationResult().then((error) =>{
@@ -105,7 +105,6 @@ module.exports={
         })
     },
     authenticate: passport.authenticate("local", {
-        successRedirect: "home",
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
     }),

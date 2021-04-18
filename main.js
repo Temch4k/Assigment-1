@@ -106,12 +106,14 @@ router.get("/user/logout", userController.logout, userController.redirectView);
 
 
 router.get("/user/signup", userController.new);
+// router.post("/user/create", userController.validate, userController.create, userController.authenticate, userController.redirectView);
 router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
 router.get("/user/home", postController.index, userController.showHome);
 router.get("/user/profilePage", userController.showProfileSettings);
 router.get("/user/:username/Profile", userController.show, postController.indexByUsername, userController.showProfile);
 router.post("/post/:id/create", postController.create, userController.redirectView);
+
 
 // home routing
 router.get("/user/securityQuestions", userController.showSecQuestions);
