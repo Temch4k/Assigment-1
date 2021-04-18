@@ -105,6 +105,7 @@ module.exports={
         })
     },
     authenticate: passport.authenticate("local", {
+        successRedirect: "home",
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
     }),

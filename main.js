@@ -70,7 +70,6 @@ router.use(expressSession({
     resave: false,
     saveUninitialized: false
 }));
-
 router.use(passport.initialize());
 router.use(passport.session());
 passport.use(User.createStrategy());
@@ -106,8 +105,8 @@ router.get("/user/logout", userController.logout, userController.redirectView);
 
 
 router.get("/user/signup", userController.new);
-// router.post("/user/create", userController.validate, userController.create, userController.authenticate, userController.redirectView);
-router.post("/user/create", userController.validate, userController.create, userController.redirectView);
+router.post("/user/create", userController.validate, userController.create, userController.authenticate, userController.redirectView);
+//router.post("/user/create", userController.validate, userController.create, userController.redirectView);
 router.get("/user/forgotPassword", userController.forgotPassword);
 router.get("/user/home", postController.index, userController.showHome);
 router.get("/user/profilePage", userController.showProfileSettings);
