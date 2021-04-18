@@ -87,11 +87,11 @@
             <div>
                 <fieldset class="brdr border">
                     <div class="row">
-                        <% if(posts.length> 0){ %>
                             <div class="col-6 postContainer">
                                 <h2>User's posts: </h2>
                                 <div class="card">
-                                    <% posts.forEach(post=> { %>
+                                    <% if(posts.length > 0){ %>
+                                        <% posts.forEach(post=> { %>
                                         <div class="card-block">
                                             <div class="media">
                                                 <!-- Need to link uploaded photo with profile picture -->
@@ -111,13 +111,15 @@
                                                     <%= datee.substr(1,10) %>
                                             </div>
                                         </div>
+                                        <br>
+                                        <%})%>
+                                    <%} else {%>
+                                </div>
+                                <div class="text-center">
+                                    <h3>No posts yet </h3>
                                 </div>
                             </div>
-                        <%})%>
-                        <%} else {%>
-                            <div class="text-center">
-                                <h3>No posts yet </h3>
-                            </div>
+                            
                         <%}%>
                         </div>
                     </div>
