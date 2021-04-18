@@ -50,7 +50,7 @@
     </div> <br>
 
     <div class="postContainer">
-        <div class="">
+        <div class="postContainer" id="postBox">
             <form action="<%= `/post/${currentUser._id}/create` %>" method="POST" id="wrapper">
                 <div class="row">
                     <div class="col-12">
@@ -85,8 +85,10 @@
                                     <%= post.postBody %>
                                 </div>
                             </div>
+                            <div id="dateHide">
                             <% datee = JSON.stringify(post.date) %>
                             <%= datee.substr(1,10) %>
+                            </div>
                     </div>
                 </div>
                 <%})%>
