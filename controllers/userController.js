@@ -154,7 +154,8 @@ module.exports={
             biography: req.body.biography,
             birthday: req.body.birthday,
             gender: req.body.gender,
-            posts: req.body.posts
+            posts: req.body.posts,
+            number: req.body.number
         });
         User.findByIdAndUpdate(userId,
             {
@@ -173,7 +174,7 @@ module.exports={
         )
             .then(user => {
                 res.locals.user = user;
-                res.locals.redirect = `/user/${user._id}`;
+                res.locals.redirect = `/user/home`;
                 next();
             })
             .catch(error => {
