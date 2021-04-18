@@ -198,3 +198,7 @@ top: 73px;
 #dateHide {
     margin-left: 20px;
 }
+@media only screen and (max-width: 1200px) {
+    #reccomendHide{
+        display: none;
+}}
