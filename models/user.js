@@ -40,6 +40,15 @@ const userSchema = new mongoose.Schema({
     number: {
         type: String,
     },
+    securityQuestion1Answer: {
+        type: String
+    },
+    securityQuestion2Answer:{
+        type: String
+    },
+    securityQuestion2Answer:{
+        type: String
+    },
     password: {
         type: String,
         min: [5],
