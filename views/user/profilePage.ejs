@@ -1,24 +1,29 @@
 <% if(loggedIn){ %>
-<header>
-    <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="home">
-                    <img src="/images/yoVerseWebsite.png" class="website-logo">
-                </a>
+    <header>
+        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home">
+                        <img src="/images/yoVerseWebsite.png" class="website-logo">
+                    </a>
+                </div>
+                <div class="nav navbar-nav">
+                    <form class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div>
+                    <h5>Logged in as:</h5>
+                    <%= currentUser.username %>
+                </div>
+                <div class="nav navbad-nav">
+                    <a href="<%= `/user/${currentUser.username}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
+                </div>
             </div>
-            <ul class="nav navbar-nav">
-                <form class="form-inline my-2  navbar-right">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </ul>
-            <div class="nav navbad-nav">
-                <a href="<%= `/user/${currentUser._id}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
 <section class="main">
     <div class="sidenav col-3 moveDown">
@@ -36,42 +41,48 @@
     <br>
     <br>
     <div class="mainDiv">
-    <form class="blocktext col-6">
+    <div class="row">
+        <form class = "blocktext col-6" action="<%= `/users/${currentUser._id}/update?_method=PUT` %>" method="POST">
         <div class="col" >
             <fieldset class="row form-group">
                 <!--
                     INCLUDE A CHANGE PROFILE PIC OPTION BEFORE NEXT ASSIGNMENT
                 -->
+                <div class="form-group col-10">
+                    <label for="biography">Biography</label>
+                    <input name="biography" class="form-control" id="txtBiography" value ="<%= currentUser.biography %>" >
+                </div>
+
                 <div class="col-sm-10 col-lg-8">
-                    <label for="txtEmail">
+                    <label for="email">
                         <span>Change Email:</span>
                     </label>
                 </div>
                 <div class="col-sm-10 col-lg-8">
-                    <input type="email" name="txtEmail" id="txtEmail" class="col-9 form-control"
-                        placeholder="New Email">
+                    <input type="email" name="email" id="txtEmail" class="col-9 form-control"
+                        value="<%=currentUser.email%>">
                 </div>
 
                 <div class="col-sm-10 col-lg-8">
-                    <label for="txtTele" pattern="[0-9]{10}|[0-9]{3}+-+[0-9]{4}+-+[0-9]{3}">
+                    <label for="number" pattern="[0-9]{10}|[0-9]{3}+-+[0-9]{4}+-+[0-9]{3}">
                         <span>Change Phone Number:</span>
                     </label>
                 </div>
                 <div class="col-sm-10 col-lg-8 ">
-                    <input type="tel" name="textTele" id="txtTele" placeholder="333-333-3333"
+                    <input type="tel" name="number" id="txtTele" value="<%=currentUser.number%>"
                         class="col-9 form-control">
                 </div>
             </fieldset> <br>
 
             <fieldset class="row form-group">
                 <div class="col-sm-10 col-lg-8">
-                    <label for="txtPassword">
+                    <label for="password">
                         <span>Password:</span>
                     </label>
                 </div>
 
                 <div class="col-sm-10 col-lg-8">
-                    <input type="password" name="textPW" id="txtPW" placeholder="***************"
+                    <input type="password" name="password" id="txtPW" value="<%=currentUser.password%>"
                         class="col-6 form-control">
                 </div>
 
@@ -82,42 +93,42 @@
                 </div>
 
                 <div class="col-sm-10 col-lg-8">
-                    <input type="password" name="textPW2" id="PW2" placeholder="***************"
+                    <input type="password" name="textPW2" id="PW2" value="<%=currentUser.password%>"
                         class="col-6 form-control">
                 </div>
             </fieldset> <br>
 
             <fieldset class="form-group row">
                 <div class="col-sm-10 col-lg-8">
-                    <label for="textFirstName" class="col-md-6 col-form-label">
+                    <label for="first" class="col-md-6 col-form-label">
                         First Name:
                     </label>
                 </div>
                 <div class="col-sm-10 col-lg-8">
-                    <input type="text" id="textFirstName" name="textFirstName" required class="form-control col-6"
-                        placeholder="Susie">
+                    <input type="text" id="textFirstName" name="first" required class="form-control col-6"
+                    value="<%=currentUser.name.first%>">
                 </div> <br>
 
                 <div class="col-sm-10 col-lg-8">
-                    <label for="textLastName" class="col-md-8 col-form-label">
+                    <label for="last" class="col-md-8 col-form-label">
                         <span>Last Name:</span>
                     </label>
                 </div>
                 <div class="col-sm-10 col-lg-8">
-                    <input type="text" id="textLastName" name="textLastName" required class="form-control col-6"
-                        placeholder="Sal">
+                    <input type="text" id="textLastName" name="last" required class="form-control col-6"
+                    value="<%=currentUser.name.last%>">
                 </div>
             </fieldset> <br>
 
             <fieldset class="row form-group">
                 <div class="col-sm-10 col-lg-8">
-                    <label for="txtDOB" class="col-md-12 col-form-label">
+                    <label for="birthday" class="col-md-12 col-form-label">
                         <span>Date of Birth</span>
                     </label>
                 </div>
                 <div class="col-sm-10 col-lg-7">
-                    <input type="date" id="textDOB" name="txtDOB" required class="form-control col-6"
-                        placeholder="Date of Birth">
+                    <input type="date" id="birthday" name="birthday" required class="form-control col-10"
+                    value="<%=currentUser.numBiDay%>">
                 </div>
                 <div id="divDoBError" class="invisible errorMessage">
 
@@ -131,29 +142,26 @@
 
                 <div class="col-sm-12">
                     <div class="form-group col-sm-8 row">
-                        <div class="form-check col-4">
-                            <input type="radio" id="rbMale" name="gender" value="male" class="form-check-input">
-                            <label for="rbMale" class="form-check-label">Male</label>
-                        </div>
-
-                        <div class="form-check col-4">
-                            <input type="radio" id="rbFemale" name="gender" value="female" class="form-check-input">
-                            <label for="rbMale" class="form-check-label">Female</label>
-                        </div>
-
-                        <div class="form-check col-4">
-                            <input type="radio" id="rbOther" name="gender" value="other" class="form-check-input">
-                            <label for="rbOther" class="form-check-label">Other</label>
-                        </div>
+                        <label for="gender">Select your gender:</label>
+                            <select id="gender" class="form-control" name="gender">
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Other">Other</option>
+                                <option value="pnta">Prefer not to answer</option>
+                            </select>
                     </div>
                 </div>
             </fieldset>
         </div>
+        <script>
+            $("#gender").val("<%=currentUser.gender%>")
+        </script>
         <p>
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="reset" class="btn btn-secondary">Cancel</button>
         </p>
-    </form> <br> <br>
+    </form>
+</div> <br> <br>
 </div>
 </section>
 
@@ -179,13 +187,14 @@
             </div>
         </nav>
     </header>
-    <br>
     <body>
-        <div class="container" style="color: black;" id="mainDiv">
-            <fieldset class="brdr">
-                <div class="text-center">
+        <div class="container higherStyling" style="color: black;" id="mainDiv">
+            <br>
+            <br>
+            <fieldset class="brdr ">
+                <div class="text-center higherStyling">
                     <div>
-                        You are not signed in!
+                        <h3>You are not signed in!</h3>
                     </div>
                     <a href="login">
                         <span class="button">Sign in</span>

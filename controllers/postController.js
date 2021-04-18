@@ -40,11 +40,13 @@ module.exports = {
         let user = req.params.id;
         let currentUserID = res.locals.currentUser._id;
         var username =res.locals.currentUser.username;
+        var name = res.locals.currentUser.name.first + " "+res.locals.currentUser.name.last;
 
         let newPost = new Post({
             userID: user,    //needs to be adjusted for relational data
             postBody: req.body.postbody,
-            posterName: username
+            posterName: username,
+            fullName: name
         });
         if(currentUserID == user){
             Post.create(newPost)
@@ -107,7 +109,7 @@ module.exports = {
         post.findByIdAndUpdate(postId, updatedpost)
             .then(post => {
                 res.locals.post = post;
-                res.local.redirect = "/posts/${post._id";
+                res.local.redirect = "/posts/${post._id}";
                 next();
             })
             .catch(error => {
@@ -117,14 +119,16 @@ module.exports = {
     },
     delete: (req, res, next) => {
         let postId = req.params.id;
-        post.findByIdAndRemove(postId)
-            .then(() => {
-                res.locals.redirect = "/postId";
-                next();
-            })
-            .catch(error => {
-                console.log(`Error fetching post by ID: ${error.message}`);
-                next(error);
-            });
+
+        User.update({ $pull: {posts: req.params.id }});
+        Post.findByIdAndRemove(postId)
+        .then(() =>{
+            res.locals.redirect = "/user/home";
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching post by ID: ${error.message}`);
+            next(error);
+        });
     }
 }

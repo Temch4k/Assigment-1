@@ -49,6 +49,9 @@ module.exports={
     showProfile: (req, res) =>{
         res.render("user/Profile");
     },
+    showUnfinished: (req, res) =>{
+        res.render("user/profileSettings");
+    },
     create: (req, res, next)=>{
         if(req.skip){
             return next();
@@ -143,21 +146,12 @@ module.exports={
         { 
             return next();
         }
+        var bd = JSON.stringify(req.body.birthday);
+        bd = bd.substr(1,10);
         let userId = req.params.id;
-        let updatedUser = new User({
-            name: {
-                first: req.body.first,
-                last: req.body.last
-            },
-            email: req.body.email,
-            password: req.body.password,
-            biography: req.body.biography,
-            birthday: req.body.birthday,
-            gender: req.body.gender,
-            posts: req.body.posts
-        });
         User.findByIdAndUpdate(userId,
             {
+                
                 $set:
                 {
                     'name.first': req.body.first,
@@ -165,15 +159,17 @@ module.exports={
                     email: req.body.email,
                     password: req.body.password,
                     biography: req.body.biography,
-                    birthday: req.body.biography,
+                    birthday: req.body.birthday,
+                    numBiDay : bd,
                     gender: req.body.gender,
-                    posts: req.body.posts
+                    number: req.body.number,
+                    posts: req.body.post
                 }
             }
         )
             .then(user => {
                 res.locals.user = user;
-                res.locals.redirect = `/user/${user._id}`;
+                res.locals.redirect = `/user/home`;
                 next();
             })
             .catch(error => {
@@ -251,26 +247,22 @@ module.exports={
             console.log(`Error fetching user by ID: ${error.message}`);
             next(error);
         });
-    }
-}
-
-
-exports.getAllUsers = (req, res) => {
-    user.find({})
-        .exec()
-        .then(users => {
-            res.render("users", {
-                users: users
-            })
+    },
+    showAllUsers: (req, res) => {
+        res.render("user/allUsers");
+    },
+    AllUsers: (req, res, next)=>{
+        User.find().sort({date:-1})
+        .then(users=>{
+            res.locals.users = users;
+            next();
         })
-        .catch(error => {
-            console.log(error.message);
-            return [];
-        })
-        .then(() => {
-            console.log("promise complete");
+        .catch(error=>{
+            console.log(`Error fetching post data: ${error.message}`);
+            next(error);
         });
-};
+    },
+}
 
 exports.getProfilePage = (req, res) => {
     res.render("profilePage");

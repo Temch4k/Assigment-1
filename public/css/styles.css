@@ -172,5 +172,33 @@ top: 73px;
   .higherStyling{
     margin-top:45px;
     margin-bottom:30px;
-
   }
+  .table{
+      margin-top: 70px;
+  }
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  .follow a p {display:none;}
+  .follow a:hover p {display:block;}
+
+
+  @media all and (max-width: 1000px) and (min-width: 700px) {#postBox {
+     margin-left: 200px;
+  }}
+  @media all and (max-width: 7000px) {#postBox {
+    margin-top: 120px;
+    margin-left: 200px;
+ }}
+ @media only screen and (max-width: 700px) {
+    #dateHide {
+        display: none;
+    }}
+#dateHide {
+    margin-left: 20px;
+}
+@media only screen and (max-width: 1200px) {
+    #reccomendHide{
+        display: none;
+}}
