@@ -1,3 +1,4 @@
+const { redirectView } = require("./controllers/userController.js");
 const post = require("./models/post.js");
 
     const express = require("express"),
@@ -25,6 +26,8 @@ const post = require("./models/post.js");
     // LocalStrategy = require('passport-local').Strategy;
     var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
+
+    
 
 mongoose.connect("mongodb://localhost:27017/yoverse", {
     useUnifiedTopology: true,
@@ -112,6 +115,8 @@ router.get("/user/profileSettings", userController.showUnfinished);
 router.get("/user/home", postController.index, userController.showHome);
 router.get("/user/profilePage", userController.showProfileSettings);
 router.get("/user/allUsers", userController.AllUsers, userController.showAllUsers);
+router.get("/user/securityQuestions", userController.showSecurityQuestions);
+router.get("/user/updatePassword", userController.checkSecurityQuestions, userController.redirectView);
 
 
 router.put("/users/:id/update", userController.update, userController.redirectView);
@@ -119,6 +124,8 @@ router.get("/user/:username/Profile", userController.show, postController.indexB
 
 router.post("/post/:id/create", postController.create, userController.redirectView);
 router.delete("/post/:id/delete", postController.delete, postController.redirectView);
+
+
 
 
 // home routing

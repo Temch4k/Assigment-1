@@ -182,6 +182,64 @@
                 </div>
 
                 <br>
+
+                <h2>Security Questions</h2>
+
+                <div class="row">
+                    <div class="row d-flex justify-content-center col-sm-12">
+                        <label for="q1" class="col-md-2 col-sm-2 col-lg-7">Question 1:</label>
+                        <select name="q1" id="q1" class="form-control col-md-5 col-sm-7 col-lg-7" onchange="updateCountry(this.id)">
+                            <option value="n">-----</option>
+                            <option value="In what town or city did you meet your spouse or partner?">In what town or city did you meet your spouse or partner?</option>
+                            <option value="What is the middle name of your oldest child?">What is the middle name of your oldest child?</option>
+                            <option value="What are the last five digits of your driver's license number?">What are the last five digits of your driver's license number?</option>
+                            <option value="What is your grandmother's (on your mother's side) maiden name?">What is your grandmother's (on your mother's side) maiden name?</option>
+                        </select>
+                    </div>
+                    <div id="divQ1" class="row d-flex justify-content-center col-sm-12 invisible">
+                        <div class="col-md-2 col-sm-2 col-lg-7">
+                            <label for="a1" class="col-sm-7">Your Answer 1</label>
+                        </div>
+                        <input type="text" id="a1" name="a1" required class="form-control col-md-5 col-sm-7 col-lg-7"
+                            placeholder="Your answer..">
+                    </div>
+                    <div class="row d-flex justify-content-center col-sm-12">
+                        <label for="q2" class="col-md-2 col-sm-2 col-lg-7">Question 2:</label>
+                        <select name="q2" id="q2" class="form-control col-md-5 col-sm-7 col-lg-7" onchange="updateCountry(this.id)">
+                            <option value="n">-----</option>
+                            <option value="What was the house number and street name you lived in as a child?">What was the house number and street name you lived in as a child?</option>
+                            <option value="What were the last four digits of your childhood telephone number?">What were the last four digits of your childhood telephone number?</option>
+                            <option value="What primary school did you attend?">What primary school did you attend?</option>
+                            <option value="In what town or city was your first full time job?">In what town or city was your first full time job?</option>
+                        </select>
+                    </div>
+                    <div id="divQ2" class="row d-flex justify-content-center col-sm-12 invisible">
+                        <div class="col-md-2 col-sm-2 col-lg-7">
+                            <label for="a2" class="col-sm-7">Your Answer 2</label>
+                        </div>
+                        <input type="text" id="a2" name="a2" required class="form-control col-md-5 col-sm-7 col-lg-7"
+                            placeholder="Your answer..">
+                    </div>
+                    <div class="row d-flex justify-content-center col-sm-12">
+                        <label for="q3" class="col-md-2 col-sm-2 col-lg-7">Question 3:</label>
+                        <select name="q3" id="q3" class="form-control col-md-5 col-sm-7 col-lg-7" onchange="updateCountry(this.id)">
+                            <option value="n">-----</option>
+                            <option value="What is your spouse or partner's mother's maiden name?">What is your spouse or partner's mother's maiden name?</option>
+                            <option value="In what town or city did your parents meet?">In what town or city did your parents meet?</option>
+                            <option value="What time of the day were you born?">What time of the day were you born?</option>
+                            <option value="What time of the day was your first child born?">What time of the day was your first child born?</option>
+                        </select>
+                    </div>
+                    <div id="divQ3" class="row d-flex justify-content-center col-sm-12 invisible">
+                        <div class="col-md-2 col-sm-2 col-lg-7">
+                            <label for="a3" class="col-sm-7">Your Answer 3</label>
+                        </div>
+                        <input type="text" id="a3" name="a3" required class="form-control col-md-5 col-sm-7 col-lg-7"
+                            placeholder="Your answer..">
+                    </div>
+                </div>
+
+                <br>
                 <br>
                 <button type="submit" name="SubmitButton" class="btn btn-danger">Sign Up!</button>
                 <br>

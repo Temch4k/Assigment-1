@@ -20,6 +20,12 @@ const User = require("../models/user"),
             birthday: body.txtDOB,
             numBiDay: bd,
             gender: body.gender,
+            securityQuestion1: body.q1,
+            securityQuestion2: body.q2,
+            securityQuestion3: body.q3,
+            securityQuestion1Answer: body.a1,
+            securityQuestion2Answer: body.a2,
+            securityQuestion3Answer: body.a3,
             posts: body.posts
         };
     };
@@ -46,6 +52,9 @@ module.exports={
     showProfileSettings: (req, res) =>{
         res.render("user/profilePage");
     },
+    showSecurityQuestions: (req, res) =>{
+        res.render("user/securityQuestions");
+    },
     showProfile: (req, res) =>{
         res.render("user/Profile");
     },
@@ -57,7 +66,7 @@ module.exports={
             return next();
         }
         let userParams = getUserParams(req.body);
-
+        console.log(userParams)
         let newUser = new User(userParams);
         User.register(newUser, req.body.password, (error, user)=>{
             if(user){
@@ -91,7 +100,13 @@ module.exports={
             max: 500
         });
         req.check("password", "password cannot be empty").notEmpty();
-
+        req.check("a1", "Security Question cannot be empty").notEmpty();
+        req.check("a2", "Security Question cannot be empty").notEmpty();
+        req.check("a3", "Security Question cannot be empty").notEmpty();
+        req.check("a3", "Security Question cannot be empty").notEmpty();
+        req.check("q1", "Security Question cannot be empty").notEmpty();
+        req.check("q2", "Security Question cannot be empty").notEmpty();
+        req.check("q3", "Security Question cannot be empty").notEmpty();
         
         req.getValidationResult().then((error) =>{
             if(!error.isEmpty()){
@@ -106,6 +121,11 @@ module.exports={
                 next();
             }
         })
+    },
+    checkSecurityQuestions: (req, res, next) => {
+        let answer1 = req.body.a1;
+        let answer2 = req.body.a2;
+        let answer3 = req.body.a3;
     },
     authenticate: passport.authenticate("local", {
         successRedirect: "home",
