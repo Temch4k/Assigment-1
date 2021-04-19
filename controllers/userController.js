@@ -177,13 +177,11 @@ module.exports={
                     'name.first': req.body.first,
                     'name.last': req.body.last,
                     email: req.body.email,
-                    password: req.body.password,
                     biography: req.body.biography,
                     birthday: req.body.birthday,
                     numBiDay : bd,
                     gender: req.body.gender,
                     number: req.body.number,
-                    posts: req.body.post
                 }
             }
         )
