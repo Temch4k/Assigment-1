@@ -30,7 +30,13 @@ var users = [{
     biography: "Likes to be alive",
     gender: "Male",
     number: "720-123-2222",
-    password: "twiddledietwiddlo"
+    password: "twiddledietwiddlo",
+    securityQuestion1: "In what town or city did you meet your spouse or partner?",
+    securityQuestion2: "What was the house number and street name you lived in as a child?",
+    securityQuestion3: "What is your spouse or partner's mother's maiden name?",
+    securityQuestion1Answer: "abc",
+    securityQuestion2Answer: "abc",
+    securityQuestion3Answer: "abc"
   },
   {
     name: {
@@ -44,7 +50,13 @@ var users = [{
     biography: "Likes to touch soft fur",
     gender: "Male",
     number: "123-333-2222",
-    password: "art"
+    password: "art",
+    securityQuestion1: "In what town or city did you meet your spouse or partner?",
+    securityQuestion2: "What was the house number and street name you lived in as a child?",
+    securityQuestion3: "What is your spouse or partner's mother's maiden name?",
+    securityQuestion1Answer: "abc",
+    securityQuestion2Answer: "abc",
+    securityQuestion3Answer: "abc"
   },
   {
     name: {
@@ -58,7 +70,13 @@ var users = [{
     biography: "Likes to fly in the sky",
     gender: "Male",
     number: "123-333-2227",
-    password: "password"
+    password: "password",
+    securityQuestion1: "In what town or city did you meet your spouse or partner?",
+    securityQuestion2: "What was the house number and street name you lived in as a child?",
+    securityQuestion3: "What is your spouse or partner's mother's maiden name?",
+    securityQuestion1Answer: "abc",
+    securityQuestion2Answer: "abc",
+    securityQuestion3Answer: "abc"
   },
   {
     name: {
@@ -72,7 +90,13 @@ var users = [{
     biography: "Walks on lava",
     gender: "Male",
     number: "000-123-3344",
-    password: "thisandthat"
+    password: "thisandthat",
+    securityQuestion1: "In what town or city did you meet your spouse or partner?",
+    securityQuestion2: "What was the house number and street name you lived in as a child?",
+    securityQuestion3: "What is your spouse or partner's mother's maiden name?",
+    securityQuestion1Answer: "abc",
+    securityQuestion2Answer: "abc",
+    securityQuestion3Answer: "abc"
   }
 ];
 

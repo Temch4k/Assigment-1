@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
     securityQuestion2Answer:{
         type: String
     },
-    securityQuestion2Answer:{
+    securityQuestion3Answer:{
         type: String
     },
     password: {
