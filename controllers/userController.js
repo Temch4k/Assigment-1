@@ -14,7 +14,7 @@ const User = require("../models/user"),
             },
             email: body.email,
             username: body.username,
-            password: body.password, 
+            password: body.password,
             number: body.txtTele,
             biography: body.txtBiography,
             birthday: body.txtDOB,
@@ -38,7 +38,7 @@ module.exports={
         res.render("user/forgotPassword");
     },
     indexView: (req, res) =>{
-        res.render("user/index");//come back to 
+        res.render("user/index");//come back to
     },
     new: (req, res) =>{
         res.render("user/signup");
@@ -86,7 +86,7 @@ module.exports={
         req.sanitizeBody("email").normalizeEmail({
             all_lowercase: true
         }).trim();
-        
+
         req.check("textFirstName", "First name not valid").notEmpty()
         req.check("textLastName", "Last name not valid").notEmpty()
         req.check("txtDOB", "Birthday has to be earlier than today").notEmpty()
@@ -108,7 +108,7 @@ module.exports={
         req.check("q2", "Security Question cannot be empty").notEmpty();
         req.check("q3", "Security Question cannot be empty").notEmpty();
         req.check("password", "Password must contain one capital, one lower, and one number").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,}$/)
-        
+
         req.getValidationResult().then((error) =>{
             if(!error.isEmpty()){
                 let messages = error.array().map (e => e.msg);
@@ -182,7 +182,7 @@ module.exports={
     },
     update: (req, res, next) => {
         if(req.skip)
-        { 
+        {
             return next();
         }
         var bd = JSON.stringify(req.body.birthday);
@@ -190,7 +190,7 @@ module.exports={
         let userId = req.params.id;
         User.findByIdAndUpdate(userId,
             {
-                
+
                 $set:
                 {
                     'name.first': req.body.first,
@@ -248,7 +248,7 @@ module.exports={
     },
     updatePassword: (req, res, next) => {
         if(req.skip)
-        { 
+        {
             return next();
         }
         let userId = req.params.id;
@@ -257,7 +257,7 @@ module.exports={
         if(password != confirmPassword) return next();
         User.findByIdAndUpdate(userId,
             {
-                
+
                 $set:
                 {
                     password: req.body.password
@@ -276,7 +276,7 @@ module.exports={
     },
     updatePost: (req, res, next) => {
         if(req.skip)
-        { 
+        {
             return next();
         }
         let userId = req.params.id;
@@ -355,7 +355,7 @@ exports.saveUser = async (req, res, next) => {
             number: req.body.txtTele,
             password: req.body.txtPW
         });
-        
+
         let secondaryPassword = req.body.txtPW2
         if (newUser.password != secondaryPassword) {
             errorMessage = "Passwords must match. "
