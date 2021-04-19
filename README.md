@@ -48,17 +48,19 @@ Some problems we ran into: we couldn't figure out how to connect regular js file
 
 --------------------------------------------------------------------------------------
 
-Part 4
+##Part 4
 
   Intruducing Crud and User Authorization
 
   For part 4, we had to create a CRUD class system for changing the different parts of our mongodb system. In addition, we had to authorize user using passport and use passport sessions in order to allow users to use specific sections of our sites.
 
-  Artsiom mad sure that the linking between web pages was fully functional. In addition, he mad it so that a user had to be validated before they were able to access certain views. Also, Artsiom had created the follow page which shows a  list of users to follow on the web site. He implimented the view for a user to view their own user profile which shows all information the user has on the database minus the password. The greatest task Artsiome had was in error correction, he corrected a large portion of the bugs we were having an ultimately got the application running when the rest of the team and their resources were unable to do so. He also got sign out work properly too.
+  Artsiom made sure that the linking between web pages was fully functional. In addition, he made it so that a user had to be validated before they were able to access certain views. Also, Artsiom had created the follow page which shows a list of users to follow on the web site. He implimented the view for a user to view their own user profile which shows all information the user has on the database minus the password, as well as by adding a different username to the page call to see differen user profiles such as: here is out user profile - http://localhost:3000/user/dreams/Profile - if we replace username dreams with anothr username it will show us another profile. The greatest task Artsiome had was in error correction, he corrected a large portion of the bugs we were having an ultimately got the application running when the rest of the team and their resources were unable to do so. He also got sign out work properly too.
 
   Dax was in charge of making the security question functional, implimenting CRUD classes and verification. He laid the ground work but was ultimately unsuccesful at getting the functionality of his work complete. In addition, Dax was in charge of completing the functionality of change password for each user.
 
   Micah reworked the home page to make it more visually appeasing and more dynamic for different sized windows.
 
 We struggled quite a bit with the routing at the start and understanding when to differentiate between a model and a user which lead to days of debugging before we figured out the issue.
+
+For the future we are planning on adding profile pictures and picture posting as well as an algorithm that will find trending posts and what could be interesting for the user.
 ```
