@@ -122,6 +122,36 @@ module.exports={
             }
         })
     },
+    validateEdit: (req, res, next) =>{
+        req.sanitizeBody("email").normalizeEmail({
+            all_lowercase: true
+        }).trim();
+        
+        req.check("fist", "First name not valid").notEmpty()
+        req.check("last", "Last name not valid").notEmpty()
+        req.check("birthday", "Birthday has to be earlier than today").notEmpty()
+        req.check("number", "Number cant be empty").notEmpty()
+        req.check("gender", "Gender not valide").notEmpty()
+
+        req.check("email", "email is not valid").isEmail();
+        req.check("biography", "Biography is not valid").notEmpty().isLength({
+            min: 1,
+            max: 500
+        });        
+        req.getValidationResult().then((error) =>{
+            if(!error.isEmpty()){
+                let messages = error.array().map (e => e.msg);
+                req.flash("error", messages.join(" and "));
+                req.skip = true;
+
+                res.locals.redirect = "/user/home";
+                next();
+            }
+            else{
+                next();
+            }
+        })
+    },
     checkSecurityQuestions: (req, res, next) => {
         let answer1 = req.body.a1;
         let answer2 = req.body.a2;

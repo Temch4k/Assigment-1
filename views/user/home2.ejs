@@ -102,8 +102,10 @@
                                         <h5 class="mt-0"></h5>
                                         <!--add link to profile page here-->    
                                         <i class="btn btn-info">
-                                            <%= post.fullName %>    
-                                            <%= post.posterName %>
+                                            <a href = "<%= `/user/${post.posterName}/Profile` %>">
+                                                <%= post.fullName %>    
+                                                <%= post.posterName %>
+                                            </a>
                                         </i>
                                         <div class="postMainBody">
                                             <%= post.postBody %>
