@@ -107,6 +107,7 @@ module.exports={
         req.check("q1", "Security Question cannot be empty").notEmpty();
         req.check("q2", "Security Question cannot be empty").notEmpty();
         req.check("q3", "Security Question cannot be empty").notEmpty();
+        req.check("password", "Password must contain one capital, one lower, and one number").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,}$/)
         
         req.getValidationResult().then((error) =>{
             if(!error.isEmpty()){
@@ -126,12 +127,30 @@ module.exports={
         let answer1 = req.body.a1;
         let answer2 = req.body.a2;
         let answer3 = req.body.a3;
+        console.log(answer1)
+        console.log(answer2)
+        console.log(answer3)
+        console.log(res.locals.currentUser.securityQuestion1Answer)
+        console.log(res.locals.currentUser.securityQuestion2Answer)
+        console.log(res.locals.currentUser.securityQuestion3Answer)
+        if(res.locals.currentUser.securityQuestion1Answer != answer1 || res.locals.currentUser.securityQuestion2Answer != answer2 || res.locals.currentUser.securityQuestion3Answer != answer3) {
+            console.log("failure")
+            res.locals.redirect = "/user/securityQuestions"
+            next();
+        }else{
+            console.log("success")
+            res.locals.redirect = "/user/changePassword"
+            next();
+        }
     },
     authenticate: passport.authenticate("local", {
         successRedirect: "home",
         failureRedirect: "login",
         failureFlash: "Login failed try your credentials again",
     }),
+    showChangePassword: (req, res) => {
+        res.render("user/changePassword");
+    },
     logout: (req,res,next)=>{
         req.logout();
         req.flash("success", "you've been logged out");
@@ -177,13 +196,11 @@ module.exports={
                     'name.first': req.body.first,
                     'name.last': req.body.last,
                     email: req.body.email,
-                    password: req.body.password,
                     biography: req.body.biography,
                     birthday: req.body.birthday,
                     numBiDay : bd,
                     gender: req.body.gender,
-                    number: req.body.number,
-                    posts: req.body.post
+                    number: req.body.number
                 }
             }
         )
@@ -228,6 +245,34 @@ module.exports={
                     next(error)
         })
         }
+    },
+    updatePassword: (req, res, next) => {
+        if(req.skip)
+        { 
+            return next();
+        }
+        let userId = req.params.id;
+        let password = req.body.password;
+        let confirmPassword = req.body.confirmPassword;
+        if(password != confirmPassword) return next();
+        User.findByIdAndUpdate(userId,
+            {
+                
+                $set:
+                {
+                    password: req.body.password
+                }
+            }
+        )
+            .then(user => {
+                res.locals.user = user;
+                res.locals.redirect = `/user/home`;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            });
     },
     updatePost: (req, res, next) => {
         if(req.skip)

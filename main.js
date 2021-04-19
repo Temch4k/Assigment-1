@@ -116,10 +116,12 @@ router.get("/user/home", postController.index, userController.showHome);
 router.get("/user/profilePage", userController.showProfileSettings);
 router.get("/user/allUsers", userController.AllUsers, userController.showAllUsers);
 router.get("/user/securityQuestions", userController.showSecurityQuestions);
-router.get("/user/updatePassword", userController.checkSecurityQuestions, userController.redirectView);
+router.post("/user/checkSecurityQuestion", userController.checkSecurityQuestions, userController.redirectView);
+router.get("/user/changePassword", userController.showChangePassword);
 
 
-router.put("/users/:id/update", userController.update, userController.redirectView);
+router.put("/user/:id/update", userController.update, userController.redirectView);
+router.put("/user/:id/updatepassword", userController.updatePassword, userController.redirectView);
 router.get("/user/:username/Profile", userController.show, postController.indexByUsername, userController.showProfile);
 
 router.post("/post/:id/create", postController.create, userController.redirectView);
