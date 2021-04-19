@@ -42,13 +42,11 @@ Part 3
 Dax got the mongo database running. He created the models and did a good amount of bug fixes. He also was in charge of the signup and signin data as well as the logic for the checks. He made sure that when a user logs in that the database searches for the specified email address then matches it to the associated password. He also, made sure that all the tables in the signup were populated and the passwords matched. If any of these conditions were not met, an error message was created and placed within the views for signup and login.
 
 Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
-```
 
 
 
 --------------------------------------------------------------------------------------
-
-##Part 4
+Part 4
 
   Intruducing Crud and User Authorization
 
