@@ -100,22 +100,26 @@ var users = [{
   }
 ];
 
-var post = [
+var posts = [
   {
-  _user: "bobby@hotmail.com",
-  postBody: "I just walked on lava again!"
+  _user: "dreams",
+  postBody: "I just walked on lava again!",
+  fullName: "Dax Valdez"
   },
   {
-    _user: "dax.valdez@ucdenver.edu",
-    postBody: "Woo Hoo! Just won the soccer game today"
+    _user: "dreams",
+    postBody: "Woo Hoo! Just won the soccer game today",
+    fullName: "Dax Valdez"
   },
   {
-    _user: "micah.stovall@ucdenver.edu",
-    postBody: "I ate the biggest burrito ever last night!"
+    _user: "stovy",
+    postBody: "I ate the biggest burrito ever last night!",
+    fullName: "Micah Stovall"
   },
   {
-    _user: "artsiom.skarakhod@ucdenver.edu",
-    postBody: "Was out on a walk and spotted a barn owl. Neat!"
+    _user: "artemio",
+    postBody: "Was out on a walk and spotted a barn owl. Neat!",
+    fullName: "Artsiom Skarakhod"
   }
 ];
 
@@ -135,6 +139,11 @@ users.forEach(c => {
   commands.push(
       User.register(newUser, c.password)
   );
+});
+
+posts.forEach(c => {
+  let newPost = new Post(c);
+      Post.insert(newPost)
 });
 
 Promise.all(commands)
