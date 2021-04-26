@@ -1,30 +1,4 @@
 <% if(loggedIn){ %>
-    <header>
-        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="home">
-                        <img src="/images/yoVerseWebsite.png" class="website-logo">
-                    </a>
-                </div>
-                <div class="nav navbar-nav">
-                    <form class="form-inline my-2  navbar-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-                <div class="brdrBlk">
-                    <h5>Logged in as: <a class="text-center btn btn-info" id="usernameLink" href="<%= `/user/${currentUser.username}/Profile` %>"><%= currentUser.username %></a></h5>
-                    
-                </div>
-                <div class="nav navbad-nav">
-                    <a href="<%= `/user/${currentUser.username}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
     <div class="sidenav col-3">
         <br>
         <br>
@@ -144,27 +118,6 @@
     </div>
     <br>
     <%} else {%>
-        <header>
-            <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/user">
-                            <img src="/images/yoVerseWebsite.png" alt="logo" class="website-logo">
-                        </a>
-                    </div>
-                    <div class="nav navbar-nav">
-                        <form class="form-inline my-2  navbar-right">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>
-                    <div>
-                        <button type="button" onclick="location.href='signup';" class=" btn btn-outline-warning btn-lg"
-                            id="loginBtn">Sign Up</button>
-                    </div>
-                </div>
-            </nav>
-        </header>
         <br>
 
         <body>
@@ -181,5 +134,4 @@
                 </fieldset>
             </div>
         </body>
-        
-        <%}%>
+    <%}%>

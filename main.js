@@ -119,6 +119,7 @@ router.get("/user/securityQuestions", userController.showSecurityQuestions);
 router.post("/user/checkSecurityQuestion", userController.checkSecurityQuestions, userController.redirectView);
 router.get("/user/changePassword", userController.showChangePassword);
 
+router.post("/user/search", userController.searchUsers, userController.showAllUsers);
 
 router.put("/user/:id/update", userController.update, userController.validateEdit, userController.redirectView);
 router.put("/user/:id/updatepassword", userController.updatePassword, userController.redirectView);

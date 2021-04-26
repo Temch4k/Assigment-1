@@ -1,5 +1,6 @@
 "use strict";
 const flashMessages = require("connect-flash");
+const { NETWORK_AUTHENTICATION_REQUIRED } = require("http-status-codes");
 const passport = require("passport");
 const post = require("../models/post");
 const User = require("../models/user"),
@@ -26,12 +27,13 @@ const User = require("../models/user"),
             securityQuestion1Answer: body.a1,
             securityQuestion2Answer: body.a2,
             securityQuestion3Answer: body.a3,
-            posts: body.posts
+            posts: body.posts,
         };
     };
 
 module.exports={
     login:(req,res)=>{
+        res.locals.letsGo = "ye";
         res.render("user/login");
     },
     forgotPassword:(req,res)=>{
@@ -348,7 +350,7 @@ module.exports={
     },
     AllUsers: (req, res, next)=>{
         User.find().sort({date:-1})
-        .then(users=>{
+        .then(users => {
             res.locals.users = users;
             next();
         })
@@ -356,6 +358,37 @@ module.exports={
             console.log(`Error fetching post data: ${error.message}`);
             next(error);
         });
+    },
+    searchUsers: (req, res, next)=> 
+    {
+        console.log(req.body.search)
+        if(!req.body.search)
+        {
+            User.find().sort({date:-1})
+                .then(users=>{
+                    res.locals.users = users;
+                    next();
+                })
+                .catch(error=>{
+                    console.log(`Error fetching user data: ${error.message}`);
+                    next(error);
+                });
+                res.locals.users = "/user/allUsers";
+                next();
+        }
+        else{
+            User.find({username: {$regex: req.body.search}}).exec(function(err, user)
+            {
+                if(err)
+                {
+
+                }else{
+                    console.log(user);
+                    res.locals.users = user;
+                    next();
+                }
+            });
+        }
     },
 }
 

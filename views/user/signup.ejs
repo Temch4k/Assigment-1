@@ -1,30 +1,4 @@
 <%if(!loggedIn){ %>
-
-<div>
-    <header>
-        <nav class="navbar badge-light">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="website-logo" href="/user">
-                        <img src="/images/yoVerseWebsite.png" alt="yoVerseLogo" class="website-logo">
-                    </a>
-                </div>
-                <div class="nav navbar-nav">
-                    <form class="form-inline my-2  navbar-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-                <div>
-                    <button type="button" onclick="location.href='login';" class="btn btn-outline-warning btn-lg"
-                        id="loginBtn">Login</button>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <br>
-</div>
-
 <br>
 <div class="float-container mainDiv">
     <div class="float-left center">
@@ -251,33 +225,7 @@
 <script src="/JS/questions.js"></script>
 
 <%}else{ %>
-    <header>
-        <nav class="navbar nav navbar-inverse navbar-expand-xl navbar-expand badge-light navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="home">
-                        <img src="/images/yoVerseWebsite.png" class="website-logo">
-                    </a>
-                </div>
-                <div class="nav navbar-nav">
-                    <form class="form-inline my-2  navbar-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-                <div>
-                    <h5>Logged in as:</h5>
-                    <%= currentUser.username %>
-                </div>
-                <div class="nav navbad-nav">
-                    <a href="<%= `/user/${currentUser.username}/Profile` %>"><img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png"></a>
-                </div>
-            </div>
-        </nav>
-    </header>
     <br>
-
     <body>
         <div class="container mainDiv" style="color: black;">
             <fieldset class="brdr">

@@ -15,9 +15,8 @@
                     </div>
                 <%}%>
                 <div class="nav navbar-nav">
-                    <form class="form-inline my-2  navbar-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                            aria-label="Search">
+                    <form action="/user/search" method="POST" class="form-inline my-2  navbar-right">
+                        <input class="form-control mr-sm-2" name="search" required placeholder="Search by username" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
@@ -39,47 +38,50 @@
         </nav>
     </header>
 
-
-<table class="table higherStyling">
-    <thread>
-        <tr>
-            <th>Photo</th>
-            <th>Full Name</th>
-            <th>Username</th>
-            <th>Follow</th>
-            <th>Visit Page</th>
-        </tr>
-    </thread>
-    <tbody>
-        <% users.forEach(user => { %>
+<% if(users){ %>
+    <table class="table higherStyling">
+        <thread>
             <tr>
-                <td>
-                    <img class="d-flex mr-3 profilePic postThumbnail" id = "profilePic" src="/img/profilePicBlank.png">
-                </td>
-                <td>
-                    <%= user.name.first %>
-                    <%= user.name.last %>
-                </td>
-                <td>
-                    <%= user.username %>
-                </td>
-                <td>
-                    <div class="follow">
-                        <% if(loggedIn){ %>
-                            <a class="" href="">
-                                follow
-                        <%}else{%>
-                            <a href=" " title="You need to log in to follow">follow</a>
-                        <%}%>
-                    </div>
-                </td>
-                <td>
-                    <a href="<%=`/user/${user.username}/Profile` %>">
-                        Visit Page
-                    </a>
-                </td>
-                </td>
+                <th>Photo</th>
+                <th>Full Name</th>
+                <th>Username</th>
+                <th>Follow</th>
+                <th>Visit Page</th>
             </tr>
-            <% })%>
-    </tbody>
-</table>
+        </thread>
+        <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td>
+                            <img class="d-flex mr-3 profilePic postThumbnail" id = "profilePic" src="/img/profilePicBlank.png">
+                        </td>
+                        <td>
+                            <%= user.name.first %>
+                            <%= user.name.last %>
+                        </td>
+                        <td>
+                            <%= user.username %>
+                        </td>
+                        <td>
+                            <div class="follow">
+                                <% if(loggedIn){ %>
+                                    <a class="" href="">
+                                        follow
+                                <%}else{%>
+                                    <a href=" " title="You need to log in to follow">follow</a>
+                                <%}%>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="<%=`/user/${user.username}/Profile` %>">
+                                Visit Page
+                            </a>
+                        </td>
+                        </td>
+                    </tr>
+                    <% })%>
+        </tbody>
+    </table>
+<%}else{%>
+    <div>no users are found</div>
+<%}%>
