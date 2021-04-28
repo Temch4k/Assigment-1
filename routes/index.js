@@ -1,4 +1,3 @@
-
 const router = require("express").Router(),
 userRoutes = require("./userRoutes"),
 postRoutes = require("./postRoutes"),
