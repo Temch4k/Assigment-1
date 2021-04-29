@@ -1,12 +1,14 @@
 "use strict";
 const flashMessages = require("connect-flash");
-const { NETWORK_AUTHENTICATION_REQUIRED } = require("http-status-codes");
+const {
+    NETWORK_AUTHENTICATION_REQUIRED
+} = require("http-status-codes");
 const passport = require("passport");
 const post = require("../models/post");
 const User = require("../models/user"),
     getUserParams = body => {
         var bd = JSON.stringify(body.txtDOB);
-        bd = bd.substr(1,10);
+        bd = bd.substr(1, 10);
         console.log(bd);
         return {
             name: {
@@ -31,52 +33,51 @@ const User = require("../models/user"),
         };
     };
 
-module.exports={
-    login:(req,res)=>{
+module.exports = {
+    login: (req, res) => {
         res.locals.letsGo = "ye";
         res.render("user/login");
     },
-    forgotPassword:(req,res)=>{
+    forgotPassword: (req, res) => {
         res.render("user/forgotPassword");
     },
-    indexView: (req, res) =>{
-        res.render("user/index");//come back to
+    indexView: (req, res) => {
+        res.render("user/index"); //come back to
     },
-    new: (req, res) =>{
+    new: (req, res) => {
         res.render("user/signup");
     },
     showHome: (req, res) => {
         res.render("user/home2");
     },
-    showSecQuestions: (req, res) =>{
+    showSecQuestions: (req, res) => {
         res.render("user/securityQuestions");
     },
-    showProfileSettings: (req, res) =>{
+    showProfileSettings: (req, res) => {
         res.render("user/profilePage");
     },
-    showSecurityQuestions: (req, res) =>{
+    showSecurityQuestions: (req, res) => {
         res.render("user/securityQuestions");
     },
-    showProfile: (req, res) =>{
+    showProfile: (req, res) => {
         res.render("user/Profile");
     },
-    showUnfinished: (req, res) =>{
+    showUnfinished: (req, res) => {
         res.render("user/profileSettings");
     },
-    create: (req, res, next)=>{
-        if(req.skip){
+    create: (req, res, next) => {
+        if (req.skip) {
             return next();
         }
         let userParams = getUserParams(req.body);
         console.log(userParams)
         let newUser = new User(userParams);
-        User.register(newUser, req.body.password, (error, user)=>{
-            if(user){
+        User.register(newUser, req.body.password, (error, user) => {
+            if (user) {
                 req.flash("success", "User account created succesfully");
                 res.locals.redirect = "securityQuestions";
                 next();
-            }
-            else {
+            } else {
                 console.log(error.message);
                 req.flash("Error", `Failed to create user account: ${error.message}`);
                 res.locals.redirect = "signup";
@@ -84,7 +85,7 @@ module.exports={
             }
         })
     },
-    validate: (req, res, next) =>{
+    validate: (req, res, next) => {
         req.sanitizeBody("email").normalizeEmail({
             all_lowercase: true
         }).trim();
@@ -111,25 +112,24 @@ module.exports={
         req.check("q3", "Security Question cannot be empty").notEmpty();
         req.check("password", "Password must contain one capital, one lower, and one number").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,}$/)
 
-        req.getValidationResult().then((error) =>{
-            if(!error.isEmpty()){
-                let messages = error.array().map (e => e.msg);
+        req.getValidationResult().then((error) => {
+            if (!error.isEmpty()) {
+                let messages = error.array().map(e => e.msg);
                 req.flash("error", messages.join(" and "));
                 req.skip = true;
 
                 res.locals.redirect = "signup";
                 next();
-            }
-            else{
+            } else {
                 next();
             }
         })
     },
-    validateEdit: (req, res, next) =>{
+    validateEdit: (req, res, next) => {
         req.sanitizeBody("email").normalizeEmail({
             all_lowercase: true
         }).trim();
-        
+
         req.check("fist", "First name not valid").notEmpty()
         req.check("last", "Last name not valid").notEmpty()
         req.check("birthday", "Birthday has to be earlier than today").notEmpty()
@@ -140,17 +140,16 @@ module.exports={
         req.check("biography", "Biography is not valid").notEmpty().isLength({
             min: 1,
             max: 500
-        });        
-        req.getValidationResult().then((error) =>{
-            if(!error.isEmpty()){
-                let messages = error.array().map (e => e.msg);
+        });
+        req.getValidationResult().then((error) => {
+            if (!error.isEmpty()) {
+                let messages = error.array().map(e => e.msg);
                 req.flash("error", messages.join(" and "));
                 req.skip = true;
 
                 res.locals.redirect = "/user/home";
                 next();
-            }
-            else{
+            } else {
                 next();
             }
         })
@@ -165,11 +164,11 @@ module.exports={
         console.log(res.locals.currentUser.securityQuestion1Answer)
         console.log(res.locals.currentUser.securityQuestion2Answer)
         console.log(res.locals.currentUser.securityQuestion3Answer)
-        if(res.locals.currentUser.securityQuestion1Answer != answer1 || res.locals.currentUser.securityQuestion2Answer != answer2 || res.locals.currentUser.securityQuestion3Answer != answer3) {
+        if (res.locals.currentUser.securityQuestion1Answer != answer1 || res.locals.currentUser.securityQuestion2Answer != answer2 || res.locals.currentUser.securityQuestion3Answer != answer3) {
             console.log("failure")
             res.locals.redirect = "/user/securityQuestions"
             next();
-        }else{
+        } else {
             console.log("success")
             res.locals.redirect = "/user/changePassword"
             next();
@@ -183,7 +182,7 @@ module.exports={
     showChangePassword: (req, res) => {
         res.render("user/changePassword");
     },
-    logout: (req,res,next)=>{
+    logout: (req, res, next) => {
         req.logout();
         req.flash("success", "you've been logged out");
         res.locals.redirect = "/";
@@ -192,50 +191,48 @@ module.exports={
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
         console.log(redirectPath);
-        if(redirectPath != undefined) res.redirect(redirectPath);
+        if (redirectPath != undefined) res.redirect(redirectPath);
         else next();
     },
     show: (req, res, next) => {
         let userId = req.params.username;
-        User.findOne({username: userId})
-        .then(user => {
-            res.locals.user = user;
-            next();
-        })
-        .catch(error=>{
-            console.log(`Error fetching user by username: ${error.message}`);
-        });
+        User.findOne({
+                username: userId
+            })
+            .then(user => {
+                res.locals.user = user;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching user by username: ${error.message}`);
+            });
     },
     showView: (req, res) => {
         res.render("user/show");
     },
-    edit: (req, res, next)=>{
+    edit: (req, res, next) => {
         res.render("user/editProfile")
     },
     update: (req, res, next) => {
-        if(req.skip)
-        {
+        if (req.skip) {
             return next();
         }
         var bd = JSON.stringify(req.body.birthday);
-        bd = bd.substr(1,10);
+        bd = bd.substr(1, 10);
         let userId = req.params.id;
-        User.findByIdAndUpdate(userId,
-            {
+        User.findByIdAndUpdate(userId, {
 
-                $set:
-                {
+                $set: {
                     'name.first': req.body.first,
                     'name.last': req.body.last,
                     email: req.body.email,
                     biography: req.body.biography,
                     birthday: req.body.birthday,
-                    numBiDay : bd,
+                    numBiDay: bd,
                     gender: req.body.gender,
                     number: req.body.number
                 }
-            }
-        )
+            })
             .then(user => {
                 res.locals.user = user;
                 res.locals.redirect = `/user/home`;
@@ -249,53 +246,61 @@ module.exports={
     updateSecurityQuestions: (req, res, next) => {
         let user = req.params.id;
         let currentUserID = res.locals.currentUser._id;
-        var username =res.locals.currentUser.username;
+        var username = res.locals.currentUser.username;
 
         let secQ1 = req.body.q1;
         let secQ2 = req.body.q2;
         let secQ3 = req.body.q3;
 
-        if(currentUserID == user){
+        if (currentUserID == user) {
             Post.create(newPost)
                 .then(p => {
-                        // add post to user object
-                        User.findByIdAndUpdate(user, { $push: { securityQuestion1Answer: secQ1 } })
-                        User.findByIdAndUpdate(user, { $push: { securityQuestion2Answer: secQ2 } })
-                        User.findByIdAndUpdate(user, { $push: { securityQuestion3Answer: secQ3 } })
-                            .then(user => {
-                                console.log("Security Questions added");
-                                res.locals.redirect = "/user/Login";
-                                next();
-                            })
+                    // add post to user object
+                    User.findByIdAndUpdate(user, {
+                        $push: {
+                            securityQuestion1Answer: secQ1
+                        }
+                    })
+                    User.findByIdAndUpdate(user, {
+                        $push: {
+                            securityQuestion2Answer: secQ2
+                        }
+                    })
+                    User.findByIdAndUpdate(user, {
+                            $push: {
+                                securityQuestion3Answer: secQ3
+                            }
+                        })
+                        .then(user => {
+                            console.log("Security Questions added");
+                            res.locals.redirect = "/user/Login";
+                            next();
+                        })
                         .catch(error => {
                             console.log(`Error fetching user by ID: ${error.message}`);
                             next(error);
                         })
-                    })
+                })
                 .catch(error => {
                     console.log(`Error saving post: ${error.message}`)
                     next(error)
-        })
+                })
         }
     },
     updatePassword: (req, res, next) => {
-        if(req.skip)
-        {
+        if (req.skip) {
             return next();
         }
         let userId = req.params.id;
         let password = req.body.password;
         let confirmPassword = req.body.confirmPassword;
-        if(password != confirmPassword) return next();
-        User.findByIdAndUpdate(userId,
-            {
+        if (password != confirmPassword) return next();
+        User.findByIdAndUpdate(userId, {
 
-                $set:
-                {
+                $set: {
                     password: req.body.password
                 }
-            }
-        )
+            })
             .then(user => {
                 res.locals.user = user;
                 res.locals.redirect = `/user/home`;
@@ -307,22 +312,18 @@ module.exports={
             });
     },
     updatePost: (req, res, next) => {
-        if(req.skip)
-        {
+        if (req.skip) {
             return next();
         }
         let userId = req.params.id;
         let updatedUser = new User({
             posts: req.body.posts
         });
-        User.findByIdAndUpdate(userId,
-            {
-                $set:
-                {
+        User.findByIdAndUpdate(userId, {
+                $set: {
                     posts: req.body.posts
                 }
-            }
-        )
+            })
             .then(user => {
                 res.locals.user = user;
                 res.locals.redirect = `/home`;
@@ -333,56 +334,86 @@ module.exports={
                 next(error);
             });
     },
-    delete: (req, res, next) =>{
+    delete: (req, res, next) => {
         let userId = req.params.id;
         User.findByIdAndRemove(userId)
-        .then(() =>{
-            res.locals.redirect = "/users";
-            next();
-        })
-        .catch(error=>{
-            console.log(`Error fetching user by ID: ${error.message}`);
-            next(error);
-        });
+            .then(() => {
+                res.locals.redirect = "/users";
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            });
     },
+    respondJSON: (req, res) => {
+        res.json({
+            status: httpStatus.OK,
+            data: res.locals
+        })
+    },
+    errorJSON: (error, req, res, next) => {
+        let errorObject;
+        if (error) {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: error.message
+            };
+        } else {
+            errorObject = {
+                status: httpStatus.OK,
+                message: "Unknown error."
+            };
+        }
+        res.json(errorObject);
+    },
+    /*filterUserFriends: (error, req, res, next) => {
+        let currentUser = res.locals.currentUser;
+        if(currentUser) {
+            let mappedFriends = res.locals.users
+        }
+    },*/
     showAllUsers: (req, res) => {
         res.render("user/allUsers");
     },
-    AllUsers: (req, res, next)=>{
-        User.find().sort({date:-1})
-        .then(users => {
-            res.locals.users = users;
-            next();
-        })
-        .catch(error=>{
-            console.log(`Error fetching post data: ${error.message}`);
-            next(error);
-        });
+    AllUsers: (req, res, next) => {
+        User.find().sort({
+                date: -1
+            })
+            .then(users => {
+                res.locals.users = users;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching post data: ${error.message}`);
+                next(error);
+            });
     },
-    searchUsers: (req, res, next)=> 
-    {
+    searchUsers: (req, res, next) => {
         console.log(req.body.search)
-        if(!req.body.search)
-        {
-            User.find().sort({date:-1})
-                .then(users=>{
+        if (!req.body.search) {
+            User.find().sort({
+                    date: -1
+                })
+                .then(users => {
                     res.locals.users = users;
                     next();
                 })
-                .catch(error=>{
+                .catch(error => {
                     console.log(`Error fetching user data: ${error.message}`);
                     next(error);
                 });
-                res.locals.users = "/user/allUsers";
-                next();
-        }
-        else{
-            User.find({username: {$regex: req.body.search}}).exec(function(err, user)
-            {
-                if(err)
-                {
+            res.locals.users = "/user/allUsers";
+            next();
+        } else {
+            User.find({
+                username: {
+                    $regex: req.body.search
+                }
+            }).exec(function (err, user) {
+                if (err) {
 
-                }else{
+                } else {
                     console.log(user);
                     res.locals.users = user;
                     next();
@@ -390,6 +421,26 @@ module.exports={
             });
         }
     },
+    follow: (req, res, next) => {
+        let personToFollow = req.params.personId,
+            currentUser = req.user;
+        if (currentUser) {
+            User.findByIdAndUpdate(currentUser, {
+                    $addToSet: {
+                        friends: personToFollow
+                    }
+                })
+                .then(() => {
+                    res.locals.success = true;
+                    next();
+                })
+                .catch(error => {
+                    next(error);
+                });
+        } else {
+            next(new Error("User must log in."));
+        }
+    }
 }
 
 exports.getProfilePage = (req, res) => {
@@ -401,11 +452,13 @@ exports.saveUser = async (req, res, next) => {
         email: req.body.txtEmail
     })
     let errorMessage
-    console.log(typeof(errorMessage))
+    console.log(typeof (errorMessage))
     if (tempUser) {
         errorMessage = 'That email is taken, try logging in dude.'
         console.log(errorMessage)
-        res.render("signup", {errorMessage})
+        res.render("signup", {
+            errorMessage
+        })
     } else {
         let newUser = new user({
             Fname: req.body.textFirstName,
@@ -436,10 +489,12 @@ exports.saveUser = async (req, res, next) => {
                 .catch(error => {
                     res.send(error)
                 });
-        }else{
+        } else {
             console.log(errorMessage)
             console.log(newUser)
-            res.render("signup", {errorMessage})
+            res.render("signup", {
+                errorMessage
+            })
         }
     }
 };
