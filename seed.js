@@ -142,10 +142,10 @@ users.forEach(c => {
   );
 });
 
-posts.forEach(c => {
-  let newPost = new Post(c);
-      Post.insert(newPost)
-});
+// posts.forEach(c => {
+//   let newPost = new Post(c);
+//       Post.insert(newPost)
+// });
 
 Promise.all(commands)
   .then(r => {
