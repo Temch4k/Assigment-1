@@ -423,7 +423,7 @@ module.exports = {
     },
     follow: (req, res, next) => {
         let personToFollow = req.params.personId,
-            currentUser = req.user;
+            currentUser = res.locals.currentUser;
         if (currentUser) {
             User.findByIdAndUpdate(currentUser, {
                     $addToSet: {

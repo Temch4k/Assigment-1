@@ -24,9 +24,7 @@ router.get("/securityQuestions", userController.showSecurityQuestions);
 router.post("/checkSecurityQuestion", userController.checkSecurityQuestions, userController.redirectView);
 router.get("/changePassword", userController.showChangePassword);
 
-router.post("/user/search", userController.searchUsers, userController.showAllUsers);
-
-
+router.post("/search", userController.searchUsers, userController.showAllUsers);
 
 router.put("/:id/update", userController.update, userController.validateEdit, userController.redirectView);
 router.put("/:id/updatepassword", userController.updatePassword, userController.redirectView);

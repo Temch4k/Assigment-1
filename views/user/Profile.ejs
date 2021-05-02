@@ -77,7 +77,12 @@
                 <div class="text-center">
                     <div>
                         <h5>
-                            <%= user.gender + " " + user.email %>
+                            <p>
+                                <%= user.gender %>
+                            </p>
+                            <p>
+                                <%= user.email %>
+                            </p>
                         </h5>
                     </div>
                 </div>
@@ -91,7 +96,9 @@
                             <%= user.biography%>
                         </h5>
                     </fieldset>
-
+                    <% if(loggedIn && currentUser.username != user.username){%>
+                            <%- include('../modal/_followModal') %>
+                    <%}%>
                 </div>
             </fieldset>
             <br>
@@ -129,8 +136,7 @@
                                 <div class="text-center">
                                     <h3>No posts yet </h3>
                                 </div>
-                            </div>
-                            
+                            </div> 
                         <%}%>
                         </div>
                     </div>
