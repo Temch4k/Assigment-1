@@ -406,11 +406,7 @@ module.exports = {
             res.locals.users = "/user/allUsers";
             next();
         } else {
-            User.find({
-                username: {
-                    $regex: req.body.search
-                }
-            }).exec(function (err, user) {
+            User.find({username: {$regex: req.body.search}}).exec(function (err, user) {
                 if (err) {
 
                 } else {
@@ -422,14 +418,10 @@ module.exports = {
         }
     },
     follow: (req, res, next) => {
-        let personToFollow = req.params.personId,
-            currentUser = res.locals.currentUser;
-        if (currentUser) {
-            User.findByIdAndUpdate(currentUser, {
-                    $addToSet: {
-                        friends: personToFollow
-                    }
-                })
+        let personToFollow = req.params.username,
+            curr = res.locals.currentUser.username;
+        if (curr) {
+            User.find({username: curr}, {$push: {friends: personToFollow}})
                 .then(() => {
                     res.locals.success = true;
                     next();

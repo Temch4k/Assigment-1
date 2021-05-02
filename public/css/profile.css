@@ -87,3 +87,8 @@
 #txtBiography{
     height:100px;
 }
+
+#follow-button{
+    border-color:#3399FF;
+    color:#3399FF;
+}
