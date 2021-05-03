@@ -391,6 +391,7 @@ module.exports = {
     },
     searchUsers: (req, res, next) => {
         console.log(req.body.search)
+        // if body id empty then we didnt find anyone
         if (!req.body.search) {
             User.find().sort({
                     date: -1
@@ -407,7 +408,8 @@ module.exports = {
             next();
         } else {
             User.find({username: {$regex: req.body.search}}).exec(function (err, user) {
-                if (err) {
+                if (err) 
+                {
 
                 } else {
                     console.log(user);
@@ -418,10 +420,11 @@ module.exports = {
         }
     },
     follow: (req, res, next) => {
-        let personToFollow = req.params.username,
-            curr = res.locals.currentUser.username;
+        let personToFollow = res.locals.bla,
+            curr = res.locals.currentUser._id;
+            console.log(personToFollow+" "+curr);
         if (curr) {
-            User.find({username: curr}, {$push: {friends: personToFollow}})
+            User.update({_id: curr}, {$push: {friends: personToFollow}})
                 .then(() => {
                     res.locals.success = true;
                     next();

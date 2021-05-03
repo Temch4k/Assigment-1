@@ -26,7 +26,7 @@ router.get("/changePassword", userController.showChangePassword);
 
 router.post("/search", userController.searchUsers, userController.showAllUsers);
 
-router.post("/:username/follow",userController.follow);
+router.post("/:id/follow",userController.follow);
 
 router.put("/:id/update", userController.update, userController.validateEdit, userController.redirectView);
 router.put("/:id/updatepassword", userController.updatePassword, userController.redirectView);

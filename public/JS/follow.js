@@ -21,14 +21,10 @@
 $(document).ready(() =>{				
     $("#follow-button").click(event => {
         if ($("#follow-button").text() == "Follow"){
-            console.log("bruh1");
             let $button = $(event.target),
-            username = $button.data("username");
-            console.log("bruh3");
-            $.post(`/user/${username}/follow`,(results = {}) =>{
-                console.log("bruh4");
+            userId = $button.data("id");
+            $.post(`/user/${userId}/follow`,(results = {}) =>{
                 let data = results.data;
-                console.log("bruh5");
                     if (data && data.success){
                         console.log("yes");
                     }
