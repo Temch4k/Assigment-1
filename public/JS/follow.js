@@ -46,6 +46,9 @@ $(document).ready(function(){
           $("#follow-button").css("color", "#3399FF");
           $("#follow-button").css("background-color", "#ffffff");
           $("#follow-button").css("border-color", "#3399FF");
+          $("#follow-button").css("font", "serif");
+          $("#follow-button").css("font_weight", "bold");
+          
         });
       }
     }); 
