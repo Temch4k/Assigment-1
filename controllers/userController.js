@@ -425,8 +425,15 @@ module.exports = {
             console.log(personToFollow+" "+curr);
         if (curr) {
 
-            User.update({username: curr}, {$push: {friends: personToFollow}})
+            // add to the following list
+            User.update({username: curr}, {$push: {following: personToFollow}})
                 .then(() => {
+                    // the person we just followed will get a follower in their list
+                    User.update({username: personToFollow}, {$push: {followers: curr}})
+                    .then(() => {
+                        res.locals.success = true;
+                        next();
+                    })
                     res.locals.success = true;
                     next();
                 })
@@ -442,8 +449,15 @@ module.exports = {
             curr = res.locals.currentUser.username;
             console.log(personToUnfollow+" "+curr);
         if (curr) {
-            User.update({username: curr}, {$pull: {friends: personToUnfollow}})
+            // remove the person we just unfollowed from our list
+            User.update({username: curr}, {$pull: {following: personToUnfollow}})
                 .then(() => {
+                    // the person we just unfollowed will get an unfollower in their list
+                    User.update({username: personToUnfollow}, {$pull: {followers: curr}})
+                    .then(() => {
+                        res.locals.success = true;
+                        next();
+                    })
                     res.locals.success = true;
                     next();
                 })
@@ -453,7 +467,35 @@ module.exports = {
         } else {
             next(new Error("User must log in."));
         }
-    }
+    },
+    showFollowing:(req, res, next) =>{
+        let whosfollowings = req.params.username
+        User.find({followers: whosfollowings}).sort({
+            date: -1
+        })
+        .then(users => {
+            res.locals.users = users;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching user data: ${error.message}`);
+            next(error);
+        });
+    },
+    showFollowers:(req, res, next) =>{
+        let whosFollowers = req.params.username
+        User.find({following: whosFollowers}).sort({
+            date: -1
+        })
+        .then(users => {
+            res.locals.users = users;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching user data: ${error.message}`);
+            next(error);
+        });
+    },
 }
 
 exports.getProfilePage = (req, res) => {

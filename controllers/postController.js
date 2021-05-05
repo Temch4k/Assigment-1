@@ -103,7 +103,6 @@ module.exports = {
     update: (req, res, next) => {
         let postId = req.params.id;
         let updatedpost = new post({
-
         });
 
         post.findByIdAndUpdate(postId, updatedpost)
@@ -119,8 +118,7 @@ module.exports = {
     },
     delete: (req, res, next) => {
         let postId = req.params.id;
-
-        User.update({ $pull: {posts: req.params.id }});
+        User.update({username: res.locals.currentUser.username},{ $pull: {posts: req.params.id }});
         Post.findByIdAndRemove(postId)
         .then(() =>{
             res.locals.redirect = "/user/home";
@@ -130,5 +128,5 @@ module.exports = {
             console.log(`Error fetching post by ID: ${error.message}`);
             next(error);
         });
-    }
+    },
 }

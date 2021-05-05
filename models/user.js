@@ -64,7 +64,8 @@ const userSchema = new mongoose.Schema({
         max: [20]
     },
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
-    friends: [{type: String, ref: "User"}]
+    following: [{type: String, ref: "User"}],
+    followers:[{type: String, ref: "User"}]
 }, {
     timestamps: true
 });

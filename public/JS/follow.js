@@ -1,6 +1,6 @@
 $(document).ready(() =>{				
     $("#follow-button").click(event => {
-        if ($("#follow-button").text() == "Follow"){
+        if (($("#follow-button").text() == "Follow")){
             var userId = $('#ourUsername').text();
             $.post(`/user/${userId}/follow`,(results = {}) =>{
                 let data = results.data;
@@ -26,7 +26,7 @@ $(document).ready(() =>{
             $("#follow-button").animate({
                 backgroundColor: "#2EB82E",
                 borderColor: "#2EB82E"
-            }, 1000 );
+            },1000 );
             });
         }else{
             var userId = $('#ourUsername').text();
