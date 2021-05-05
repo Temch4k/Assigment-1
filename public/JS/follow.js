@@ -1,28 +1,7 @@
-// $(document).ready(() => {
-//     $(".follow-button").click(event => {
-//         let $button = $(event.target),
-//             username = $button.data("username");
-//         console.log(`/api/user/${username}/follow`)
-//         $.get(`/api/user/${username}/follow`, (results = {}) => {
-//             let data = results.data;
-//             if (data && data.success){
-//                 $button
-//                 .text("Joined")
-//                 .addClass("followed-button")
-//                 .removeClass("follow-Button");
-//             }
-//             else{
-//                 $button.text("Try again");
-//             }
-//         });
-//     });
-// });
-
 $(document).ready(() =>{				
     $("#follow-button").click(event => {
         if ($("#follow-button").text() == "Follow"){
-            let $button = $(event.target),
-            userId = $button.data("id");
+            var userId = $('#ourUsername').text();
             $.post(`/user/${userId}/follow`,(results = {}) =>{
                 let data = results.data;
                     if (data && data.success){
@@ -50,6 +29,17 @@ $(document).ready(() =>{
             }, 1000 );
             });
         }else{
+            var userId = $('#ourUsername').text();
+            $.post(`/user/${userId}/unfollow`,(results = {}) =>{
+                let data = results.data;
+                    if (data && data.success){
+                        console.log("yes");
+                    }
+                    else{
+                        console.log("try again");
+                    }
+            })
+
             // *** State Change: Unfollow ***     
             // Change the button back to it's original state
             $("#follow-button").animate(600, 'linear', function () { 

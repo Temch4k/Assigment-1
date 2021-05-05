@@ -68,9 +68,7 @@
                         </h2>
                     </div>
                     <div>
-                        <h3>
-                            <%= user.username %>
-                        </h3>
+                        <h3 id="ourUsername"><%= user.username %></h3>
                     </div>
                 </div>
                 <br>
@@ -79,9 +77,6 @@
                         <h5>
                             <p>
                                 <%= user.gender %>
-                            </p>
-                            <p>
-                                <%= user.email %>
                             </p>
                         </h5>
                     </div>
@@ -97,7 +92,11 @@
                         </h5>
                     </fieldset>
                     <% if(loggedIn && currentUser.username != user.username){%>
-                            <%- include('../modal/_followModal') %>
+                            <br>
+
+                                <button type="button" id="follow-button" data-toggle="modal" class="btn btn-lg" data-target="lets_go" >Follow</button>
+                            <br>
+                            <br>
                     <%}%>
                 </div>
             </fieldset>

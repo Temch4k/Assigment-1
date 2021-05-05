@@ -420,11 +420,29 @@ module.exports = {
         }
     },
     follow: (req, res, next) => {
-        let personToFollow = res.locals.bla,
-            curr = res.locals.currentUser._id;
+        let personToFollow = req.params.id,
+            curr = res.locals.currentUser.username;
             console.log(personToFollow+" "+curr);
         if (curr) {
-            User.update({_id: curr}, {$push: {friends: personToFollow}})
+
+            User.update({username: curr}, {$push: {friends: personToFollow}})
+                .then(() => {
+                    res.locals.success = true;
+                    next();
+                })
+                .catch(error => {
+                    next(error);
+                });
+        } else {
+            next(new Error("User must log in."));
+        }
+    },
+    unfollow: (req, res, next) => {
+        let personToUnfollow = req.params.id,
+            curr = res.locals.currentUser.username;
+            console.log(personToUnfollow+" "+curr);
+        if (curr) {
+            User.update({username: curr}, {$pull: {friends: personToUnfollow}})
                 .then(() => {
                     res.locals.success = true;
                     next();
