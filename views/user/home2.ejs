@@ -65,8 +65,10 @@
             <br>
             <div class="row">
                 <div class="col-12">
+                    <a><h3>Follower Posts</h3></a>
                     <div class="card ">
                         <% posts.forEach(post=> { %>
+                            <%if(currentUser.following.includes(post.posterName) || (currentUser.username==post.posterName)){%>
                         <div class="card-block">
                             <div class="media">
                                 <!-- Need to link uploaded photo with profile picture -->
@@ -95,8 +97,10 @@
                                             delete
                                         </a>
                                     <%}%>
+                                    
                             </div>
                         </div>
+                        <%}%>
                         <%})%>
         
                     </div>

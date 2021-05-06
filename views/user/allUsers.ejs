@@ -65,8 +65,13 @@
                         <td>
                             <div class="follow">
                                 <% if(loggedIn){ %>
-                                    <a class="" href="">
-                                        follow
+                                    <%if(currentUser.username != user.username){%>
+                                        <% if(!user.followers.includes(currentUser.username)){ %>
+                                            <button type="button" id="follow-button" data-toggle="modal" class="btn btn-lg" data-target="<%=`${user.username}`%>" >Follow</button>
+                                        <% }else{ %>
+                                            <button type="button" id="follow-button" data-toggle="modal" class="btn btn-lg" data-target="<%=`${user.username}`%>" >Following</button>
+                                        <% } %>
+                                    <%}%>
                                 <%}else{%>
                                     <a href=" " title="You need to log in to follow">follow</a>
                                 <%}%>

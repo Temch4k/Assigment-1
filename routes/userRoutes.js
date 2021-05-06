@@ -33,6 +33,7 @@ router.get("/:username/followers", userController.showFollowers, userController.
 router.post("/:id/follow",userController.follow);
 router.post("/:id/unfollow",userController.unfollow);
 
+
 router.put("/:id/update", userController.update, userController.validateEdit, userController.redirectView);
 router.put("/:id/updatepassword", userController.updatePassword, userController.redirectView);
 router.get("/:username/Profile", userController.show, postController.indexByUsername, userController.showProfile);
