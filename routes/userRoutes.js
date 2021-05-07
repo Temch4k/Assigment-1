@@ -27,8 +27,15 @@ router.get("/allUsers", userController.AllUsers, userController.showAllUsers);
 router.get("/securityQuestions", userController.showSecurityQuestions);
 router.post("/checkSecurityQuestion", userController.checkSecurityQuestions, userController.redirectView);
 router.get("/changePassword", userController.showChangePassword);
+router.get("/hashtags", userController.allHashtags, userController.showHashtags);
 
 router.post("/search", userController.searchUsers, userController.showAllUsers);
+
+router.get("/:username/following", userController.showFollowing, userController.showAllUsers);
+router.get("/:username/followers", userController.showFollowers, userController.showAllUsers);
+
+router.post("/:id/follow",userController.follow);
+router.post("/:id/unfollow",userController.unfollow);
 
 router.put("/:id/update", userController.update, userController.validateEdit, userController.redirectView);
 router.put("/:id/updatepassword", userController.updatePassword, userController.redirectView);

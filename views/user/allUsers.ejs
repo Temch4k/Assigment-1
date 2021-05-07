@@ -3,7 +3,7 @@
             <div class="container-fluid">
                 <% if(loggedIn){ %>
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home">
+                    <a class="navbar-brand" href="/user/home">
                         <img src="/images/yoVerseWebsite.png" class="website-logo">
                     </a>
                 </div>
@@ -65,8 +65,13 @@
                         <td>
                             <div class="follow">
                                 <% if(loggedIn){ %>
-                                    <a class="" href="">
-                                        follow
+                                    <%if(currentUser.username != user.username){%>
+                                        <% if(!user.followers.includes(currentUser.username)){ %>
+                                            <button type="button" onclick="myFunction(user.username)">Follow</button>
+                                        <% }else{ %>
+                                            <button type="button" onclick="myFunction(user.username)">unFollow</button>
+                                        <% } %>
+                                    <%}%>
                                 <%}else{%>
                                     <a href=" " title="You need to log in to follow">follow</a>
                                 <%}%>

@@ -3,6 +3,7 @@
 const Post = require("../models/post");
 const user = require("../models/user");
 const User = require("../models/user");
+const hashtag = require("../models/hashtag");
 
 
 
@@ -68,6 +69,7 @@ module.exports = {
                     next(error)
         })
         }
+        addPostToHashtagDB(newPost);
     },
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
@@ -103,7 +105,6 @@ module.exports = {
     update: (req, res, next) => {
         let postId = req.params.id;
         let updatedpost = new post({
-
         });
 
         post.findByIdAndUpdate(postId, updatedpost)
@@ -119,8 +120,7 @@ module.exports = {
     },
     delete: (req, res, next) => {
         let postId = req.params.id;
-
-        User.update({ $pull: {posts: req.params.id }});
+        User.update({username: res.locals.currentUser.username},{ $pull: {posts: req.params.id }});
         Post.findByIdAndRemove(postId)
         .then(() =>{
             res.locals.redirect = "/user/home";
@@ -130,5 +130,40 @@ module.exports = {
             console.log(`Error fetching post by ID: ${error.message}`);
             next(error);
         });
+    },
+}
+
+async function addPostToHashtagDB(post) {
+    //Find all hashtag in the post and update DB
+    var hashtagList = postFilter('#', post.postBody);
+    if (hashtagList.length != 0) {
+        for (var i = 0; i < hashtagList.length; ++i) {
+            //Find if hash already exist
+            var hashtag1 = hashtag.findOne({ text: hashtagList[i] })
+            //If this hashtag not exist
+            if (hashtag1 == null) {
+                hashtag1 = new Hashtag({
+                    text: hashtagList[i]
+                });
+            }
+            // this line is throwing errors
+            hashtag1.posts.push(post);
+            await hashtag1.save();
+        }
     }
+}
+
+function postFilter(character, post) {
+    var startIndex = 0, index;
+    var textList = [];
+    while ((index = post.indexOf(character, startIndex)) > -1) {
+        var indexOfSpace = post.indexOf(" ", index + 1);
+        if (indexOfSpace == -1) {
+            indexOfSpace = post.length;
+        }
+        var textSubstring = post.substring(index + 1, indexOfSpace);
+        textList.push(textSubstring);
+        startIndex = index + 1;
+    }
+    return textList;
 }

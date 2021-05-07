@@ -5,6 +5,7 @@ const {
 } = require("http-status-codes");
 const passport = require("passport");
 const post = require("../models/post");
+const hashtag = require("../models/hashtag");
 const User = require("../models/user"),
     getUserParams = body => {
         var bd = JSON.stringify(body.txtDOB);
@@ -421,6 +422,7 @@ module.exports = {
     },
     searchUsers: (req, res, next) => {
         console.log(req.body.search)
+        // if body id empty then we didnt find anyone
         if (!req.body.search) {
             User.find().sort({
                     date: -1
@@ -436,12 +438,9 @@ module.exports = {
             res.locals.users = "/user/allUsers";
             next();
         } else {
-            User.find({
-                username: {
-                    $regex: req.body.search
-                }
-            }).exec(function (err, user) {
-                if (err) {
+            User.find({username: {$regex: req.body.search}}).exec(function (err, user) {
+                if (err)
+                {
 
                 } else {
                     console.log(user);
@@ -452,15 +451,20 @@ module.exports = {
         }
     },
     follow: (req, res, next) => {
-        let personToFollow = req.params.personId,
-            currentUser = req.user;
-        if (currentUser) {
-            User.findByIdAndUpdate(currentUser, {
-                    $addToSet: {
-                        friends: personToFollow
-                    }
-                })
+        let personToFollow = req.params.id,
+            curr = res.locals.currentUser.username;
+            console.log(personToFollow+" "+curr);
+        if (curr) {
+
+            // add to the following list
+            User.update({username: curr}, {$push: {following: personToFollow}})
                 .then(() => {
+                    // the person we just followed will get a follower in their list
+                    User.update({username: personToFollow}, {$push: {followers: curr}})
+                    .then(() => {
+                        res.locals.success = true;
+                        next();
+                    })
                     res.locals.success = true;
                     next();
                 })
@@ -470,6 +474,74 @@ module.exports = {
         } else {
             next(new Error("User must log in."));
         }
+    },
+    unfollow: (req, res, next) => {
+        let personToUnfollow = req.params.id,
+            curr = res.locals.currentUser.username;
+            console.log(personToUnfollow+" "+curr);
+        if (curr) {
+            // remove the person we just unfollowed from our list
+            User.update({username: curr}, {$pull: {following: personToUnfollow}})
+                .then(() => {
+                    // the person we just unfollowed will get an unfollower in their list
+                    User.update({username: personToUnfollow}, {$pull: {followers: curr}})
+                    .then(() => {
+                        res.locals.success = true;
+                        next();
+                    })
+                    res.locals.success = true;
+                    next();
+                })
+                .catch(error => {
+                    next(error);
+                });
+        } else {
+            next(new Error("User must log in."));
+        }
+    },
+    showFollowing:(req, res, next) =>{
+        let whosfollowings = req.params.username
+        User.find({followers: whosfollowings}).sort({
+            date: -1
+        })
+        .then(users => {
+            res.locals.users = users;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching user data: ${error.message}`);
+            next(error);
+        });
+    },
+    showFollowers:(req, res, next) =>{
+        let whosFollowers = req.params.username
+        User.find({following: whosFollowers}).sort({
+            date: -1
+        })
+        .then(users => {
+            res.locals.users = users;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching user data: ${error.message}`);
+            next(error);
+        });
+    },
+    showHashtags: (req, res) => {
+        res.render("user/hashtags");
+    },
+    allHashtags: (req, res, next) => {
+        hashtag.find().sort({
+                date: -1
+            })
+            .then(hashtags => {
+                res.locals.hashtags = hashtag;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching hashtag data: ${error.message}`);
+                next(error);
+            });
     }
 }
 

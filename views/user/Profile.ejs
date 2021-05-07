@@ -68,9 +68,7 @@
                         </h2>
                     </div>
                     <div>
-                        <h3>
-                            <%= user.username %>
-                        </h3>
+                        <h3 id="ourUsername"><%= user.username %></h3>
                     </div>
                 </div>
                 <br>
@@ -80,14 +78,11 @@
                             <p>
                                 <%= user.gender %>
                             </p>
-                            <p>
-                                <%= user.email %>
-                            </p>
                         </h5>
                     </div>
                 </div>
                 <div id="birthday" class="text-center">
-                    <p>birthday: <%= user.numBiDay %>
+                    <p>birthday: <%= user.numBiDay%>
                     </p>
                 </div>
                 <div class="text-center">
@@ -96,8 +91,19 @@
                             <%= user.biography%>
                         </h5>
                     </fieldset>
+                    <fieldset class="brdr">
+                        <a type="button" href="<%= `/user/${user.username}/followers`%>" class="btn btn-lg">Followers</button>
+                        <a type="button" href="<%= `/user/${user.username}/following`%>" class="btn btn-lg">Following</a>
+                    </fieldset>
                     <% if(loggedIn && currentUser.username != user.username){%>
-                            <%- include('../modal/_followModal') %>
+                            <br>
+                                <% if(!user.followers.includes(currentUser.username)){ %>
+                                    <button type="button" id="follow-button" data-toggle="modal" class="btn btn-lg" data-target="" >Follow</button>
+                                <% }else{ %>
+                                    <button type="button" id="follow-button" data-toggle="modal" class="btn btn-lg" data-target="" >Following</button>
+                                <% } %>
+                            <br>
+                            <br>
                     <%}%>
                 </div>
             </fieldset>
@@ -127,6 +133,14 @@
                                                 </div>
                                                 <% datee=JSON.stringify(post.date) %>
                                                     <%= datee.substr(1,10) %>
+                                                    <!-- if logged in check for delete button-->
+                                                    <%if(loggedIn){ %>
+                                                        <% if(post.posterName == currentUser.username){ %>
+                                                        <a class="button" href="<%= `/post/${post._id}/delete?_method=DELETE` %>">
+                                                            delete
+                                                        </a>
+                                                    <%}%>
+                                            <%}%>
                                             </div>
                                         </div>
                                         <br>
