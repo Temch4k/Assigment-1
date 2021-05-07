@@ -1,3 +1,16 @@
+function myFunction(letsGoo) {
+    console.log("yo"+letsGoo);
+    $.post(`/user/${letsGoo}/unfollow`,(results = {}) =>{
+        let data = results.data;
+            if (data && data.success){
+                console.log("yes");
+            }
+            else{
+                console.log("try again");
+            }
+    })
+}
+
 $(document).ready(() =>{				
     $("#follow-button").click(event => {
         if (($("#follow-button").text() == "Follow")){
@@ -48,5 +61,5 @@ $(document).ready(() =>{
             $("#follow-button").css("border-color", "#3399FF");
             });
         }
-    }); 
+    });
   });
