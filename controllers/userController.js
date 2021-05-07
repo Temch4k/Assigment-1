@@ -5,6 +5,7 @@ const {
 } = require("http-status-codes");
 const passport = require("passport");
 const post = require("../models/post");
+const hashtag = require("../models/hashtag");
 const User = require("../models/user"),
     getUserParams = body => {
         var bd = JSON.stringify(body.txtDOB);
@@ -496,6 +497,22 @@ module.exports = {
             next(error);
         });
     },
+    showHashtags: (req, res) => {
+        res.render("user/hashtags");
+    },
+    allHashtags: (req, res, next) => {
+        hashtag.find().sort({
+                date: -1
+            })
+            .then(hashtags => {
+                res.locals.hashtags = hashtag;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching hashtag data: ${error.message}`);
+                next(error);
+            });
+    }
 }
 
 exports.getProfilePage = (req, res) => {
