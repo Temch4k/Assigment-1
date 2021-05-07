@@ -1,4 +1,9 @@
-const { redirectView } = require("./controllers/userController.js");
+const {
+    redirectView
+} = require("./controllers/userController.js");
+const {
+    deleteOne
+} = require("./models/user");
 const post = require("./models/post.js"),
     express = require("express"),
     router = require("./routes/index"),
@@ -20,8 +25,35 @@ const post = require("./models/post.js"),
     flash = require('express-flash'),
     bcrypt = require('bcrypt'),
     bodyParser = require('body-parser');
-    // passportLocal = require("passport-local"),
-    // LocalStrategy = require('passport-local').Strategy;
+// passportLocal = require("passport-local"),
+LocalStrategy = require('passport-local').Strategy;
+
+passport.use('local.signin', new LocalStrategy({
+        usernameField: "email",
+        passwordField: 'password',
+        passToCallBack: true
+    },
+    function (username, password, done) {
+        console.log(username);
+        User.findOne({
+            email : username
+        }, function (err, user) {
+            console.log(user)
+            if (err) {
+                return done(err);
+            }
+            if (!user) {
+                console.log("can not find user")
+                return done(null, false, { message: 'Could not detect a user with that email.' });
+            }
+            if (!user.passwordComparison(password)) {
+                console.log("incorrect password")
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+        });
+    }
+));
 
 var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
@@ -51,7 +83,9 @@ app.use(
         extended: false
     })
 );
-app.use(methodOverride("_method", {methods: ["POST", "GET"]}));
+app.use(methodOverride("_method", {
+    methods: ["POST", "GET"]
+}));
 
 app.use(express.json());
 

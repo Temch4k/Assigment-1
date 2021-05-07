@@ -66,24 +66,23 @@ module.exports = {
         res.render("user/profileSettings");
     },
     create: (req, res, next) => {
+        console.log("Entering user.create")
         if (req.skip) {
             return next();
         }
         let userParams = getUserParams(req.body);
-        console.log(userParams)
-        let newUser = new User(userParams);
-        User.register(newUser, req.body.password, (error, user) => {
-            if (user) {
-                req.flash("success", "User account created succesfully");
-                res.locals.redirect = "securityQuestions";
+        User.create(userParams)
+            .then(user => {
+                console.log(userParams)
+                req.flash("success", `${user.fullName}'s account created successfully!`);
+                res.locals.user = user;
                 next();
-            } else {
-                console.log(error.message);
-                req.flash("Error", `Failed to create user account: ${error.message}`);
-                res.locals.redirect = "signup";
+            })
+            .catch(error => {
+                console.log(`Error saving user: ${error.message}`);
+                res.locals.redirect = "/signup";
                 next();
-            }
-        })
+            });
     },
     validate: (req, res, next) => {
         req.sanitizeBody("email").normalizeEmail({
@@ -174,11 +173,42 @@ module.exports = {
             next();
         }
     },
-    authenticate: passport.authenticate("local", {
-        successRedirect: "home",
-        failureRedirect: "login",
-        failureFlash: "Login failed try your credentials again",
-    }),
+    authenticate: (req, res, next) => {
+        console.log("entering authenticate")
+        console.log(req.body.email);
+        User.findOne({
+                email: req.body.email
+            })
+            .then(user => {
+                if (user) {
+                    console.log(req.body)
+                    console.log("this is before password Comparison")
+                    user.passwordComparison(req.body.password).then(passwordsMatch => {
+                        console.log("this is passed password Comparison")
+                        if (passwordsMatch) {
+                            console.log("we matched <3")
+                            res.locals.redirect = "home";
+                            req.flash("success", `${user.fullName}'s logged in successfully!`);
+                            res.locals.user = user;
+                        } else {
+                            failureFlash: "error",
+                            "Failed to log in user account: Incorrect Password.";
+                            res.locals.redirect = "login";
+                        }
+                        next();
+                    });
+                } else {
+                    failureFlash: "error",
+                    "Failed to log in user account: User account not found.";
+                    res.locals.redirect = "login";
+                    next();
+                }
+            })
+            .catch(error => {
+                console.log(`Error logging in user: ${error.message}`);
+                next(error);
+            });
+    },
     showChangePassword: (req, res) => {
         res.render("user/changePassword");
     },
@@ -423,7 +453,7 @@ module.exports = {
     },
     follow: (req, res, next) => {
         let personToFollow = req.params.personId,
-            currentUser = res.locals.currentUser;
+            currentUser = req.user;
         if (currentUser) {
             User.findByIdAndUpdate(currentUser, {
                     $addToSet: {

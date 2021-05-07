@@ -1,16 +1,20 @@
 const router = require("express").Router(),
     userController = require("../controllers/userController"),
-    postController = require("../controllers/postController")
+    postController = require("../controllers/postController"),
+    passport = require('passport'),
+    express = require("express")
 
 
 
 // user routing
 router.get("", userController.indexView);
 router.get("/login", userController.login);
-router.post("/login", userController.authenticate);
+router.post("/login", passport.authenticate('local.signin', {
+    successRedirect: '/user/home',
+    failureRedirect: '/signup',
+    failureFlash: true
+}));
 router.get("/logout", userController.logout, userController.redirectView);
-
-
 
 router.get("/signup", userController.new);
 router.post("/create", userController.validate, userController.create, userController.authenticate, userController.redirectView);
