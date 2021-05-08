@@ -134,24 +134,23 @@ module.exports = {
 }
 
 // scans for '#' symbol and adds to hashtag posts array
-// thanks to freinds for helping us develope our hashtag functionality
 async function addPostToHashtagDB(post) {
-    //Find all hashtag in the post and update DB
+    // find all hashtag in the post and update DB
     var hashtagList = postFilter('#', post.postBody);
     if (hashtagList.length != 0) {
         for (var i = 0; i < hashtagList.length; i++) {
-            //Find if hash already exist
-            var hashtag1 = hashtag.findOne({ text: hashtagList[i] })
-            // If this hashtag doesnt exist create new one
+            var hashtag1 = hashtag.findOne({text: hashtagList[i]})
+            .then(() => {
             if (hashtag1 == null) {
-                hashtag1 = new Hashtag({
-                    text: hashtagList[i]
-                });
+                hashtag1 = new Hashtag({text: hashtagList[i]});
             }
-            // this line is throwing errors
-            // https://masteringjs.io/tutorials/mongoose/array
             hashtag1.posts.push(post);
-            await hashtag1.save();
+            hashtag1.save();
+        })
+        .catch(error => {
+            console.log(`Error adding hashtag to database: ${error.message}`);
+            // next(error);
+        });
         }
     }
 }
