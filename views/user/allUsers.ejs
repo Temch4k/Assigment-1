@@ -30,7 +30,7 @@
                 </div>
                 <%}else{%>
                     <div>
-                        <button type="button" onclick="location.href='login';" class=" btn btn-outline-warning btn-lg"
+                        <button type="button" onclick="location.href='/user/login';" class=" btn btn-outline-warning btn-lg"
                             id="loginBtn">Login</button>
                     </div>
                 <%}%>
@@ -67,13 +67,12 @@
                                 <% if(loggedIn){ %>
                                     <%if(currentUser.username != user.username){%>
                                         <% if(!user.followers.includes(currentUser.username)){ %>
-                                            <button type="button" onclick="myFunction(user.username)">Follow</button>
+                                            <button type="button" id="<%=`${user.username}`%>" onclick="follow(this.id)">Follow</button>
                                         <% }else{ %>
-                                            <button type="button" onclick="myFunction(user.username)">unFollow</button>
+                                            <button type="button" id="<%=`${user.username}`%>" onclick="unfollow(this.id)">unFollow</button>
                                         <% } %>
                                     <%}%>
                                 <%}else{%>
-                                    <a href=" " title="You need to log in to follow">follow</a>
                                 <%}%>
                             </div>
                         </td>

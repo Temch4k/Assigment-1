@@ -1,5 +1,5 @@
-function myFunction(letsGoo) {
-    console.log("yo"+letsGoo);
+
+function unfollow(letsGoo) {
     $.post(`/user/${letsGoo}/unfollow`,(results = {}) =>{
         let data = results.data;
             if (data && data.success){
@@ -9,7 +9,44 @@ function myFunction(letsGoo) {
                 console.log("try again");
             }
     })
+    // *** State Change: Unfollow ***
+        // Change the button back to it's original state
+        $("#"+letsGoo).animate(600, 'linear', function () {
+        $("#"+letsGoo).text("Follow");
+        $("#"+letsGoo).css("color", "#3399FF");
+        $("#"+letsGoo).css("border-color", "#3399FF");
+        });
 }
+function follow(letsGoo) {
+    $.post(`/user/${letsGoo}/follow`,(results = {}) =>{
+        let data = results.data;
+            if (data && data.success){
+                console.log("yes");
+            }
+            else{
+                console.log("try again");
+            }
+    })
+    // *** State Change: To Following ***
+    // We want the button to squish (or shrink) by 10px as a reaction to the click and for it to last 100ms
+    $("#"+letsGoo).animate( 100, 'linear', function () {});
+
+    // then now we want the button to expand out to it's full state
+    // The left translation is to keep the button centred with it's longer width
+    $("#"+letsGoo).animate(600, 'linear', function () {
+    $("#"+letsGoo).css("color", "#2EB82E");
+    $("#"+letsGoo).css("border-color", "#2EB82E");
+    $("#"+letsGoo).text("Following");
+
+    // Animate the background transition from white to green. Using JQuery Color
+    $("#"+letsGoo).animate({
+        backgroundColor: "#2EB82E",
+        borderColor: "#2EB82E"
+    },1000 );
+    });
+
+}
+
 
 $(document).ready(() =>{
     $("#follow-button").click(event => {

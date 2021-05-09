@@ -1,9 +1,8 @@
 "use strict";
 
 const Post = require("../models/post");
-const user = require("../models/user");
 const User = require("../models/user");
-const hashtag = require("../models/hashtag");
+const Hashtag = require("../models/hashtag");
 
 
 
@@ -68,8 +67,8 @@ module.exports = {
                     console.log(`Error saving post: ${error.message}`)
                     next(error)
         })
-        }
         addPostToHashtagDB(newPost);
+        }
     },
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
@@ -136,16 +135,27 @@ module.exports = {
 // scans for '#' symbol and adds to hashtag posts array
 async function addPostToHashtagDB(post) {
     // find all hashtag in the post and update DB
-    var hashtagList = postFilter('#', post.postBody);
+    let hashtagList = postFilter('#', post.postBody);
     if (hashtagList.length != 0) {
-        for (var i = 0; i < hashtagList.length; i++) {
-            var hashtag1 = hashtag.findOne({text: hashtagList[i]})
-            .then(() => {
+        for (let i = 0; i < hashtagList.length; i++) {
+            console.log(hashtagList[i]);
+            Hashtag.findOne({text: hashtagList[i]})
+            .then((hashtag1) => {
             if (hashtag1 == null) {
-                hashtag1 = new Hashtag({text: hashtagList[i]});
+                console.log(hashtagList[i]);
+                let newHash = new Hashtag({
+                    text: hashtagList[i],    //needs to be adjusted for relational data
+                    posts: [post._id]
+                });
+                console.log(newHash);
+                Hashtag.create(newHash);
             }
-            hashtag1.posts.push(post);
-            hashtag1.save();
+            else{
+                Hashtag.findByIdAndUpdate({_id: hashtag1._id}, {$push:{posts: hashtag1}})
+                .catch(error => {
+                    console.log(`Error adding hashtag to array: ${error.message}`);
+                });
+            }
         })
         .catch(error => {
             console.log(`Error adding hashtag to database: ${error.message}`);
