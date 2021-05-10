@@ -52,7 +52,16 @@ fieldset{
     border-radius: 28px;
 }
 
-
+.rightSideNav{
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 100px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
 
 .alert-warning{
     color: #faf3dd;
