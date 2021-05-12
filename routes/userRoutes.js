@@ -21,7 +21,7 @@ router.post("/create", userController.validate, userController.create, userContr
 //router.post("/create", userController.validate, userController.create, userController.redirectView);
 router.get("/forgotPassword", userController.forgotPassword);
 router.get("/profileSettings", userController.showUnfinished);
-router.get("/home", postController.index, userController.showHome);
+router.get("/home", postController.index, postController.findtrendingtags, userController.showHome);
 router.get("/profilePage", userController.showProfileSettings);
 router.get("/allUsers", userController.AllUsers, userController.showAllUsers);
 router.get("/securityQuestions", userController.showSecurityQuestions);
