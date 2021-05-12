@@ -67,9 +67,9 @@
                                 <% if(loggedIn){ %>
                                     <%if(currentUser.username != user.username){%>
                                         <% if(!user.followers.includes(currentUser.username)){ %>
-                                            <button type="button" id="<%=`${user.username}`%>" onclick="follow(this.id)">Follow</button>
+                                            <button type="button" class="btn btn-lg" id="<%=`${user.username}`%>" onclick="follow(this.id)">Follow</button>
                                         <% }else{ %>
-                                            <button type="button" id="<%=`${user.username}`%>" onclick="unfollow(this.id)">unFollow</button>
+                                            <button type="button" class="btn btn-lg" id="<%=`${user.username}`%>" onclick="unfollow(this.id)">unFollow</button>
                                         <% } %>
                                     <%}%>
                                 <%}else{%>
