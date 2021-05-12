@@ -97,13 +97,13 @@ module.exports = {
                 console.log(`Error fetching post by ID: ${error.message}`);
             })
     },
-    findtrendingtags: (req, res, next) => {
-        var collection = Hashtag.aggregate([
+    findtrendingtags: async (req, res, next) => {
+        var collection = await Hashtag.aggregate([
             { $unwind : "$posts" },
             { $group : { _id : "$text", length : { $sum : 1 } } },
             { $sort : { length : -1 } },
             { $limit : 5 }
-        ], function (err, docs) {
+        ], async function (err, docs) {
             console.log(docs)
             res.locals.trendingtags = docs;
             next();
