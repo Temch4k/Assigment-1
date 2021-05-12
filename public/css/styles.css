@@ -53,14 +53,22 @@ fieldset{
 }
 
 .rightSideNav{
-    width: 130px;
+    width: 200px;
     position: fixed;
-    z-index: 1;
+    z-index: 0;
     top: 100px;
     left: 10px;
+    ml-auto: right;
     background: #eee;
     overflow-x: hidden;
     padding: 8px 0;
+}
+.trendingTopicsMenu{
+    margin: 135px 10px 80px 15px;
+}
+
+.trendingTopic{
+    margin: 0px 2px 5px 0px;
 }
 
 .alert-warning{
