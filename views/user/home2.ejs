@@ -1,12 +1,8 @@
 <% if(loggedIn){ %>
 <div class="sidenav col-3">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <hr>
-    <h2>
+    <h2 class="sidebarelements">
+        <hr>
         <a href="allUsers">Who To follow</a> <br>
         <br>
         <a href="">Notifications</a> <br>
@@ -23,7 +19,7 @@
 </div>
 <br>
 
-<div class=" col-10 sidenav rightSideNav justify-content-end">
+<div class=" col-10 rightSideNav justify-content-end">
     <div class="trendingTopicsMenu">
         <p><span><b> Trending Topics</b></span></p>
         <hr>
@@ -35,7 +31,7 @@
 
 <div class="postContainer alignPostBox">
     <div class="postContainer alignPostBox" id="postBox">
-        <form class="alignPostBox" action="<%= `/post/${currentUser._id}/create` %>" method="POST" id="wrapper">
+        <form class="alignPostBox " action="<%= `/post/${currentUser._id}/create` %>" method="POST" id="wrapper">
             <div class="row">
                 <div class="col-12">
                     <label for="postDescription">Post here...</label>

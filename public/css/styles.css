@@ -53,18 +53,19 @@ fieldset{
 }
 
 .rightSideNav{
-    width: 200px;
-    position: fixed;
+    width: 220px;
+    position: absolute;
     z-index: 0;
     top: 100px;
-    left: 10px;
-    ml-auto: right;
-    background: #eee;
+    right: 0;
+    background: #b8f2e6;
     overflow-x: hidden;
     padding: 8px 0;
+    bottom: 0;
 }
+
 .trendingTopicsMenu{
-    margin: 135px 10px 80px 15px;
+    margin: 55px 10px 80px 15px;
 }
 
 .trendingTopic{
@@ -207,8 +208,8 @@ top: 73px;
      margin-left: 200px;
   }}
   @media all and (max-width: 7000px) {#postBox {
-    margin-top: 120px;
-    margin-left: 200px;
+    
+    margin-left: 40px;
  }}
  @media only screen and (max-width: 700px) {
     #dateHide {
