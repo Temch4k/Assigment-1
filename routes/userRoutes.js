@@ -11,7 +11,7 @@ router.get("", userController.indexView);
 router.get("/login", userController.login);
 router.post("/login", passport.authenticate('local.signin', {
     successRedirect: '/user/home',
-    failureRedirect: '/signup',
+    failureRedirect: '/user/login',
     failureFlash: true
 }));
 router.get("/logout", userController.logout, userController.redirectView);

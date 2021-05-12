@@ -37,7 +37,7 @@ passport.use('local.signin', new LocalStrategy({
         console.log(username);
         User.findOne({
             email : username
-        }, function (err, user) {
+        }, async function (err, user) {
             console.log(user)
             if (err) {
                 return done(err);
@@ -46,20 +46,33 @@ passport.use('local.signin', new LocalStrategy({
                 console.log("can not find user")
                 return done(null, false, { message: 'Could not detect a user with that email.' });
             }
-            if (!user.passwordComparison(password)) {
+            var correctPassword = await user.passwordComparison(password);
+            if (!correctPassword) {
+                //not entering here for some reason despite passing false
                 console.log("incorrect password")
                 return done(null, false, { message: 'Incorrect password.' });
             }
+            console.log("success!")
             return done(null, user);
         });
     }
 ));
 
+mongoose.Promise = global.Promise;
 var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
-mongoose.connect("mongodb://localhost:27017/yoverse", {
+mongoose.connect(
+    process.env.MONGODB_URI || "mongodb://localhost:27017/yoverse", {
     useUnifiedTopology: true,
     useNewUrlParser: true
+});
+
+mongoose.set("useCreateIndex", true);
+
+const db = mongoose.connection;
+
+db.once("open", () => {
+    console.log("success, we connected to mongoose's database");
 });
 
 app.set("port", process.env.PORT || 3000);
