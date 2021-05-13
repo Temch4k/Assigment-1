@@ -4,7 +4,7 @@ const {
     NETWORK_AUTHENTICATION_REQUIRED
 } = require("http-status-codes");
 const passport = require("passport");
-const post = require("../models/post");
+const Post = require("../models/post");
 const hashtag = require("../models/hashtag");
 const User = require("../models/user"),
     getUserParams = body => {
@@ -514,21 +514,26 @@ module.exports = {
                 next(error);
             });
     },
-    showNotifications: (req, res, next) => {
+    showNotifications: (req, res) => {
         res.render("user/notification")
     },
-    allNotifications: (req, res, next) => {
-        post.find().sort({
-            date: -1
-        })
-        .then(post => {
-            res.locals.posts = post;
-            next();
-        })
-        .catch(error => {
-            console.log(`Error fetching posts: ${error.message}`);
-            next(error);
-        });
+    allNotifications:  (req, res, next) => {
+        var arrayOfIds = res.locals.currentUser.followPosts;
+        var postNotif =  new Array(arrayOfIds.length).fill(0);
+        for (let i = 0; i<arrayOfIds.length;i++)
+        {
+             Post.findOne({_id:arrayOfIds[i]})
+                .then(post => {
+                    postNotif.push(post);
+                    next();
+                })
+                .catch(error => {
+                    console.log(`Error fetching posts: ${error.message}`);
+                    next(error);
+                });
+        }
+        res.locals.notif = postNotif;
+        next()
     }
 }
 

@@ -147,6 +147,7 @@ module.exports = {
     },
     seen: (req, res, next) => {
         let postId = req.params.id;
+        console.log("try")
         User.update({
             username: res.locals.currentUser.username
         }, {
@@ -189,8 +190,8 @@ module.exports = {
 function addPostToFollowerDB(newPost, currentUser) {
     let followerList = currentUser.followers;
     console.log(followerList);
-    for (let i = followerList.length; i > 0; i--) {
-        User.find({username : followerList[i]}, {
+    for (let i = 0; i < followerList.length; i++) {
+        User.update({username : followerList[i]}, {
             $push: {
                 followPosts: newPost._id
             }
