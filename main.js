@@ -8,10 +8,6 @@ const post = require("./models/post.js"),
     express = require("express"),
     router = require("./routes/index"),
     app = express(),
-    homeController = require("./controllers/homeController.js"),
-    errorController = require("./controllers/errorController.js"),
-    userController = require("./controllers/userController.js"),
-    postController = require("./controllers/postController.js"),
     methodOverride = require("method-override"),
     passport = require('passport'),
     cookieParser = require("cookie-parser"),
@@ -30,7 +26,7 @@ LocalStrategy = require('passport-local').Strategy;
 
 passport.use('local.signin', new LocalStrategy({
         usernameField: "email",
-        passwordField: 'password',
+        passwordField: "password",
         passToCallBack: true
     },
     function (username, password, done) {
@@ -50,7 +46,9 @@ passport.use('local.signin', new LocalStrategy({
                 console.log("incorrect password")
                 return done(null, false, { message: 'Incorrect password.' });
             }
-            return done(null, user);
+            else{
+                return done(null, user);
+            }
         });
     }
 ));
