@@ -158,25 +158,6 @@ module.exports = {
             next(error);
         });
     },
-    remove: (req, res, next) => {
-        let postId = req.params.id;
-        User.update({
-            username: res.locals.currentUser.username
-        }, {
-            $pull: {
-                followPosts: req.params.id
-            }
-        });
-        Post.findByIdAndRemove(postId)
-            .then(() => {
-                res.locals.redirect = "/user/notification";
-                next();
-            })
-            .catch(error => {
-                console.log(`Error fetching post by ID: ${error.message}`);
-                next(error);
-            });
-    }
 }
 
 // loads to all followers database
