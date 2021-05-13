@@ -55,7 +55,6 @@ passport.use('local.signin', new LocalStrategy({
 ));
 
 mongoose.Promise = global.Promise;
-var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost:27017/yoverse", {
@@ -74,13 +73,6 @@ db.once("open", () => {
 app.set("port", process.env.PORT || 3000);
 
 app.set("view engine", "ejs");
-
-const sessionData = 'mongodb://localhost/express-passport'
-
-var store = new MongoDBStore({
-    uri: sessionData,
-    collection: 'sessions'
-});
 
 app.use(expressValidator());
 
