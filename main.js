@@ -84,7 +84,7 @@ var store = new MongoDBStore({
 
 app.use(expressValidator());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static("public"));
 console.log(__dirname);
 app.use(layouts);
 app.use(
