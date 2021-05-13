@@ -88,6 +88,9 @@ app.use(methodOverride("_method", {
     methods: ["POST", "GET"]
 }));
 
+//maybe
+//Vue.config.productionTip = false;
+
 app.use(express.json());
 
 app.listen(app.get("port"), () => {
