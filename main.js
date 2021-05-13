@@ -76,7 +76,7 @@ app.set("view engine", "ejs");
 
 app.use(expressValidator());
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 console.log(__dirname);
 app.use(layouts);
 app.use(
