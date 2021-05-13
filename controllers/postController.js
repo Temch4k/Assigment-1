@@ -158,6 +158,63 @@ module.exports = {
                 next(error);
             });
     },
+    seen: (req, res, next) => {
+    let postId = req.params.id;
+    User.update({
+        username: res.locals.currentUser.username
+    }, {
+       $pull: {
+            followerPosts: req.params.id
+        }
+    });
+    Post.findByIdAndUpdate(postId)
+        .then(() => {
+            res.locals.redirect = "/user/notification";
+            next();
+        })
+        .catch(error => {
+            console.log(`Error updating post by ID: ${error.message}`);
+            next(error);
+        });
+    },
+    remove: (req, res, next) => {
+        let postId = req.params.id;
+        User.update({
+            username: res.locals.currentUser.username
+        }, {
+            $pull: {
+                followPosts: req.params.id
+            }
+        });
+        Post.findByIdAndRemove(postId)
+            .then(() => {
+                res.locals.redirect = "/user/notification";
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching post by ID: ${error.message}`);
+                next(error);
+            });
+    }
+}
+
+// loads to all followers database
+function addPostToFollowerDB(newPost, currentUser) {
+    let followerList = currentUser.followers;
+    console.log(followerList);
+    for (let i = followerList.length; i > 0; i--) {
+        User.findByIdAndUpdate(followerList[i], {
+            $push: {
+                followPosts: newPost._id
+            }
+        })
+        .then(user => {
+            console.log("posted added to follwers lists");
+        })
+        .catch(error => {
+            console.log(`Error fetching user by ID: ${error.message}`);
+        })
+    }
 }
 
 // scans for '#' symbol and adds to hashtag posts array
