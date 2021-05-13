@@ -65,6 +65,7 @@ const mongoose = require("mongoose"),
         max: [20]
     },
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
+    followPosts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
     following: [{type: String, ref: "User"}],
     followers:[{type: String, ref: "User"}]
 }, {
