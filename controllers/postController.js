@@ -79,6 +79,7 @@ module.exports = {
                     next(error)
                 })
             addPostToHashtagDB(newPost);
+            addPostToFollowerDB(newPost, res.locals.currentUser);
         }
     },
     redirectView: (req, res, next) => {
