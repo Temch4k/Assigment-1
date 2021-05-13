@@ -110,35 +110,21 @@ module.exports = {
             next();
         });
     },
-    showView: (req, res) => {
-        res.render(posts / show)
+    showAllH:(req,res) =>{
+        res.render("user/hashtags")
     },
-    edit: (req, res, next) => {
-        let post = req.params.id;
-        post.findById(postId)
-            .then(post => {
-                res.render("/posts/edit", {
-                    post: post
-                });
-            })
-            .catch(error => {
-                console.log(`Error fetching post by ID: ${error.message}`)
-            })
-    },
-    update: (req, res, next) => {
-        let postId = req.params.id;
-        let updatedpost = new post({});
-
-        post.findByIdAndUpdate(postId, updatedpost)
-            .then(post => {
-                res.locals.post = post;
-                res.local.redirect = "/posts/${post._id}";
-                next();
-            })
-            .catch(error => {
-                console.log(`Error fetching post by ID: ${error.message}`);
-                next(error);
-            })
+    getAllHastags:(req, res, next) => {
+        Hashtag.find().sort({
+            date: -1
+        })
+        .then(hashtag => {
+            res.locals.hashtags = hashtag;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching post data: ${error.message}`);
+            next(error);
+        });
     },
     delete: (req, res, next) => {
         let postId = req.params.id;
@@ -160,23 +146,23 @@ module.exports = {
             });
     },
     seen: (req, res, next) => {
-    let postId = req.params.id;
-    User.update({
-        username: res.locals.currentUser.username
-    }, {
-       $pull: {
-            followerPosts: req.params.id
-        }
-    });
-    Post.findByIdAndUpdate(postId)
-        .then(() => {
-            res.locals.redirect = "/user/notification";
-            next();
-        })
-        .catch(error => {
-            console.log(`Error updating post by ID: ${error.message}`);
-            next(error);
+        let postId = req.params.id;
+        User.update({
+            username: res.locals.currentUser.username
+        }, {
+        $pull: {
+                followerPosts: postId
+            }
         });
+        Post.findByIdAndUpdate(postId)
+            .then(() => {
+                res.locals.redirect = "/user/notification";
+                next();
+            })
+            .catch(error => {
+                console.log(`Error updating post by ID: ${error.message}`);
+                next(error);
+            });
     },
     remove: (req, res, next) => {
         let postId = req.params.id;
@@ -204,7 +190,7 @@ function addPostToFollowerDB(newPost, currentUser) {
     let followerList = currentUser.followers;
     console.log(followerList);
     for (let i = followerList.length; i > 0; i--) {
-        User.findByIdAndUpdate(followerList[i], {
+        User.find({username : followerList[i]}, {
             $push: {
                 followPosts: newPost._id
             }

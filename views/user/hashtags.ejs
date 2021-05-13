@@ -3,13 +3,13 @@
         <div class="container-fluid">
             <% if(loggedIn){ %>
             <div class="navbar-header">
-                <a class="navbar-brand" href="home">
+                <a class="navbar-brand" href="/user/home">
                     <img src="/images/yoVerseWebsite.png" class="website-logo">
                 </a>
             </div>
             <%}else{%>
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/user/home">
                         <img src="/images/yoVerseWebsite.png" class="website-logo">
                     </a>
                 </div>
@@ -47,16 +47,17 @@
         </tr>
     </thread>
     <tbody>
-            <%# hashtags.forEach(hashtag => { %>
+            <% hashtags.forEach(hashtag => { %>
                 <tr>
                     <td>
-                        <%= hashtags.text %>
+                        <%= hashtag.text %>
                     </td>
                     <td>
-                        <%= hashtags.post %>
+                        <%= hashtag.posts.length %>
+                        posts
                     </td>
                 </tr>
-            <%# })%>
+            <% })%>
     </tbody>
 </table>
 <%}else{%>

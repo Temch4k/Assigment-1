@@ -342,29 +342,6 @@ module.exports = {
                 next(error);
             });
     },
-    updatePost: (req, res, next) => {
-        if (req.skip) {
-            return next();
-        }
-        let userId = req.params.id;
-        let updatedUser = new User({
-            posts: req.body.posts
-        });
-        User.findByIdAndUpdate(userId, {
-                $set: {
-                    posts: req.body.posts
-                }
-            })
-            .then(user => {
-                res.locals.user = user;
-                res.locals.redirect = `/home`;
-                next();
-            })
-            .catch(error => {
-                console.log(`Error fetching user by ID: ${error.message}`);
-                next(error);
-            });
-    },
     delete: (req, res, next) => {
         let userId = req.params.id;
         User.findByIdAndRemove(userId)
@@ -398,12 +375,6 @@ module.exports = {
         }
         res.json(errorObject);
     },
-    /*filterUserFriends: (error, req, res, next) => {
-        let currentUser = res.locals.currentUser;
-        if(currentUser) {
-            let mappedFriends = res.locals.users
-        }
-    },*/
     showAllUsers: (req, res) => {
         res.render("user/allUsers");
     },
