@@ -203,6 +203,14 @@ top: 73px;
   .follow a p {display:none;}
   .follow a:hover p {display:block;}
 
+  #postBoxNotification {
+
+  }
+
+  #notificationContainer {
+      padding: 15px 15px;
+  }
+
 
   @media all and (max-width: 1000px) and (min-width: 700px) {#postBox {
      margin-left: 200px;
