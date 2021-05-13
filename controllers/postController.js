@@ -103,7 +103,7 @@ module.exports = {
             { $unwind : "$posts" },
             { $group : { _id : "$text", length : { $sum : 1 } } },
             { $sort : { length : -1 } },
-            { $limit : 5 }
+            { $limit : 10 }
         ], async function (err, docs) {
             console.log(docs)
             res.locals.trendingtags = docs;
