@@ -46,10 +46,11 @@
                                             <%= post.postBody %>
                                         </div>
                                         <div id="dateHide">
-                                            
+                                            <% datee = JSON.stringify(post.date) %>
+                                            <%= datee.substr(1,10) %>
                                         </div>
                                     </div>
-                                    <a class="button" href="<%= `/post/${post._id}/seen?_method=DELETE` %>">
+                                    <a class="button" href="<%= `/post/${post._id}/seen` %>">
                                         Seen
                                     </a>
 

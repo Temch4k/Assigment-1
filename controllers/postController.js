@@ -148,22 +148,15 @@ module.exports = {
     seen: (req, res, next) => {
         let postId = req.params.id;
         console.log("try")
-        User.update({
-            username: res.locals.currentUser.username
-        }, {
-        $pull: {
-                followerPosts: postId
-            }
+        User.update({username: res.locals.currentUser.username}, {$pull: {followerPosts: postId}})
+        .then(post =>{
+            res.locals.redirect = "/user/notification";
+            next();
+        })
+        .catch(error => {
+            console.log(`Error seeing post by ID: ${error.message}`);
+            next(error);
         });
-        Post.findByIdAndUpdate(postId)
-            .then(() => {
-                res.locals.redirect = "/user/notification";
-                next();
-            })
-            .catch(error => {
-                console.log(`Error updating post by ID: ${error.message}`);
-                next(error);
-            });
     },
     remove: (req, res, next) => {
         let postId = req.params.id;

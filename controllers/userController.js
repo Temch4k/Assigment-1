@@ -519,7 +519,6 @@ module.exports = {
     },
     allNotifications:  (req, res, next) => {
         var arrayOfIds = res.locals.currentUser.followPosts;
-        console.log(arrayOfIds);
              Post.find({_id:{ $in: arrayOfIds }})
                 .then(post => {
                     console.log(post);
