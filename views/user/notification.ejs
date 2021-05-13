@@ -5,8 +5,6 @@
             <hr>
             <a href="allUsers">Recommended users</a> <br>
             <br>
-            <% if (currentUser.followPosts != null) { %>
-            <br>
         </h2>
         <hr>
     </div>
@@ -40,11 +38,10 @@
                                             <%= post.postBody %>
                                         </div>
                                         <div id="dateHide">
-                                            <% datee = JSON.stringify(post.date) %>
-                                            <%= datee.substr(1,10) %>
+                                            
                                         </div>
                                     </div>
-                                    <a class="button" href="<%= `/post/${post._id}/seen` %>">
+                                    <a class="button" href="<%= `/post/${post._id}/seen?_method=DELETE` %>">
                                         Seen
                                     </a>
 
