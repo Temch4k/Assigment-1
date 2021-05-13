@@ -542,6 +542,22 @@ module.exports = {
                 console.log(`Error fetching hashtag data: ${error.message}`);
                 next(error);
             });
+    },
+    showNotifications: (req, res, next) => {
+        res.render("user/notification")
+    },
+    allNotifications: (req, res, next) => {
+        post.find().sort({
+            date: -1
+        })
+        .then(post => {
+            res.locals.posts = post;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching posts: ${error.message}`);
+            next(error);
+        });
     }
 }
 
