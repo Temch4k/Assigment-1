@@ -157,6 +157,7 @@ module.exports = {
         });
         Post.findByIdAndUpdate(postId)
             .then(() => {
+                console.log("it got in seen and is trying to redirect but can't")
                 res.locals.redirect = "/user/notification";
                 next();
             })
