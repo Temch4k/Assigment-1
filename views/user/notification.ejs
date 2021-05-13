@@ -1,0 +1,97 @@
+<% if(loggedIn){ %>
+    <div class="sidenav col-3">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <h2>
+            <a href="allUsers">Who To follow</a> <br>
+            <br>
+            <a href="notification">Notifications</a> <br>
+            <br>
+            <a href="">Messages</a> <br>
+            <br>
+            <a href="hashtags">Hashtags</a> <br>
+            <br>
+            <a href="">Trending</a> <br>
+            <br>
+            <a href="">Recommended</a> <br>
+        </h2>
+        <hr>
+    </div>
+    <br>
+
+    <div class="postContainer alignPostBox">
+        <div class="postContainer alignPostBox" id="postBox">
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <a>
+                        <h3>Unseen Posts</h3>
+                    </a>
+                    <div class="card ">
+                        <% posts.forEach(post=> { %>
+                        <%if(currentUser.following.includes(post.posterName)){%>
+                        <div class="card-block">
+                            <div class="media">
+                                <!-- Need to link uploaded photo with profile picture -->
+                                <!-- Or make a stock user profile photo -->
+                                <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
+                                <div class="media-body">
+                                    <h5 class="mt-0"></h5>
+                                    <!--add link to profile page here-->
+                                    <i class="btn btn-info">
+                                        <a href="<%= `/user/${post.posterName}/Profile` %>">
+                                            <%= post.fullName %>
+                                            <%= post.posterName %>
+                                        </a>
+                                    </i>
+                                    <div class="postMainBody">
+                                        <%= post.postBody %>
+                                    </div>
+                                    <div id="dateHide">
+                                        <% datee = JSON.stringify(post.date) %>
+                                        <%= datee.substr(1,10) %>
+                                    </div>
+                                </div>
+                                <a class="button" href="<%= `/post/${post._id}/remove?_method=REMOVE` %>">
+                                    Seen
+                                </a>
+                                        
+                                </div>
+                            </div>
+                            <%}%>
+                                <%})%>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <BR>
+                    <div class="row col-6" style="margin:auto">
+                        <a href="">Load older Posts</a>
+                    </div>
+                </div>
+            <br>
+            <br>
+        </div>
+        <br>
+        <%} else {%>
+        <br>
+    
+        <body>
+            <div class="container mainDiv" style="color: black;">
+                <fieldset class="brdr">
+                    <div class="text-center">
+                        <div>
+                            <h3>You are not signed in!</h3>
+                        </div>
+                        <a href="login">
+                            <span class="button">Sign in</span>
+                        </a>
+                    </div>
+                </fieldset>
+            </div>
+        </body>
+        <%}%>
