@@ -519,12 +519,11 @@ module.exports = {
     },
     allNotifications:  (req, res, next) => {
         var arrayOfIds = res.locals.currentUser.followPosts;
-        var postNotif =  new Array(arrayOfIds.length).fill(0);
-        for (let i = 0; i<arrayOfIds.length;i++)
-        {
-             Post.findOne({_id:arrayOfIds[i]})
+        console.log(arrayOfIds);
+             Post.find({_id:{ $in: arrayOfIds }})
                 .then(post => {
-                    postNotif.push(post);
+                    console.log(post);
+                    res.locals.notif = post;
                     next();
                 })
                 .catch(error => {
@@ -532,10 +531,7 @@ module.exports = {
                     next(error);
                 });
         }
-        res.locals.notif = postNotif;
-        next()
     }
-}
 
 exports.getProfilePage = (req, res) => {
     res.render("profilePage");
