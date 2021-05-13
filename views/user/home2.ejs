@@ -5,10 +5,10 @@
         <hr>
         <a href="allUsers">Recommended users</a> <br>
         <br>
-        <% if (currentUser.followPosts != null) { %>
-        <a href="notification" style="color: red">Notifications</a> <br>
+        <% if (currentUser.followPosts.length > 0) { %>
+            <a href="notification" class="notif">Notifications <--</a> <br>
         <% } else {%>
-        <a href="notification">Notifications</a> <br>
+            <a href="notification">Notifications</a> <br>
         <% }%>
         <br>
         <a href="/post/getallhastags">Hashtags</a> <br>
