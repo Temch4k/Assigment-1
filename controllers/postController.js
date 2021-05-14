@@ -199,11 +199,12 @@ async function addPostToHashtagDB(post) {
                         console.log(newHash);
                         Hashtag.create(newHash);
                     } else {
+                        
                         Hashtag.findByIdAndUpdate({
                                 _id: hashtag1._id
                             }, {
                                 $push: {
-                                    posts: hashtag1
+                                    posts: post._id
                                 }
                             })
                             .catch(error => {

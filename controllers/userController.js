@@ -6,6 +6,7 @@ const {
 const passport = require("passport");
 const Post = require("../models/post");
 const hashtag = require("../models/hashtag");
+const post = require("../models/post");
 const User = require("../models/user"),
     getUserParams = body => {
         var bd = JSON.stringify(body.txtDOB);
@@ -529,8 +530,31 @@ module.exports = {
                     console.log(`Error fetching posts: ${error.message}`);
                     next(error);
                 });
-        }
-    }
+        },
+    findSpecificTrendingTag: (req, res, next) => {
+        console.log("It got into find specific trending posts.")
+        var trendingtag = req.params.id;
+        hashtag.findOne({text: trendingtag})
+            .then(tag => {
+                var pst = tag.posts;
+                console.log(pst)
+                Post.find({_id:{ $in : pst}})
+                .then(posts => {
+                    console.log(posts);
+                    res.locals.trendingTag = posts;
+                    next();
+                }) 
+                .catch(error => {
+                    console.log(`Error fetching posts: ${error.message}`);
+                    next(error);
+                })
+
+            });
+    },
+    showTrendingTag: (req, res) => {
+        res.render("user/trendingHashTags")
+    }        
+}
 
 exports.getProfilePage = (req, res) => {
     res.render("profilePage");

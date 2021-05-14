@@ -23,7 +23,7 @@
         <p><span><b> Trending Topics</b></span></p>
         <hr>
         <% trendingtags.forEach(trendingtags => {  %>
-        <button type="button " class="col-12 btn btn-primary trendingTopic"><span>#<%= trendingtags._id %></span></button>
+        <a type="button" href = "<%= `/user/${trendingtags._id}/trendingTag` %>" class="col-12 btn btn-primary trendingTopic"><span>#<%= trendingtags._id %></span></a>
         <% }) %>
     </div>
 </div>
