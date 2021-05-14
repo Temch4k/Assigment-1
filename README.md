@@ -1,7 +1,5 @@
 # Final Project
 
-Youtube Video is [HERE](https://www.youtube.com/watch?v=VD76Uc1K_fo&ab_channel=ArtsiomSkarakhod)
-
 In the last installment in the creation of our webapp "yoVerse" we implemented hahstags and notifications for our users as well as deploying it for use!
 
 To watch our overview video go [HERE](https://www.youtube.com/watch?v=VD76Uc1K_fo&ab_channel=ArtsiomSkarakhod)!
