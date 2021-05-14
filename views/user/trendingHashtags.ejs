@@ -1,0 +1,62 @@
+<% if(loggedIn){ %>
+    <br>
+
+    <div class="postContainer alignPostBox" id = "notificationContainer">
+        <div class="postContainer alignPostBox" id="postBoxNotification">
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <a>
+                        <h3>TrendingTag</h3>
+                    </a>
+                    <div class="card ">
+                        <% trendingTag.forEach( post=> { %>
+                            <div class="card-block">
+                                <div class="media">
+                                    <!-- Need to link uploaded photo with profile picture -->
+                                    <!-- Or make a stock user profile photo -->
+                                    <img class="d-flex mr-3 postThumbnail" src="/img/profilePicBlank.png">
+                                    <div class="media-body">
+                                        <h5 class="mt-0"></h5>
+                                        <!--add link to profile page here-->
+                                        <i class="btn btn-info">
+                                            <a href="<%= `/user/${post.posterName}/Profile` %>">
+                                                <%= post.fullName %>
+                                                <%= post.posterName %>
+                                            </a>
+                                        </i>
+                                        <div class="postMainBody">
+                                            <%= post.postBody %>
+                                        </div>
+                                        <div id="dateHide">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%})%>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <%} else {%>
+        <br>
+
+        <body>
+            <div class="container mainDiv" style="color: black;">
+                <fieldset class="brdr">
+                    <div class="text-center">
+                        <div>
+                            <h3>You are not signed in!</h3>
+                        </div>
+                        <a href="login">
+                            <span class="button">Sign in</span>
+                        </a>
+                    </div>
+                </fieldset>
+            </div>
+        </body>
+        <%}%>
