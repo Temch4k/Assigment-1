@@ -37,6 +37,6 @@ For this project we chose to use a MVC architecture since we needed to use CRUD(
 
 ## Responsibilities
 
-Artsiom worked on the front end and the back end functions of the website. He Worked on authentication, posts, user searching and editing and following and unfollowing the users.
-Dax worked on the security of our website. As well as hashtags and editing the user profile, creating the account as well as resetting the password.
-Micah worked on the main navbars, the looks of the webiste, as well as notification system for our user.
+Artsiom worked on the front end and the back end functions of the website. He Worked on authentication, routing, posts, user searching, editing and following as well as unfollowing the users.
+Dax worked on the security of our website. As well as hashtags and editing the user profile, creating the account as well as resetting the password with security questions with bycrip.
+Micah worked on the main navbars, the looks of the webiste, and created a base for our user homepage, as well as notification system for our user. He also worked on the sizing of the elements and making things look pretty.
