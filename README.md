@@ -1,7 +1,7 @@
 # Assigment 1
 
 ## Part 1
-```For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
+For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
 
   To begin our project we first tackled the design aspexts of this project and that first involved choosing the name of our social media platform, which we decided on "yoVerse", because it combined two words: your and universe, which is a great title for an up and coming social media platform where users can share their thoughts and experinces with the world. The next step in creating our social media platform was to figure out the graphic design aspect which included choosing the color scheme and creating a logo. To select the colors we utilized Coolors.co, to randomize different color patterns and find interesting color schemes that would fit our websites mood and feel. Once we settled on our desired color grid, we then chose one of the mpst eye catching colors and created a Logo with it to ensure it would match our website aesthetic. Our team used freelogodesign.org to create our logo with matching colors and moved on to designing our website.
 
