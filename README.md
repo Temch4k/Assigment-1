@@ -1,6 +1,7 @@
 # Assigment 1
 
 ## Part 1
+```
 For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
 
   To begin our project we first tackled the design aspexts of this project and that first involved choosing the name of our social media platform, which we decided on "yoVerse", because it combined two words: your and universe, which is a great title for an up and coming social media platform where users can share their thoughts and experinces with the world. The next step in creating our social media platform was to figure out the graphic design aspect which included choosing the color scheme and creating a logo. To select the colors we utilized Coolors.co, to randomize different color patterns and find interesting color schemes that would fit our websites mood and feel. Once we settled on our desired color grid, we then chose one of the mpst eye catching colors and created a Logo with it to ensure it would match our website aesthetic. Our team used freelogodesign.org to create our logo with matching colors and moved on to designing our website.
@@ -13,10 +14,10 @@ For this project, our group decided to go with the standard social media website
   -- Click log in to view homepage --
   -- Click Sign Up to View Sign Up page --
   -- Click The Profile button in right hand corner of homepage to view profile --
-
+```
 
 ## Part 2
-
+```
   Let's continue working on our final social media project for the Web Application Development class. On this assignment, our team had to make the project more dynamic and add some security to our account creation, such as password validation and the addition of security questions during our user's account creation process to make the process more secure and interactive.
 
   Dax and Micah worked on the assignment's password part, while Artsiom went with the website's security questions. The password validation form took a little bit of troubleshooting to get running, however once the correct place to call the validateFormm() action was found things worked smoothly. Dax implemented the check if both password fields were the same and that no bizzare characters were present within any input fields. Micah implemented the check for if the password contained an uppercase, lowercase and number.
@@ -24,10 +25,11 @@ For this project, our group decided to go with the standard social media website
   For the secuirty question part of this assignemnt Artsiom began by looking up frequently used security questions and used the suggested questions from https://docs.whmcs.com/Security_Questions . He also went back into one of our first classworks and utilized the Covid Survey website which was a good template to base the form off of. The biggest challenge of this task was to take the functions that already existed and make them reusable by different parameters. To solve this problem, all he had to do was pass the id of the <select> element as the function's parameter. Since all three of the security questions had IDs of q1, q2, and a3, we needed to get DivQ1, DivQ2, and DivQ3 to appear when the corresponding ID's <select> element was called. By passing the IDs of the elements into the function, he took their last character, which was their numbers, and simply attached them to the back of the DivQ string, which, when we added a number to the end, would correspond to the ID of the <select>. After finishing the security questions, Artsiom went ahead and added a Favicon to our social media (it's the small icon that shows up on the tab of the browser, next to the tab's name), so our users would quickly identify which tab our website is open in.
 
   Overall things went smoothly while completeing this assignment, most the issues our group faced were over version control or pulling versions from our peers which did not match the versions we had on our local machines. But these are easily manageable problems and did not provide any serious roadblocks in the completion of othis assignment.
-
+```
 
 ## Part 3
 
+```
   Implementing MongoDB on our webapp.
 
   For part three of this project we needed to implement a log in and sign up feature for our social media webapp. We implemented a MVC (Model View Controller) architecutre that allows us to run a mongo database allowing our users the functionality to log in and sign up for our websites services.
@@ -37,10 +39,11 @@ For this project, our group decided to go with the standard social media website
 Dax got the mongo database running. He created the models and did a good amount of bug fixes. He also was in charge of the signup and signin data as well as the logic for the checks. He made sure that when a user logs in that the database searches for the specified email address then matches it to the associated password. He also, made sure that all the tables in the signup were populated and the passwords matched. If any of these conditions were not met, an error message was created and placed within the views for signup and login.
 
 Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
-
+```
 
 ## Part 4
 
+```
   Intruducing Crud and User Authorization
 
   For part 4, we had to create a CRUD class system for changing the different parts of our mongodb system. In addition, we had to authorize user using passport and use passport sessions in order to allow users to use specific sections of our sites.
@@ -58,13 +61,14 @@ For the future we are planning on adding profile pictures and picture posting as
 In order to get the application working, the user must navigate to the directory call "node seed" to populate the default profiles, then call "npm start". The website will start on localHost:3000.
 
 We plan, to impliment actually adding friend(s) to each profile and pictures. Finally, we would like to impliment direct messaging between users privately so no other user can see said messages.
-
+```
 
 
 
 # Final Project - Final Version
-
+```
 In the last installment in the creation of our webapp "yoVerse" we implemented hahstags and notifications for our users as well as deploying it for use!
 You can click [HERE](https://rocky-savannah-72606.herokuapp.com/) to view and experince our webapp!
 
 The final touches to the webapp were done by all memebrs of our group, each of us had a hand in completeing the requirements necessary for this assignment. To deploy our webapp we chose to host our app through heroku and run our database through MonogoDB. All of the webapp documents that create "yoVerse" are contained within this repository.
+```
