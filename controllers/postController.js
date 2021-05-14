@@ -148,8 +148,9 @@ module.exports = {
     seen: (req, res, next) => {
         let postId = req.params.id;
         console.log("try")
-        User.update({username: res.locals.currentUser.username}, {$pull: {followerPosts: postId}})
+        User.update({username: res.locals.currentUser.username}, {$pull: {followPosts: postId}})
         .then(post =>{
+            console.log("success");
             res.locals.redirect = "/user/notification";
             next();
         })
