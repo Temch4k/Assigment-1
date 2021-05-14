@@ -1,6 +1,4 @@
 <% if(loggedIn){ %>
-    <br>
-
     <div class="postContainer alignPostBox" id = "notificationContainer">
         <div class="postContainer alignPostBox" id="postBoxNotification">
             <br>
@@ -46,21 +44,20 @@
         </div>
     </div>
     <br>
-    <%} else {%>
-        <br>
-
-        <body>
-            <div class="container mainDiv" style="color: black;">
-                <fieldset class="brdr">
-                    <div class="text-center">
-                        <div>
-                            <h3>You are not signed in!</h3>
-                        </div>
-                        <a href="login">
-                            <span class="button">Sign in</span>
-                        </a>
+<%} else {%>
+    <br>
+    <body>
+        <div class="container mainDiv" style="color: black;">
+            <fieldset class="brdr">
+                <div class="text-center">
+                    <div>
+                        <h3>You are not signed in!</h3>
                     </div>
-                </fieldset>
-            </div>
-        </body>
-        <%}%>
+                    <a href="login">
+                        <span class="button">Sign in</span>
+                    </a>
+                </div>
+            </fieldset>
+        </div>
+    </body>
+<%}%>

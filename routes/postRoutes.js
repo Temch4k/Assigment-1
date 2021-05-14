@@ -4,7 +4,7 @@ const router = require("express").Router(),
 
 router.post("/:id/create", postController.create, userController.redirectView);
 router.delete("/:id/delete", postController.delete, postController.redirectView);
-router.get("/getallhastags", postController.getAllHastags, postController.redirectView);
+router.get("/getallhastags", postController.getAllHastags, postController.showAllH);
 router.get("/:id/seen", postController.seen, postController.redirectView);
 
 module.exports = router;

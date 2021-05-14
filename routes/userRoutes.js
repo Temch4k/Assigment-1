@@ -27,7 +27,7 @@ router.get("/allUsers", userController.AllUsers, userController.showAllUsers);
 router.get("/securityQuestions", userController.showSecurityQuestions);
 router.post("/checkSecurityQuestion", userController.checkSecurityQuestions, userController.redirectView);
 router.get("/changePassword", userController.showChangePassword);
-router.get("/hashtags", userController.allHashtags, userController.showHashtags);
+
 router.get("/notification", userController.allNotifications, userController.showNotifications);
 router.post("/search", userController.searchUsers, userController.showAllUsers);
 
