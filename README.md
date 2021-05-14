@@ -1,4 +1,6 @@
-## Assigment 1
+<h1>Assigment 1</h1>
+
+<h2>Part 1</h2>
 ```For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
 
   To begin our project we first tackled the design aspexts of this project and that first involved choosing the name of our social media platform, which we decided on "yoVerse", because it combined two words: your and universe, which is a great title for an up and coming social media platform where users can share their thoughts and experinces with the world. The next step in creating our social media platform was to figure out the graphic design aspect which included choosing the color scheme and creating a logo. To select the colors we utilized Coolors.co, to randomize different color patterns and find interesting color schemes that would fit our websites mood and feel. Once we settled on our desired color grid, we then chose one of the mpst eye catching colors and created a Logo with it to ensure it would match our website aesthetic. Our team used freelogodesign.org to create our logo with matching colors and moved on to designing our website.
@@ -15,7 +17,7 @@
 
 ```
 
-## Part 2
+<h2>Part 2</h2>
 ```
   Let's continue working on our final social media project for the Web Application Development class. On this assignment, our team had to make the project more dynamic and add some security to our account creation, such as password validation and the addition of security questions during our user's account creation process to make the process more secure and interactive.
 
@@ -31,7 +33,7 @@
 
 --------------------------------------------------------------------------------------
 
-Part 3
+<h2>Part 3</h2>
 
   Implementing MongoDB on our webapp.
 
@@ -46,7 +48,7 @@ Some problems we ran into: we couldn't figure out how to connect regular js file
 
 
 --------------------------------------------------------------------------------------
-Part 4
+<h2>Part 4</h2>
 
   Intruducing Crud and User Authorization
 
@@ -65,4 +67,11 @@ For the future we are planning on adding profile pictures and picture posting as
 In order to get the application working, the user must navigate to the directory call "node seed" to populate the default profiles, then call "npm start". The website will start on localHost:3000.
 
 We plan, to impliment actually adding friend(s) to each profile and pictures. Finally, we would like to impliment direct messaging between users privately so no other user can see said messages.
-```
+
+--------------------------------------------------------------------------------------
+<h1>Final Project - Final Version</h1>
+
+In the last installment in the creation of our webapp "yoVerse" we implemented hahstags and notifications for our users as well as deploying it for use!
+You can click [HERE](https://rocky-savannah-72606.herokuapp.com/) to view and experince our webapp!
+
+The final touches to the webapp were done by all memebrs of our group, each of us had a hand in completeing the requirements necessary for this assignment. To deploy our webapp we chose to host our app through heroku and run our database through MonogoDB. All of the webapp documents that create "yoVerse" are contained within this repository.
