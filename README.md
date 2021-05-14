@@ -1,6 +1,6 @@
-<h1>Assigment 1</h1>
+# Assigment 1
 
-<h2>Part 1</h2>
+## Part 1
 ```For this project, our group decided to go with the standard social media website. It seemed like a fun idea and did not sound like an overly complicated challenge.
 
   To begin our project we first tackled the design aspexts of this project and that first involved choosing the name of our social media platform, which we decided on "yoVerse", because it combined two words: your and universe, which is a great title for an up and coming social media platform where users can share their thoughts and experinces with the world. The next step in creating our social media platform was to figure out the graphic design aspect which included choosing the color scheme and creating a logo. To select the colors we utilized Coolors.co, to randomize different color patterns and find interesting color schemes that would fit our websites mood and feel. Once we settled on our desired color grid, we then chose one of the mpst eye catching colors and created a Logo with it to ensure it would match our website aesthetic. Our team used freelogodesign.org to create our logo with matching colors and moved on to designing our website.
@@ -15,7 +15,7 @@
   -- Click The Profile button in right hand corner of homepage to view profile --
 
 
-<h2>Part 2</h2>
+## Part 2
 
   Let's continue working on our final social media project for the Web Application Development class. On this assignment, our team had to make the project more dynamic and add some security to our account creation, such as password validation and the addition of security questions during our user's account creation process to make the process more secure and interactive.
 
@@ -26,7 +26,7 @@
   Overall things went smoothly while completeing this assignment, most the issues our group faced were over version control or pulling versions from our peers which did not match the versions we had on our local machines. But these are easily manageable problems and did not provide any serious roadblocks in the completion of othis assignment.
 
 
-<h2>Part 3</h2>
+## Part 3
 
   Implementing MongoDB on our webapp.
 
@@ -39,7 +39,7 @@ Dax got the mongo database running. He created the models and did a good amount 
 Some problems we ran into: we couldn't figure out how to connect regular js files that contained functions for some of the interactive parts of our website, such as security question fields where you can insert the input popping up after selecting a question you would like to enter. The fix to that was putting all of the js functions for the interactive website into the public folder, and through there it actually started to do what it was supposed to do.
 
 
-<h2>Part 4</h2>
+## Part 4
 
   Intruducing Crud and User Authorization
 
@@ -60,7 +60,9 @@ In order to get the application working, the user must navigate to the directory
 We plan, to impliment actually adding friend(s) to each profile and pictures. Finally, we would like to impliment direct messaging between users privately so no other user can see said messages.
 
 
-<h1>Final Project - Final Version</h1>
+
+
+# Final Project - Final Version
 
 In the last installment in the creation of our webapp "yoVerse" we implemented hahstags and notifications for our users as well as deploying it for use!
 You can click [HERE](https://rocky-savannah-72606.herokuapp.com/) to view and experince our webapp!
