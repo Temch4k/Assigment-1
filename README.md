@@ -34,3 +34,9 @@ This will allow you to view the applciation on your browser at the address "loca
 ## Design Choices
 
 For this project we chose to use a MVC architecture since we needed to use CRUD(create, read, update, delete) processes. We chose to use the Bootsrap libraries for the majority of the styling on our website. The GUI was designed to be intuitve and appealing to our users and work for all screen sizes. We based the format of our website off of other similar social medias so that our users may be familar with how to interact with our webapp. Errors for the users will show up as a flash message and for the server errors will be logged in the terminal. We chose to use bcrpyt for encrypting our passwords, and users are allowed to change their password when they want. We are using passport so only authenticated users are able to access the majority of the site and unauthorized users are only able to access the login and sign up pages. 
+
+## Responsibilities
+
+Artsiom worked on the front end and the back end functions of the website. Worked on authentication, posts, user searching and editing and following and unfollowing the users.
+Dax worked on the security of our website. As well as hashtags and editing the user profile.
+Micah worked on the navbar, the looks of the webiste, as well as notification system for our user.
