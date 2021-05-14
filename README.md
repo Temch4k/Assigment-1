@@ -2,6 +2,8 @@
 
 In the last installment in the creation of our webapp "yoVerse" we implemented hahstags and notifications for our users as well as deploying it for use!
 
+You can click [HERE](https://rocky-savannah-72606.herokuapp.com/) to view and experince our webapp!
+
 To watch our overview video go [HERE](https://www.youtube.com/watch?v=VD76Uc1K_fo&ab_channel=ArtsiomSkarakhod)!
 
 The final touches to the webapp were done by all memebrs of our group in a collaborative effort, each of us had a hand in completeing the requirements necessary for this assignment. To deploy our webapp we chose to host our app through heroku and run our database through MonogoDB. All of the webapp documents that create "yoVerse" are contained within this repository.
